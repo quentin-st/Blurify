@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Photo enregistrée sous </string>
+    <string name="error_save_photo">Erreur lors de l\'enregistrement de la photo…</string>
+    <string name="wallpaper_set">Font d\'écran appliqué avec succès !</string>
+    <string name="wallpaper_error">Impossible d\'appliquer le fond d\'écran…</string>
+    <string name="pick_photo">Sélectionner une photo</string>
+    <string name="crop">Rogner</string>
+    <string name="rotate">Pivoter</string>
+    <string name="set_wallpaper">Appliquer en fond d\'écran</string>
+    <string name="save">Enregistrer</string>
+    <string name="err_import">Erreur lors de l\'import de la photo…</string>
+
+</resources>

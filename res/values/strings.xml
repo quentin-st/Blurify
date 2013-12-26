@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Photo saved as </string>
+    <string name="error_save_photo">Error while saving photo…</string>
+    <string name="wallpaper_set">Wallpaper set!</string>
+    <string name="wallpaper_error">Error setting wallpaper…</string>
+    <string name="pick_photo">Pick photo</string>
+    <string name="crop">Crop</string>
+    <string name="rotate">Rotate</string>
+    <string name="set_wallpaper">Set as wallpaper</string>
+    <string name="save">Save</string>
+    <string name="err_import">Error while importing photo…</string>
+
+</resources>
