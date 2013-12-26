@@ -7,7 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,15 +23,19 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -46,7 +50,7 @@ public class Activity_Main extends Activity {
 	private static Bitmap little_bitmap;
 	private static int previous_step = 0;
 	public static boolean success;
-	private static int progress;
+	private static int progress = 0;
 	private static int aspectRatioX = 0;
 	private static int aspectRatioY = 0;
 	private static int state = 0;
@@ -69,25 +73,34 @@ public class Activity_Main extends Activity {
 		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 			getActionBar().hide();
-		
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
+			if (id != 0 && getResources().getBoolean(id)) { // Translucent available
+				Window w = getWindow();
+				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				findViewById(R.id.buttonsContainer).setPadding(0, 0, 0, getSoftbuttonsbarHeight());
+			}
+		}
 		
 		setFont((ViewGroup) findViewById(R.id.main_container), Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf"));
 		Activity_Main.set_wallpaper = (Button)findViewById(R.id.setWallpaper);
 		myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 		aspectRatioX = myWallpaperManager.getDesiredMinimumWidth();
 		aspectRatioY = myWallpaperManager.getDesiredMinimumHeight();
-		/*if (android.os.Build.VERSION.SDK_INT >= 13) {
-			Display display = getWindowManager().getDefaultDisplay();
-			Point size = new Point();
-			display.getSize(size);
-			aspectRatioX = size.x;
-			aspectRatioY = size.y;
-		} else {
-			Display display = getWindowManager().getDefaultDisplay();
-			aspectRatioX = display.getHeight();
-			aspectRatioY = display.getWidth();
-		}*/
+		
+		/*if (savedInstanceState != null) {
+			if (savedInstanceState.getByteArray("little_bitmap_original") != null)
+				little_bitmap_original = BitmapFactory.decodeByteArray(savedInstanceState.getByteArray("little_bitmap_original"), 0, savedInstanceState.getByteArray("little_bitmap_original").length);
+			if (savedInstanceState.getByteArray("little_bitmap") != null)
+				little_bitmap = BitmapFactory.decodeByteArray(savedInstanceState.getByteArray("little_bitmap"), 0, savedInstanceState.getByteArray("little_bitmap").length);
+			state = savedInstanceState.getInt("state");
+			previous_step = savedInstanceState.getInt("previous_step");
+			progress = savedInstanceState.getInt("progress");
+			aspectRatioX = savedInstanceState.getInt("aspectRatioX");
+			aspectRatioY = savedInstanceState.getInt("aspectRatioY");
+		}
+		else*/
 		state = ST_UNKNWOWN;
 		
 		set_wallpaper.setOnClickListener(new OnClickListener() {
@@ -133,7 +146,6 @@ public class Activity_Main extends Activity {
 				if(!dir.exists() || !dir.isDirectory())
 					dir.mkdir();
 				
-				
 				String fileName1 = "Photo";
 				String fileName2 = "01.png";
 				File file = new File(dir, fileName1 + fileName2);
@@ -157,9 +169,7 @@ public class Activity_Main extends Activity {
 					little_bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
 					out.flush();
 					out.close();
-					String filePath = Environment.getExternalStorageDirectory() + "/blurify/" + fileName1 + fileName2;
-					//String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/blurify/" + fileName1 + fileName2;    
-					Log.v("", filePath);
+					String filePath = Environment.getExternalStorageDirectory() + "/blurify/" + fileName1 + fileName2;  
 					MediaScannerConnection.scanFile(Activity_Main.this, new String[] { filePath }, null, null);
 					Toast.makeText(Activity_Main.this, getString(R.string.photo_saved_as) + " " + fileName1 + fileName2 + "!", Toast.LENGTH_SHORT).show();
 				} catch (Exception e) {
@@ -184,7 +194,6 @@ public class Activity_Main extends Activity {
 			public void onStartTrackingTouch(SeekBar seekBar) { }
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				Log.v("", "test1");
 				if (Activity_Main.little_bitmap_original != null) {
 					Activity_Main.progress = seekBar.getProgress();
 					seekBar.setEnabled(false);
@@ -218,19 +227,14 @@ public class Activity_Main extends Activity {
 								uiThreadCallback.post(runInUIThread);
 							} catch (Exception ex) {
 								try {
-									Log.v("", "test2");
 									if (Activity_Main.little_bitmap != null)
 										Activity_Main.little_bitmap.recycle();
 									Activity_Main.little_bitmap = null;
 									
 									if (progress == 0)
 										Activity_Main.little_bitmap = Activity_Main.little_bitmap_original.copy(Activity_Main.little_bitmap_original.getConfig(), true);
-									else {
+									else
 										Activity_Main.little_bitmap = fastblur(Activity_Main.little_bitmap_original, Activity_Main.progress);
-										//_stackBlurManager = new StackBlurManager(Activity_Main.little_bitmap_original);
-										//_stackBlurManager.process(progress);
-										//Activity_Main.little_bitmap = _stackBlurManager.returnBlurredImage();
-									}
 									Activity_Main.previous_step = Activity_Main.progress;
 									uiThreadCallback.post(runInUIThread);
 								} catch (Exception ex2) {
@@ -250,9 +254,9 @@ public class Activity_Main extends Activity {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper, options);
-
+		
 		long totalImagePixels = options.outHeight * options.outWidth;
-
+		
 		// Get screen pixels
 		int totalScreenPixels = 0;
 		if (android.os.Build.VERSION.SDK_INT >= 13) {
@@ -264,10 +268,10 @@ public class Activity_Main extends Activity {
 			Display display = getWindowManager().getDefaultDisplay();
 			totalScreenPixels = display.getHeight() * display.getWidth();
 		}
-
+		
 		if (totalScreenPixels > 2048*2048)
 			totalScreenPixels = 2048*2048;
-
+		
 		if (totalImagePixels > totalScreenPixels) {    
 			double factor=(float)totalImagePixels/(float)(totalScreenPixels);
 			int sampleSize=(int) Math.pow(2, Math.floor(Math.sqrt(factor)));
@@ -283,15 +287,49 @@ public class Activity_Main extends Activity {
 			b.recycle();
 			b = null;
 			updateBackground();
-		
-			//Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper);
-			//Get screen size
-			//b = scaleCenterCrop(b, x, y);
 		}
+	}
+	
+	/*protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if (little_bitmap_original != null) {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			little_bitmap_original.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			outState.putByteArray("little_bitmap_original", stream.toByteArray());
+			//try {	little_bitmap_original.recycle(); } catch (Exception ignored) { }
+			//try {	stream.close(); } catch (Exception ignored) { }
+		}
+		if (little_bitmap != null) {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			little_bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			outState.putByteArray("little_bitmap", stream.toByteArray());
+			//try {	little_bitmap.recycle(); } catch (Exception ignored) { }
+			//try {	stream.close(); } catch (Exception ignored) { }
+		}
+		outState.putInt("state", state);
+		outState.putInt("previous_step", previous_step);
+		outState.putInt("progress", progress);
+		outState.putInt("aspectRatioX", aspectRatioX);
+		outState.putInt("aspectRatioY", aspectRatioY);
+	}*/
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
 		
-		//Activity_Main.little_bitmap = scaleCenterCrop(BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper), x, y);
-		//Activity_Main.little_bitmap_original = Activity_Main.little_bitmap.copy(Activity_Main.little_bitmap.getConfig(), true);
-		//updateBackground();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
+			if (id != 0 && getResources().getBoolean(id)) // Translucent available
+				findViewById(R.id.buttonsContainer).setPadding(0, 0, 0, getSoftbuttonsbarHeight());
+		}
+		View cropImageView = findViewById(R.id.CropImageView);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+			params.setMargins(0, 0, 0, getSoftbuttonsbarHeight() + findViewById(R.id.buttonsContainer).getHeight());
+		else
+			params.setMargins(0, 0, 0, findViewById(R.id.buttonsContainer).getHeight());
+		params.addRule(RelativeLayout.CENTER_IN_PARENT);
+		cropImageView.setLayoutParams(params);
 	}
 	
 	@Override
@@ -334,7 +372,6 @@ public class Activity_Main extends Activity {
 			
 			int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 			String filePath = cursor.getString(columnIndex);
-			//Activity_Main.bitmap_location = filePath;
 			cursor.close();
 			
 			Bitmap b = null;
@@ -372,7 +409,7 @@ public class Activity_Main extends Activity {
 			if (b == null) b = BitmapFactory.decodeFile(filePath);
 			
 			
-			if (b != null) {
+			if (b != null && b.getConfig() != null) {
 				/*//Activity_Main.little_bitmap = b.copy(b.getConfig(), true);
 				Activity_Main.little_bitmap_original = b.copy(b.getConfig(), true);
 				b.recycle();
@@ -395,14 +432,18 @@ public class Activity_Main extends Activity {
 				
 				Activity_Main.little_bitmap = scaleCenterCrop(BitmapFactory.decodeFile(filePath), x, y);
 				Activity_Main.little_bitmap_original = Activity_Main.little_bitmap.copy(Activity_Main.little_bitmap.getConfig(), true);*/
-				tmp_original_bitmap = b.copy(b.getConfig(), true);
-				b.recycle();
-				b = null;
-				
-				findViewById(R.id.getimg).setVisibility(View.GONE);
-				findViewById(R.id.actions1).setVisibility(View.VISIBLE);
-				launchCrop();
-				((ImageView)findViewById(R.id.container)).setImageBitmap(null);
+				try {
+					tmp_original_bitmap = b.copy(b.getConfig(), true);
+					b.recycle();
+					b = null;
+					
+					findViewById(R.id.getimg).setVisibility(View.GONE);
+					findViewById(R.id.actions1).setVisibility(View.VISIBLE);
+					launchCrop();
+					((ImageView)findViewById(R.id.container)).setImageBitmap(null);
+				} catch (Exception ignored) {
+					Toast.makeText(Activity_Main.this, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
+				}
 			} else {
 				Toast.makeText(Activity_Main.this, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
 			}
@@ -423,8 +464,8 @@ public class Activity_Main extends Activity {
 			@Override
 			public void onClick(View v) {
 				little_bitmap_original = c.getCroppedImage();
-			    AlphaAnimation a2 = new AlphaAnimation(1.0f, 0.0f);
-			    a2.setDuration(500);
+				AlphaAnimation a2 = new AlphaAnimation(1.0f, 0.0f);
+				a2.setDuration(500);
 				Activity_Main.little_bitmap = Activity_Main.little_bitmap_original.copy(Activity_Main.little_bitmap_original.getConfig(), true);
 				((ImageView)findViewById(R.id.container)).setVisibility(View.VISIBLE);
 				findViewById(R.id.mask).startAnimation(a2);
@@ -521,15 +562,15 @@ public class Activity_Main extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			AlphaAnimation a = new AlphaAnimation(0.0f, 1.0f);
-		    a.setDuration(1000);
-		    ImageView i = (ImageView)findViewById(R.id.tmp_container);
-		    i.setImageBitmap(b2);
-		    i.startAnimation(a);
+			a.setDuration(1000);
+			ImageView i = (ImageView)findViewById(R.id.tmp_container);
+			i.setImageBitmap(b2);
+			i.startAnimation(a);
 			i.setVisibility(View.VISIBLE);
 		}
 	}
 	
-public static Bitmap fastblur(Bitmap sentBitmap, int radius) {
+	public static Bitmap fastblur(Bitmap sentBitmap, int radius) {
 		
 		// Stack Blur v1.0 from
 		// http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html
@@ -759,5 +800,22 @@ public static Bitmap fastblur(Bitmap sentBitmap, int radius) {
 		bitmap.setPixels(pix, 0, w, 0, 0, w, h);
 		
 		return (bitmap);
+	}
+	
+	@SuppressLint("NewApi")
+	private int getSoftbuttonsbarHeight() {
+		// getRealMetrics is only available with API 17 and +
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+			DisplayMetrics metrics = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(metrics);
+			int usableHeight = metrics.heightPixels;
+			getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+			int realHeight = metrics.heightPixels;
+			if (realHeight > usableHeight)
+				return realHeight - usableHeight;
+			else
+				return 0;
+		}
+		return 0;
 	}
 }
