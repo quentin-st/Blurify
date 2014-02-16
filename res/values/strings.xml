@@ -12,5 +12,10 @@
     <string name="set_wallpaper">Set as wallpaper</string>
     <string name="save">Save</string>
     <string name="err_import">Error while importing photo…</string>
+    <string name="note">Note the app</string>
+    <string name="note_txt">If you like the app, could you take a minute to note it on Google Play ? Thank you !</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="notnow">Not now</string>
 
 </resources>

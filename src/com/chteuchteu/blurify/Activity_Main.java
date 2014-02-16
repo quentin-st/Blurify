@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -43,6 +45,7 @@ import android.widget.Toast;
 
 import com.edmodo.cropper.CropImageView;
 import com.enrique.stackblur.StackBlurManager;
+import com.tjeannin.apprate.AppRate;
 
 public class Activity_Main extends Activity {
 	private static Bitmap tmp_original_bitmap;
@@ -54,6 +57,7 @@ public class Activity_Main extends Activity {
 	private static int aspectRatioX = 0;
 	private static int aspectRatioY = 0;
 	private static int state = 0;
+	private Context c;
 	
 	private static int ST_UNKNWOWN = 0;
 	private static int ST_CROP = 1;
@@ -70,6 +74,7 @@ public class Activity_Main extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		c = this;
 		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 			getActionBar().hide();
@@ -134,6 +139,24 @@ public class Activity_Main extends Activity {
 							uiThreadCallback.post(runInUIThread);
 						}
 					}.start();
+					
+					Handler handler = new Handler();
+					handler.postDelayed(new Runnable() {
+						public void run() {
+							AlertDialog.Builder builder = new AlertDialog.Builder(c)
+							.setTitle(getText(R.string.note))
+							.setIcon(R.drawable.launcher_icon)
+							.setMessage(getText(R.string.note_txt))
+							.setPositiveButton(getText(R.string.yes), null)
+							.setNegativeButton(getText(R.string.no), null)
+							.setNeutralButton(getText(R.string.notnow), null);
+							new AppRate((Activity) c)
+							.setCustomDialog(builder)
+							.setMinDaysUntilPrompt(3)
+							.setMinLaunchesUntilPrompt(4)
+							.init();
+						}
+					}, 2500);
 				}
 			}
 		});
