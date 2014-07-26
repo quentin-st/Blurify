@@ -2,22 +2,35 @@
 	android:id="@+id/main_container"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent" >
-
+	
 	<ImageView
-		android:id="@+id/container"
+		android:id="@+id/demoImg"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:adjustViewBounds="true"
-		android:scaleType="centerCrop" />
-
+		android:scaleType="centerCrop"
+		android:src="@drawable/wallpaper" />
+	
 	<ImageView
-		android:id="@+id/tmp_container"
+		android:id="@+id/blurryBackground"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:adjustViewBounds="true"
 		android:scaleType="centerCrop"
 		android:visibility="gone" />
-
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:adjustViewBounds="true"
+		android:gravity="center_horizontal|center_vertical" >
+		
+		<ImageView
+			android:id="@+id/container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+	</LinearLayout>
+	
 	<LinearLayout
 		android:id="@+id/mask"
 		android:layout_width="match_parent"
@@ -25,7 +38,7 @@
 		android:background="#88000000"
 		android:orientation="vertical"
 		android:visibility="gone" />
-
+	
 	<com.edmodo.cropper.CropImageView
 		xmlns:custom="http://schemas.android.com/apk/res-auto"
 		android:id="@+id/CropImageView"
@@ -33,7 +46,20 @@
 		android:layout_height="match_parent"
 		android:layout_gravity="center"
 		android:visibility="gone" />
-
+	
+	<LinearLayout
+		android:id="@+id/ad_container"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true" >
+		
+		<com.applovin.adview.AppLovinAdView
+			xmlns:applovin="http://schemas.applovin.com/android/1.0"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			applovin:loadAdOnCreate="true" />
+	</LinearLayout>
+	
 	<LinearLayout
 		android:id="@+id/buttonsContainer"
 		android:layout_width="match_parent"
@@ -41,20 +67,20 @@
 		android:layout_alignParentBottom="true"
 		android:background="#55FFFFFF"
 		android:orientation="vertical" >
-
+	
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="1dp"
 			android:background="#88FFFFFF"
 			android:orientation="vertical" />
-
+		
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="1dp"
 			android:layout_marginBottom="5dp"
 			android:background="#22000000"
 			android:orientation="vertical" />
-
+		
 		<Button
 			android:id="@+id/getimg"
 			style="@style/ButtonText"
@@ -64,7 +90,7 @@
 			android:background="@drawable/blue_button"
 			android:gravity="center"
 			android:text="@string/pick_photo" />
-
+		
 		<LinearLayout
 			android:id="@+id/actions1"
 			android:layout_width="match_parent"
@@ -72,7 +98,7 @@
 			android:gravity="center"
 			android:orientation="horizontal"
 			android:visibility="gone" >
-
+		
 			<Button
 				android:id="@+id/crop"
 				style="@style/ButtonText"
@@ -81,7 +107,7 @@
 				android:layout_weight="1"
 				android:background="@drawable/blue_button"
 				android:text="@string/crop" />
-
+			
 			<Button
 				android:id="@+id/rotate"
 				style="@style/ButtonText"
@@ -91,7 +117,7 @@
 				android:background="@drawable/blue_button"
 				android:text="@string/rotate" />
 		</LinearLayout>
-
+		
 		<LinearLayout
 			android:id="@+id/actions2"
 			android:layout_width="match_parent"
@@ -99,18 +125,18 @@
 			android:gravity="center"
 			android:orientation="vertical"
 			android:visibility="gone" >
-
+		
 			<SeekBar
 				android:id="@+id/seekBar"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="5dp"
 				android:layout_marginRight="5dp" />
-
+			
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" >
-
+			
 				<Button
 					android:id="@+id/setWallpaper"
 					style="@style/ButtonText"
@@ -119,7 +145,7 @@
 					android:layout_weight="1"
 					android:background="@drawable/blue_button"
 					android:text="@string/set_wallpaper" />
-
+				
 				<Button
 					android:id="@+id/saveimg"
 					style="@style/ButtonText"
@@ -131,5 +157,4 @@
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
-
 </RelativeLayout>

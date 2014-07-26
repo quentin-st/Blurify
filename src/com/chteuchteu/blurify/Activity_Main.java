@@ -38,32 +38,32 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
+import com.applovin.sdk.AppLovinSdk;
 import com.edmodo.cropper.CropImageView;
 import com.enrique.stackblur.StackBlurManager;
 import com.tjeannin.apprate.AppRate;
 
 public class Activity_Main extends Activity {
-	private static Bitmap tmp_original_bitmap;
-	private static Bitmap little_bitmap_original;
-	private static Bitmap little_bitmap;
-	private static int previous_step = 0;
-	public static boolean success;
-	private static int progress = 0;
-	private static int aspectRatioX = 0;
-	private static int aspectRatioY = 0;
-	private static int state = 0;
+	private Bitmap tmp_original_bitmap;
+	private Bitmap little_bitmap_original;
+	private Bitmap little_bitmap;
+	private int previous_step = 0;
+	private boolean success;
+	private int progress = 0;
+	private int aspectRatioX = 0;
+	private int aspectRatioY = 0;
+	private int state = 0;
 	private Context context;
 	
-	private static int ST_UNKNWOWN = 0;
-	private static int ST_CROP = 1;
-	private static int ST_BLUR = 2;
+	private static final int ST_UNKNWOWN = 0;
+	private static final int ST_CROP = 1;
+	private static final int ST_BLUR = 2;
 	
-	private static Button set_wallpaper;
-	final Handler uiThreadCallback = new Handler();
-	StackBlurManager _stackBlurManager;
-	WallpaperManager myWallpaperManager;
+	private Button set_wallpaper;
+	private Handler uiThreadCallback = new Handler();
+	private StackBlurManager _stackBlurManager;
+	private WallpaperManager myWallpaperManager;
 	
-	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ public class Activity_Main extends Activity {
 				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 				findViewById(R.id.buttonsContainer).setPadding(0, 0, 0, Util.getSoftbuttonsbarHeight(this));
+				findViewById(R.id.ad_container).setPadding(0, Util.getStatusBarHeight(this), 0, 0);
 			}
 		}
 		
@@ -144,7 +145,7 @@ public class Activity_Main extends Activity {
 			}
 		});
 		
-		((Button)findViewById(R.id.saveimg)).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.saveimg).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				String root = Environment.getExternalStorageDirectory().toString();
@@ -185,7 +186,7 @@ public class Activity_Main extends Activity {
 			}
 		});
 		
-		((Button)findViewById(R.id.getimg)).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.getimg).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View actualView) {
 				Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -211,7 +212,7 @@ public class Activity_Main extends Activity {
 							((SeekBar)findViewById(R.id.seekBar)).setEnabled(true);
 							((Button)findViewById(R.id.saveimg)).setEnabled(true);
 							((Button)findViewById(R.id.setWallpaper)).setEnabled(true);
-							updateBackground();
+							updateContainer();
 						}
 					};
 					new Thread() {
@@ -251,72 +252,8 @@ public class Activity_Main extends Activity {
 				}
 			}
 		});
-		
-		
-		Bitmap b = null;
-		
-		// Premier redimentionnement de original_bitmap
-		BitmapFactory.Options options = new BitmapFactory.Options();
-		options.inJustDecodeBounds = true;
-		BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper, options);
-		
-		long totalImagePixels = options.outHeight * options.outWidth;
-		
-		// Get screen pixels
-		int totalScreenPixels = 0;
-		if (android.os.Build.VERSION.SDK_INT >= 13) {
-			Display display = getWindowManager().getDefaultDisplay();
-			Point size = new Point();
-			display.getSize(size);
-			totalScreenPixels = size.x * size.y;
-		} else {
-			Display display = getWindowManager().getDefaultDisplay();
-			totalScreenPixels = display.getHeight() * display.getWidth();
-		}
-		
-		if (totalScreenPixels > 2048*2048)
-			totalScreenPixels = 2048*2048;
-		
-		if (totalImagePixels > totalScreenPixels) {    
-			double factor=(float)totalImagePixels/(float)(totalScreenPixels);
-			int sampleSize=(int) Math.pow(2, Math.floor(Math.sqrt(factor)));
-			options.inJustDecodeBounds=false;
-			options.inSampleSize=sampleSize;
-			b = BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper, options);
-		} else {
-			b = BitmapFactory.decodeResource(getResources(), R.drawable.wallpaper);
-		}
-		
-		if (b != null) {
-			little_bitmap = b.copy(b.getConfig(), true);
-			b.recycle();
-			b = null;
-			updateBackground();
-		}
+		AppLovinSdk.initializeSdk(context);
 	}
-	
-	/*protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		if (little_bitmap_original != null) {
-			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			little_bitmap_original.compress(Bitmap.CompressFormat.PNG, 100, stream);
-			outState.putByteArray("little_bitmap_original", stream.toByteArray());
-			//try {	little_bitmap_original.recycle(); } catch (Exception ignored) { }
-			//try {	stream.close(); } catch (Exception ignored) { }
-		}
-		if (little_bitmap != null) {
-			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			little_bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-			outState.putByteArray("little_bitmap", stream.toByteArray());
-			//try {	little_bitmap.recycle(); } catch (Exception ignored) { }
-			//try {	stream.close(); } catch (Exception ignored) { }
-		}
-		outState.putInt("state", state);
-		outState.putInt("previous_step", previous_step);
-		outState.putInt("progress", progress);
-		outState.putInt("aspectRatioX", aspectRatioX);
-		outState.putInt("aspectRatioY", aspectRatioY);
-	}*/
 	
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -344,18 +281,19 @@ public class Activity_Main extends Activity {
 		} else if (state == ST_CROP) {
 			findViewById(R.id.getimg).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions1).setVisibility(View.GONE);
-			((CropImageView)findViewById(R.id.CropImageView)).setVisibility(View.GONE);
+			findViewById(R.id.container).setVisibility(View.GONE);
+			findViewById(R.id.CropImageView).setVisibility(View.GONE);
 			state = ST_UNKNWOWN;
 		} else if (state == ST_BLUR) {
 			((SeekBar)findViewById(R.id.seekBar)).setProgress(0);
-			((ImageView)findViewById(R.id.container)).setVisibility(View.GONE);
+			findViewById(R.id.container).setVisibility(View.GONE);
 			findViewById(R.id.mask).setVisibility(View.VISIBLE);
 			findViewById(R.id.CropImageView).setVisibility(View.VISIBLE);
-			((ImageView)findViewById(R.id.tmp_container)).setVisibility(View.VISIBLE);
+			findViewById(R.id.blurryBackground).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions2).setVisibility(View.GONE);
 			state = ST_CROP;
-			launchCrop();
+			launchCrop(false);
 		}
 	}
 	
@@ -422,7 +360,7 @@ public class Activity_Main extends Activity {
 					
 					findViewById(R.id.getimg).setVisibility(View.GONE);
 					findViewById(R.id.actions1).setVisibility(View.VISIBLE);
-					launchCrop();
+					launchCrop(true);
 					((ImageView)findViewById(R.id.container)).setImageBitmap(null);
 				} catch (Exception ignored) {
 					Toast.makeText(context, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
@@ -433,7 +371,8 @@ public class Activity_Main extends Activity {
 		}
 	}
 	
-	public void launchCrop() {
+	// No need to execute blur background when pressing back
+	private void launchCrop(boolean executeBlurBackground) {
 		findViewById(R.id.mask).setVisibility(View.VISIBLE);
 		final CropImageView c = (CropImageView)findViewById(R.id.CropImageView);
 		//c.setFixedAspectRatio(true);
@@ -441,7 +380,8 @@ public class Activity_Main extends Activity {
 		c.setVisibility(View.VISIBLE);
 		c.setImageBitmap(tmp_original_bitmap);
 		c.invalidate();
-		new BlurAndBackgroundBitmap().execute();
+		if (executeBlurBackground)
+			new BlurBackgroundBitmap().execute();
 		
 		((Button)findViewById(R.id.crop)).setOnClickListener(new OnClickListener() {
 			@Override
@@ -450,17 +390,19 @@ public class Activity_Main extends Activity {
 				AlphaAnimation a2 = new AlphaAnimation(1.0f, 0.0f);
 				a2.setDuration(500);
 				little_bitmap = little_bitmap_original.copy(little_bitmap_original.getConfig(), true);
-				((ImageView)findViewById(R.id.container)).setVisibility(View.VISIBLE);
+				
+				ImageView container = (ImageView)findViewById(R.id.container);
+				container.setVisibility(View.VISIBLE);
+				container.setImageBitmap(little_bitmap_original);
+				
 				findViewById(R.id.mask).startAnimation(a2);
 				findViewById(R.id.mask).setVisibility(View.GONE);
 				findViewById(R.id.CropImageView).startAnimation(a2);
 				findViewById(R.id.CropImageView).setVisibility(View.GONE);
-				((ImageView)findViewById(R.id.container)).setImageBitmap(little_bitmap_original);
-				((ImageView)findViewById(R.id.tmp_container)).setImageBitmap(null);
-				((ImageView)findViewById(R.id.tmp_container)).setVisibility(View.GONE);
+				
 				findViewById(R.id.actions1).setVisibility(View.GONE);
 				findViewById(R.id.actions2).setVisibility(View.VISIBLE);
-				updateBackground();
+				updateContainer();
 				state = ST_BLUR;
 			}
 		});
@@ -472,15 +414,16 @@ public class Activity_Main extends Activity {
 		});
 	}
 	
-	public void updateBackground() {
+	private void updateContainer() {
 		try {
 			if (little_bitmap != null && !little_bitmap.isRecycled())
 				((ImageView)findViewById(R.id.container)).setImageBitmap(little_bitmap);
 		} catch (Exception ex) { }
 	}
 	
-	public class BlurAndBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
-		Bitmap b2 = null;
+	private class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
+		private Bitmap b2 = null;
+		
 		@Override
 		protected Void doInBackground(Void... params) {
 			Bitmap b;
@@ -501,10 +444,10 @@ public class Activity_Main extends Activity {
 		protected void onPostExecute(Void result) {
 			AlphaAnimation a = new AlphaAnimation(0.0f, 1.0f);
 			a.setDuration(1000);
-			ImageView i = (ImageView)findViewById(R.id.tmp_container);
-			i.setImageBitmap(b2);
-			i.startAnimation(a);
-			i.setVisibility(View.VISIBLE);
+			ImageView blurryBackground = (ImageView)findViewById(R.id.blurryBackground);
+			blurryBackground.setImageBitmap(b2);
+			blurryBackground.startAnimation(a);
+			blurryBackground.setVisibility(View.VISIBLE);
 		}
 	}
 }
