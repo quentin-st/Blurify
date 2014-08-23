@@ -19,6 +19,13 @@
 		android:scaleType="centerCrop"
 		android:visibility="gone" />
 	
+	<View
+	    android:id="@+id/blurryBackground_darkMask"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="#99000000"
+	    android:visibility="gone" />
+	
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -28,7 +35,8 @@
 		<ImageView
 			android:id="@+id/container"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"
+			android:padding="10dp" />
 	</LinearLayout>
 	
 	<LinearLayout

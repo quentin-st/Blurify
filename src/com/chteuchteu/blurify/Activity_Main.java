@@ -290,6 +290,7 @@ public class Activity_Main extends Activity {
 			findViewById(R.id.mask).setVisibility(View.VISIBLE);
 			findViewById(R.id.CropImageView).setVisibility(View.VISIBLE);
 			findViewById(R.id.blurryBackground).setVisibility(View.VISIBLE);
+			findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions2).setVisibility(View.GONE);
 			state = ST_CROP;
@@ -426,16 +427,21 @@ public class Activity_Main extends Activity {
 		
 		@Override
 		protected Void doInBackground(Void... params) {
-			Bitmap b;
+			Bitmap b = null;
 			try {
 				_stackBlurManager = new StackBlurManager(tmp_original_bitmap);
 				_stackBlurManager.process(10);
 				b = _stackBlurManager.returnBlurredImage();
 			} catch (Exception ex) {
-				b = Util.fastblur(tmp_original_bitmap, 10);
+				try {
+					b = Util.fastblur(tmp_original_bitmap, 10);
+				} catch (Exception ex2) { ex2.printStackTrace(); }
 			}
 			b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
-			b.recycle(); b = null;
+			if (b != null) {
+				b.recycle();
+				b = null;
+			}
 			
 			return null;
 		}
@@ -448,6 +454,7 @@ public class Activity_Main extends Activity {
 			blurryBackground.setImageBitmap(b2);
 			blurryBackground.startAnimation(a);
 			blurryBackground.setVisibility(View.VISIBLE);
+			findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
 		}
 	}
 }
