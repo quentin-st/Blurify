@@ -84,7 +84,7 @@ public class Activity_Main extends Activity {
 			}
 		}
 		
-		Util.setFont((ViewGroup) findViewById(R.id.main_container), Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf"));
+		Util.setFont((ViewGroup) findViewById(R.id.main_container), Typeface.createFromAsset(getAssets(), "Roboto-Medium.ttf"));
 		set_wallpaper = (Button)findViewById(R.id.setWallpaper);
 		myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 		aspectRatioX = myWallpaperManager.getDesiredMinimumWidth();
