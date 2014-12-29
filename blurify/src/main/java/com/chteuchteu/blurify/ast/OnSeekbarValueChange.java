@@ -1,9 +1,9 @@
 package com.chteuchteu.blurify.ast;
 
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.widget.SeekBar;
 
+import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.chteuchteu.blurify.ui.Activity_Main;
@@ -12,8 +12,6 @@ import com.enrique.stackblur.StackBlurManager;
 public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	private Activity_Main activity;
 	private SeekBar seekBar;
-	private Bitmap little_bitmap;
-	private Bitmap little_bitmap_original;
 	private int progress;
 	private int previousProgress;
 
@@ -22,12 +20,9 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	private enum BlurMethod { STACK_BLUR, FAST_BLUR, FASTER_BLUR }
 
 
-	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar, Bitmap little_bitmap,
-	                            Bitmap little_bitmap_original) {
+	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar) {
 		this.activity = activity;
 		this.seekBar = seekBar;
-		this.little_bitmap = little_bitmap;
-		this.little_bitmap_original = little_bitmap_original;
 	}
 
 	@Override
@@ -47,10 +42,12 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			blur(BlurMethod.STACK_BLUR);
 			success = true;
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			try {
 				blur(BlurMethod.FAST_BLUR);
 				success = true;
 			} catch (Exception ex2) {
+				ex.printStackTrace();
 				try {
 					blur(BlurMethod.FASTER_BLUR);
 					success = true;
@@ -74,21 +71,23 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	}
 
 	private void blur(BlurMethod blurMethod) {
-		if (little_bitmap != null)
-			little_bitmap.recycle();
-		little_bitmap = null;
+		Foofy.log("Bluring image with method " + blurMethod.name());
+
+		if (activity.little_bitmap != null)
+			activity.little_bitmap.recycle();
+		activity.little_bitmap = null;
 
 		if (progress == 0)
-			little_bitmap = little_bitmap_original.copy(little_bitmap_original.getConfig(), true);
+			activity.little_bitmap = activity.little_bitmap_original.copy(activity.little_bitmap_original.getConfig(), true);
 		else {
 			switch (blurMethod) {
 				case STACK_BLUR:
-					StackBlurManager _stackBlurManager = new StackBlurManager(little_bitmap_original);
+					StackBlurManager _stackBlurManager = new StackBlurManager(activity.little_bitmap_original);
 					_stackBlurManager.process(progress);
-					little_bitmap = _stackBlurManager.returnBlurredImage();
+					activity.little_bitmap = _stackBlurManager.returnBlurredImage();
 					break;
 				case FAST_BLUR:
-					little_bitmap = Util.fastblur(little_bitmap_original, progress);
+					activity.little_bitmap = Util.fastblur(activity.little_bitmap_original, progress);
 					break;
 				case FASTER_BLUR:
 					break;

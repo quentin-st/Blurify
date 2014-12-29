@@ -40,8 +40,8 @@ import com.edmodo.cropper.CropImageView;
 
 public class Activity_Main extends Activity {
 	private Bitmap tmp_original_bitmap;
-	private Bitmap little_bitmap_original;
-	private Bitmap little_bitmap;
+	public Bitmap little_bitmap_original;
+	public Bitmap little_bitmap;
 
 	private int aspectRatioX = 0;
 	private int aspectRatioY = 0;
@@ -116,7 +116,7 @@ public class Activity_Main extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				if (little_bitmap_original != null)
-					new OnSeekbarValueChange(activity, ((SeekBar)findViewById(R.id.seekBar)), little_bitmap, little_bitmap_original).execute();
+					new OnSeekbarValueChange(activity, ((SeekBar)findViewById(R.id.seekBar))).execute();
 			}
 		});
 		AppLovinSdk.initializeSdk(context);
