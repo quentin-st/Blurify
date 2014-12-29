@@ -1,18 +1,27 @@
-package com.chteuchteu.blurify;
+package com.chteuchteu.blurify.hlpr;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.media.MediaScannerConnection;
 import android.os.Build;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.chteuchteu.blurify.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class Util {
 	public static Bitmap scaleCenterCrop(Bitmap source, int newHeight, int newWidth) {
@@ -314,5 +323,43 @@ public class Util {
 		if (resourceId > 0)
 			result = activity.getResources().getDimensionPixelSize(resourceId);
 		return result;
+	}
+
+	public static void saveBitmap(Context context, Bitmap bitmap) {
+		String root = Environment.getExternalStorageDirectory().toString();
+		File dir = new File(root + "/blurify/");
+		if(!dir.exists() || !dir.isDirectory())
+			dir.mkdir();
+
+		String fileName1 = "Photo";
+		String fileName2 = "01.png";
+		File file = new File(dir, fileName1 + fileName2);
+		int i = 1; 	String i_s;
+		while (file.exists()) {
+			if (i<99) {
+				if (i<10)	i_s = "0" + i;
+				else		i_s = "" + i;
+				fileName2 = i_s + ".png";
+				file = new File(dir, fileName1 + fileName2);
+				i++;
+			}
+			else
+				break;
+		}
+		if (file.exists())
+			file.delete();
+
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+			out.flush();
+			out.close();
+			String filePath = Environment.getExternalStorageDirectory() + "/blurify/" + fileName1 + fileName2;
+			MediaScannerConnection.scanFile(context, new String[]{filePath}, null, null);
+			Toast.makeText(context, context.getString(R.string.photo_saved_as) + " " + fileName1 + fileName2 + "!", Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+			Toast.makeText(context, context.getString(R.string.error_save_photo), Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
+		}
 	}
 }
