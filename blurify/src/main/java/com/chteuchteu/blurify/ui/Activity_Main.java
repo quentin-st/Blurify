@@ -43,6 +43,8 @@ public class Activity_Main extends Activity {
 	public Bitmap little_bitmap_original;
 	public Bitmap little_bitmap;
 
+	private SeekBar seekBar;
+
 	private int aspectRatioX = 0;
 	private int aspectRatioY = 0;
 	private int state = 0;
@@ -107,8 +109,10 @@ public class Activity_Main extends Activity {
 				startActivityForResult(pickPhoto , 1);
 			}
 		});
-		
-		((SeekBar)findViewById(R.id.seekBar)).setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+		seekBar = (SeekBar)findViewById(R.id.seekBar);
+		seekBar.setMax(100);
+		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { }
 			@Override
@@ -116,7 +120,7 @@ public class Activity_Main extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				if (little_bitmap_original != null)
-					new OnSeekbarValueChange(activity, ((SeekBar)findViewById(R.id.seekBar))).execute();
+					new OnSeekbarValueChange(activity, seekBar).execute();
 			}
 		});
 		AppLovinSdk.initializeSdk(context);
@@ -152,7 +156,7 @@ public class Activity_Main extends Activity {
 			findViewById(R.id.CropImageView).setVisibility(View.GONE);
 			state = ST_UNKNWOWN;
 		} else if (state == ST_BLUR) {
-			((SeekBar)findViewById(R.id.seekBar)).setProgress(0);
+			seekBar.setProgress(0);
 			findViewById(R.id.container).setVisibility(View.GONE);
 			findViewById(R.id.mask).setVisibility(View.VISIBLE);
 			findViewById(R.id.CropImageView).setVisibility(View.VISIBLE);
@@ -173,7 +177,7 @@ public class Activity_Main extends Activity {
 		if (requestCode == 1 && resultCode == RESULT_OK) {
 			state = ST_CROP;
 			
-			((SeekBar)findViewById(R.id.seekBar)).setProgress(0);
+			seekBar.setProgress(0);
 			
 			Uri selectedImage = imageReturnedIntent.getData();
 			String[] filePathColumn = {MediaStore.Images.Media.DATA};

@@ -8,6 +8,9 @@ android {
         applicationId "com.chteuchteu.blurify"
         minSdkVersion 14
         targetSdkVersion 21
+
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
     }
 
     buildTypes {

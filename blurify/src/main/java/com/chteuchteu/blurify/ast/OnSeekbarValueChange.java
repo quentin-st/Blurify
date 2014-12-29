@@ -5,7 +5,7 @@ import android.widget.SeekBar;
 
 import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
-import com.chteuchteu.blurify.hlpr.Util;
+import com.chteuchteu.blurify.hlpr.BlurUtil;
 import com.chteuchteu.blurify.ui.Activity_Main;
 import com.enrique.stackblur.StackBlurManager;
 
@@ -17,7 +17,7 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 
 	private boolean success;
 
-	private enum BlurMethod { STACK_BLUR, FAST_BLUR, FASTER_BLUR }
+	private enum BlurMethod { RENDERSCRIPT, STACK_BLUR, FAST_BLUR }
 
 
 	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar) {
@@ -32,6 +32,9 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		seekBar.setEnabled(false);
 		activity.findViewById(R.id.saveimg).setEnabled(false);
 		activity.findViewById(R.id.setWallpaper).setEnabled(false);
+		activity.findViewById(R.id.saveimg).setAlpha(0.8f);
+		activity.findViewById(R.id.setWallpaper).setEnabled(false);
+		activity.findViewById(R.id.setWallpaper).setAlpha(0.8f);
 	}
 
 	@Override
@@ -39,17 +42,17 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		success = false;
 
 		try {
-			blur(BlurMethod.STACK_BLUR);
+			blur(BlurMethod.RENDERSCRIPT);
 			success = true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			try {
-				blur(BlurMethod.FAST_BLUR);
+				blur(BlurMethod.STACK_BLUR);
 				success = true;
 			} catch (Exception ex2) {
 				ex.printStackTrace();
 				try {
-					blur(BlurMethod.FASTER_BLUR);
+					blur(BlurMethod.FAST_BLUR);
 					success = true;
 				} catch (Exception ex3) { ex3.printStackTrace(); }
 			}
@@ -63,7 +66,9 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		if (success) {
 			activity.findViewById(R.id.seekBar).setEnabled(true);
 			activity.findViewById(R.id.saveimg).setEnabled(true);
+			activity.findViewById(R.id.saveimg).setAlpha(1f);
 			activity.findViewById(R.id.setWallpaper).setEnabled(true);
+			activity.findViewById(R.id.setWallpaper).setAlpha(1f);
 			activity.updateContainer();
 		}
 		else
@@ -81,15 +86,18 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			activity.little_bitmap = activity.little_bitmap_original.copy(activity.little_bitmap_original.getConfig(), true);
 		else {
 			switch (blurMethod) {
+				case RENDERSCRIPT:
+					// RenderScript blur goes from 0 to 25
+					float renderScriptProgress = progress * 25 / 100;
+					activity.little_bitmap = BlurUtil.renderScriptBlur(activity.little_bitmap_original, activity, renderScriptProgress);
+					break;
 				case STACK_BLUR:
 					StackBlurManager _stackBlurManager = new StackBlurManager(activity.little_bitmap_original);
 					_stackBlurManager.process(progress);
 					activity.little_bitmap = _stackBlurManager.returnBlurredImage();
 					break;
 				case FAST_BLUR:
-					activity.little_bitmap = Util.fastblur(activity.little_bitmap_original, progress);
-					break;
-				case FASTER_BLUR:
+					activity.little_bitmap = BlurUtil.fastBlur(activity.little_bitmap_original, progress);
 					break;
 			}
 		}

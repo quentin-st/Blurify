@@ -8,7 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 import com.chteuchteu.blurify.R;
-import com.chteuchteu.blurify.hlpr.Util;
+import com.chteuchteu.blurify.hlpr.BlurUtil;
 import com.enrique.stackblur.StackBlurManager;
 
 public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
@@ -31,7 +31,7 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 			b = stackBlurManager.returnBlurredImage();
 		} catch (Exception ex) {
 			try {
-				b = Util.fastblur(tmp_original_bitmap, 10);
+				b = BlurUtil.fastBlur(tmp_original_bitmap, 10);
 			} catch (Exception ex2) { ex2.printStackTrace(); }
 		}
 		b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
