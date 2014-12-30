@@ -7,7 +7,6 @@ import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
 import com.chteuchteu.blurify.ui.Activity_Main;
-import com.enrique.stackblur.StackBlurManager;
 
 public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	private Activity_Main activity;
@@ -82,7 +81,10 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			activity.little_bitmap.recycle();
 		activity.little_bitmap = null;
 
-		if (progress == 0)
+		float renderScriptProgress = progress * 25 / 100;
+		activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress);
+
+		/*if (progress == 0)
 			activity.little_bitmap = activity.little_bitmap_original.copy(activity.little_bitmap_original.getConfig(), true);
 		else {
 			switch (blurMethod) {
@@ -100,6 +102,6 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 					activity.little_bitmap = BlurUtil.fastBlur(activity.little_bitmap_original, progress);
 					break;
 			}
-		}
+		}*/
 	}
 }

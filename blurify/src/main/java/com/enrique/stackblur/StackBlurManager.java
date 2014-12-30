@@ -26,13 +26,13 @@
 
 package com.enrique.stackblur;
 
-import java.io.FileOutputStream;
-
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+
+import java.io.FileOutputStream;
 
 public class StackBlurManager {
 
@@ -74,7 +74,7 @@ public class StackBlurManager {
 
 	/**
 	 * Process the image on the given radius. Radius must be at least 1
-	 * @param radius
+	 * @param radius Blur amount
 	 */
 	public void process(int radius) {
 		if (radius < 1 )
@@ -136,7 +136,7 @@ public class StackBlurManager {
 			for (x=0;x<_width;x++){
 
 				if (!alpha)
-					alpha = (int)(Color.alpha(originalPixels[y*_height+x]))  != 255;
+					alpha = (Color.alpha(originalPixels[y*_height+x])) != 255;
 
 				r[yi]=dv[rsum];
 				g[yi]=dv[gsum];

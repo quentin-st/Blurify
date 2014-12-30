@@ -2,10 +2,14 @@ package com.chteuchteu.blurify.hlpr;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
+
+import com.chteuchteu.blurify.R;
 
 public class BlurUtil {
 	public static Bitmap fastBlur(Bitmap sentBitmap, int radius) {
@@ -263,5 +267,25 @@ public class BlurUtil {
 		rs.destroy();
 
 		return outBitmap;
+	}
+
+	public static Bitmap maskBlur(Context context, Bitmap originalBitmap, float blurAmount) {
+		return blurAndMask(context, originalBitmap, 10, 10, blurAmount);
+	}
+
+	public static Bitmap blurAndMask(Context context, Bitmap source, int maskPosX, int maskPosY, float blurAmount) {
+		// Get the simple mask drawable as a bitmap
+		Bitmap mask = BitmapUtil.getDrawableAsBitmap(context, R.drawable.mask);
+		// Get the sharp part of the picture
+		Bitmap sharp = BitmapUtil.applyMask(source, mask, maskPosX, maskPosY);
+
+		Bitmap blurryBackground = renderScriptBlur(source, context, blurAmount);
+
+		// Put all those together
+		Canvas canvas = new Canvas(blurryBackground);
+		Paint paint = new Paint();
+		canvas.drawBitmap(sharp, maskPosX, maskPosY, paint);
+
+		return blurryBackground;
 	}
 }

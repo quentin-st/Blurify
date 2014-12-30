@@ -65,9 +65,7 @@ public class Activity_Main extends Activity {
 		setContentView(R.layout.activity_main);
 		context = this;
 		activity = this;
-		
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-			getActionBar().hide();
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
 			if (id != 0 && getResources().getBoolean(id)) { // Translucent available
@@ -228,7 +226,6 @@ public class Activity_Main extends Activity {
 				try {
 					tmp_original_bitmap = b.copy(b.getConfig(), true);
 					b.recycle();
-					b = null;
 					
 					findViewById(R.id.getimg).setVisibility(View.GONE);
 					findViewById(R.id.actions1).setVisibility(View.VISIBLE);
@@ -290,6 +287,6 @@ public class Activity_Main extends Activity {
 		try {
 			if (little_bitmap != null && !little_bitmap.isRecycled())
 				((ImageView)findViewById(R.id.container)).setImageBitmap(little_bitmap);
-		} catch (Exception ex) { }
+		} catch (Exception ex) { ex.printStackTrace(); }
 	}
 }

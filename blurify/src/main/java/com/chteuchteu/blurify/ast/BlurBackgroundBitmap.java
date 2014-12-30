@@ -13,7 +13,6 @@ import com.enrique.stackblur.StackBlurManager;
 
 public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 	private Bitmap b2;
-	private StackBlurManager stackBlurManager;
 	private Bitmap tmp_original_bitmap;
 	private Activity activity;
 
@@ -26,7 +25,7 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 	protected Void doInBackground(Void... params) {
 		Bitmap b = null;
 		try {
-			stackBlurManager = new StackBlurManager(tmp_original_bitmap);
+			StackBlurManager stackBlurManager = new StackBlurManager(tmp_original_bitmap);
 			stackBlurManager.process(10);
 			b = stackBlurManager.returnBlurredImage();
 		} catch (Exception ex) {
@@ -34,10 +33,10 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 				b = BlurUtil.fastBlur(tmp_original_bitmap, 10);
 			} catch (Exception ex2) { ex2.printStackTrace(); }
 		}
-		b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
 		if (b != null) {
+			b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
+
 			b.recycle();
-			b = null;
 		}
 
 		return null;
