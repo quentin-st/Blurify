@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.chteuchteu.blurify"
@@ -21,10 +21,15 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    compile project(':cropper')
     compile 'com.android.support:support-v4:21.0.3'
+    compile "com.android.support:appcompat-v7:21.0.+"
     compile 'com.google.android.gms:play-services:+'
     compile files('libs/AppRate_1.1.jar')
     compile files('libs/applovin-sdk-5.4.0.jar')
+    compile 'com.edmodo:cropper:1.0.1'
 }

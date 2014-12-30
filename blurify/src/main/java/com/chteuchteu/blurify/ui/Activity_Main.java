@@ -1,7 +1,6 @@
 package com.chteuchteu.blurify.ui;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,7 +38,7 @@ import com.chteuchteu.blurify.ast.WallpaperSetter;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.edmodo.cropper.CropImageView;
 
-public class Activity_Main extends Activity {
+public class Activity_Main extends ActionBarActivity {
 	private Bitmap tmp_original_bitmap;
 	public Bitmap little_bitmap_original;
 	public Bitmap little_bitmap;
@@ -65,6 +65,8 @@ public class Activity_Main extends Activity {
 		setContentView(R.layout.activity_main);
 		context = this;
 		activity = this;
+
+		getSupportActionBar().hide();
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
