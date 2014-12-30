@@ -15,7 +15,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -45,6 +47,8 @@ public class Activity_Main extends ActionBarActivity {
 	public Bitmap little_bitmap_original;
 	public Bitmap little_bitmap;
 
+	public boolean computing;
+
 	private SeekBar seekBar;
 	private Switch selectiveFocusSwitch;
 
@@ -71,6 +75,7 @@ public class Activity_Main extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		context = this;
 		activity = this;
+		computing = false;
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
@@ -138,6 +143,23 @@ public class Activity_Main extends ActionBarActivity {
 		});
 		selFocus_x = -1;
 		selFocus_y = -1;
+
+		findViewById(R.id.container).setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				Log.i("", "onTouch");
+				if (!selectiveFocusSwitch.isChecked() || computing)
+					return true;
+
+				selFocus_x = (int) event.getX();
+				selFocus_y = (int) event.getY();
+
+				if (little_bitmap_original != null)
+					new OnSeekbarValueChange(activity, seekBar, true);
+
+				return true;
+			}
+		});
 
 		// Set padding for selective focus option
 		View switchContainer = findViewById(R.id.switchContainer);

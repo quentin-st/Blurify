@@ -32,6 +32,8 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(false);
 		activity.findViewById(R.id.setWallpaper).setAlpha(0.8f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(false);
+		activity.findViewById(R.id.container).setAlpha(0.7f);
+		activity.computing = true;
 	}
 
 	@Override
@@ -57,6 +59,8 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(true);
 		activity.findViewById(R.id.setWallpaper).setAlpha(1f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(true);
+		activity.findViewById(R.id.container).setAlpha(1f);
+		activity.computing = false;
 
 		if (success)
 			activity.updateContainer();
