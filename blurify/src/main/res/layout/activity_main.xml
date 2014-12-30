@@ -23,7 +23,7 @@
 		android:id="@+id/blurryBackground_darkMask"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="#99000000"
+		android:background="#000000"
 		android:visibility="gone" />
 
 	<LinearLayout
@@ -48,7 +48,6 @@
 		android:visibility="gone" />
 
 	<com.edmodo.cropper.CropImageView
-		xmlns:custom="http://schemas.android.com/apk/res-auto"
 		android:id="@+id/CropImageView"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -170,6 +169,27 @@
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/switchContainer"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true"
+		android:orientation="vertical"
+		android:padding="5dp"
+		android:visibility="gone">
+
+		<Switch
+			android:id="@+id/selectiveFocusSwitch"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="8dp"
+			android:text="@string/selective_focus"
+			android:textColor="#ffffff"
+			android:background="#55000000"/>
+
 	</LinearLayout>
 
 </RelativeLayout>

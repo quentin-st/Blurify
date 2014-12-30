@@ -17,5 +17,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="notnow">Not now</string>
+	<string name="selective_focus">Selective focus</string>
 
 </resources>

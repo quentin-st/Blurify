@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -34,10 +35,10 @@ public class BitmapUtil {
 		}
 		bitmap.setHasAlpha(true);
 
-		// The user thinks that he touched the center of the mask.
-		// Instead, we need its upper left corner position
-		maskPosX -= maskWidth/2;
-		maskPosY -= maskHeight/2;
+		if (maskPosX < 0)
+			maskPosX = 0;
+		if (maskPosY < 0)
+			maskPosY = 0;
 
 		// If the mask is larger than the source, resize the mask
 		if (mask.getWidth() > source.getWidth() || mask.getHeight() > source.getHeight())
@@ -80,5 +81,14 @@ public class BitmapUtil {
 
 		Resources res = context.getResources();
 		return BitmapFactory.decodeResource(res, drawable, options);
+	}
+
+	public static int getDominantColor(Bitmap bitmap) {
+		try {
+			Bitmap onePixelBitmap = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+			return onePixelBitmap.getPixel(0,0);
+		} catch (Exception ex) {
+			return Color.BLACK;
+		}
 	}
 }

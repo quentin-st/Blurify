@@ -10,6 +10,7 @@ import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 
 import com.chteuchteu.blurify.R;
+import com.chteuchteu.blurify.ui.Activity_Main;
 
 public class BlurUtil {
 	public static Bitmap fastBlur(Bitmap sentBitmap, int radius) {
@@ -259,7 +260,7 @@ public class BlurUtil {
 		ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 		Allocation allIn = Allocation.createFromBitmap(rs, originalBitmap);
 		Allocation allOut = Allocation.createFromBitmap(rs, outBitmap);
-		blurScript.setRadius(radius);
+		blurScript.setRadius(radius > 25 ? 25 : radius);
 		blurScript.setInput(allIn);
 		blurScript.forEach(allOut);
 		allOut.copyTo(outBitmap);
@@ -269,13 +270,22 @@ public class BlurUtil {
 		return outBitmap;
 	}
 
-	public static Bitmap maskBlur(Context context, Bitmap originalBitmap, float blurAmount) {
-		return blurAndMask(context, originalBitmap, 10, 10, blurAmount);
-	}
+	public static Bitmap maskBlur(Activity_Main activity, Bitmap source, float blurAmount) {
+		Context context = activity;
 
-	public static Bitmap blurAndMask(Context context, Bitmap source, int maskPosX, int maskPosY, float blurAmount) {
+		int maskPosX = activity.selFocus_x;
+		int maskPosY = activity.selFocus_y;
+
 		// Get the simple mask drawable as a bitmap
 		Bitmap mask = BitmapUtil.getDrawableAsBitmap(context, R.drawable.mask);
+
+		if (maskPosX == -1 || maskPosY == -1) {
+			maskPosX = source.getWidth() / 2;
+			maskPosY = source.getHeight() / 2;
+		}
+		maskPosX -= mask.getWidth() / 2;
+		maskPosY -= mask.getHeight() / 2;
+
 		// Get the sharp part of the picture
 		Bitmap sharp = BitmapUtil.applyMask(source, mask, maskPosX, maskPosY);
 

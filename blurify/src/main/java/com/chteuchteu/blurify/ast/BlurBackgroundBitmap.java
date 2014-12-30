@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 import com.chteuchteu.blurify.R;
+import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
 import com.enrique.stackblur.StackBlurManager;
 
@@ -15,6 +16,7 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 	private Bitmap b2;
 	private Bitmap tmp_original_bitmap;
 	private Activity activity;
+	private int dominantColor;
 
 	public BlurBackgroundBitmap(Activity activity, Bitmap tmp_original_bitmap) {
 		this.activity = activity;
@@ -36,6 +38,9 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 		if (b != null) {
 			b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
 
+			// Find dominant color
+			this.dominantColor = BitmapUtil.getDominantColor(b2);
+
 			b.recycle();
 		}
 
@@ -50,6 +55,10 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 		blurryBackground.setImageBitmap(b2);
 		blurryBackground.startAnimation(a);
 		blurryBackground.setVisibility(View.VISIBLE);
-		activity.findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
+
+		View darkMask = activity.findViewById(R.id.blurryBackground_darkMask);
+		darkMask.setBackgroundColor(dominantColor);
+		darkMask.setAlpha(0.5f);
+		darkMask.setVisibility(View.VISIBLE);
 	}
 }

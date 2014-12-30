@@ -23,11 +23,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.applovin.sdk.AppLovinSdk;
@@ -44,6 +46,10 @@ public class Activity_Main extends ActionBarActivity {
 	public Bitmap little_bitmap;
 
 	private SeekBar seekBar;
+	private Switch selectiveFocusSwitch;
+
+	public int selFocus_x;
+	public int selFocus_y;
 
 	private int aspectRatioX = 0;
 	private int aspectRatioY = 0;
@@ -65,8 +71,6 @@ public class Activity_Main extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		context = this;
 		activity = this;
-
-		getSupportActionBar().hide();
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
@@ -120,9 +124,26 @@ public class Activity_Main extends ActionBarActivity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				if (little_bitmap_original != null)
-					new OnSeekbarValueChange(activity, seekBar).execute();
+					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSwitch.isChecked()).execute();
 			}
 		});
+
+		selectiveFocusSwitch = (Switch) findViewById(R.id.selectiveFocusSwitch);
+		selectiveFocusSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (little_bitmap_original != null)
+					new OnSeekbarValueChange(activity, seekBar, isChecked).execute();
+			}
+		});
+		selFocus_x = -1;
+		selFocus_y = -1;
+
+		// Set padding for selective focus option
+		View switchContainer = findViewById(R.id.switchContainer);
+		switchContainer.setPadding(switchContainer.getPaddingLeft(), switchContainer.getPaddingTop() + Util.getStatusBarHeight(this),
+				switchContainer.getPaddingRight(), switchContainer.getPaddingBottom());
+
 		AppLovinSdk.initializeSdk(context);
 	}
 	
@@ -164,6 +185,7 @@ public class Activity_Main extends ActionBarActivity {
 			findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions2).setVisibility(View.GONE);
+			findViewById(R.id.switchContainer).setVisibility(View.GONE);
 			state = ST_CROP;
 			launchCrop(false);
 		}
@@ -196,7 +218,7 @@ public class Activity_Main extends ActionBarActivity {
 			
 			BitmapFactory.decodeFile(filePath, options);
 			
-			long totalImagePixels=options.outHeight*options.outWidth;
+			long totalImagePixels = options.outHeight*options.outWidth;
 			
 			// Get screen pixels
 			int totalScreenPixels;
@@ -273,6 +295,7 @@ public class Activity_Main extends ActionBarActivity {
 
 				findViewById(R.id.actions1).setVisibility(View.GONE);
 				findViewById(R.id.actions2).setVisibility(View.VISIBLE);
+				findViewById(R.id.switchContainer).setVisibility(View.VISIBLE);
 				updateContainer();
 				state = ST_BLUR;
 			}
