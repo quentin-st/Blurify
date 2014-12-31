@@ -9,7 +9,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.util.Log;
+import android.widget.ImageView;
 
 public class BitmapUtil {
 	/**
@@ -27,25 +30,67 @@ public class BitmapUtil {
 
 		// Copy the original bitmap
 		Bitmap bitmap;
-		if (source.isMutable()) {
+		if (source.isMutable())
 			bitmap = source;
-		} else {
+		else {
 			bitmap = source.copy(Bitmap.Config.ARGB_8888, true);
 			source.recycle();
 		}
 		bitmap.setHasAlpha(true);
 
-		if (maskPosX < 0)
+		/*if (maskPosX < 0)
 			maskPosX = 0;
 		if (maskPosY < 0)
-			maskPosY = 0;
+			maskPosY = 0;*/
 
 		// If the mask is larger than the source, resize the mask
-		if (mask.getWidth() > source.getWidth() || mask.getHeight() > source.getHeight())
-			mask = resizeBitmap(mask, source.getWidth(), source.getHeight());
+		if (mask.getWidth() > bitmap.getWidth() || mask.getHeight() > bitmap.getHeight())
+			mask = resizeBitmap(mask, bitmap.getWidth(), bitmap.getHeight());
 
+		/* If the mask goes outside the picture, we have to create a new bitmap
+		 * to avoid bitmap creation failure
+		 * (maskPosX >= 0 && maskPosX + maskWidth <= bitmapWidth constraint)
+		 */
 		// Crop bitmap to fit mask
-		bitmap = Bitmap.createBitmap(bitmap, maskPosX, maskPosY, maskWidth, maskHeight);
+		if (maskPosX < 0 || maskPosX + maskWidth > bitmap.getWidth()
+				|| maskPosY < 0 || maskPosY + maskHeight > bitmap.getHeight()) {
+			Log.i("", "(bitmap is overlapping)");
+
+			// Create a blank bitmap which will contain the piece of mask
+			Bitmap blankBitmap = Bitmap.createBitmap(maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
+
+			int x = maskPosX < 0 ? 0 : maskPosX;
+			int y = maskPosY < 0 ? 0 : maskPosY;
+
+			int w;
+			if (maskPosX >= 0 && maskPosX + maskWidth <= bitmap.getWidth())
+				w = maskWidth;
+			else if (maskPosX < 0)
+				w = maskWidth + maskPosX;
+			else // maskPosX + maskWidth > bitmap.getWidth()
+			{
+				Log.i("", "w = " + bitmap.getWidth() + " - " + maskPosX);
+				w = bitmap.getWidth() - maskPosX;
+			}
+
+			int h;
+			if (maskPosY >= 0 && maskPosY + maskHeight <= bitmap.getHeight())
+				h = maskHeight;
+			else if (maskPosY < 0)
+				h = maskHeight + maskPosY;
+			else // maskPosY + maskHeight > bitmap.getHeight()
+				h = bitmap.getHeight() - maskPosY;
+
+			Bitmap pieceOfMask = Bitmap.createBitmap(bitmap, 0, 0, w, h);
+
+			// Put the piece on the blankBitmap
+			Canvas canvas = new Canvas(blankBitmap);
+			canvas.drawBitmap(pieceOfMask, x, y, new Paint());
+
+			bitmap = blankBitmap;
+		} else
+			bitmap = Bitmap.createBitmap(bitmap, maskPosX, maskPosY, maskWidth, maskHeight);
+		// Finished cropping bitmap
 
 		// Apply mask
 		Canvas canvas = new Canvas(bitmap);
@@ -90,5 +135,19 @@ public class BitmapUtil {
 		} catch (Exception ex) {
 			return Color.BLACK;
 		}
+	}
+
+	public static int[] mapBitmapCoordinatesFromImageView(int posX, int posY, ImageView imageView) {
+		Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+
+		int ivW = imageView.getWidth();
+		int ivH = imageView.getHeight();
+		int bW = bitmap.getWidth();
+		int bH = bitmap.getHeight();
+
+		int newX = posX * bW / ivW;
+		int newH = posY * bH / ivH;
+
+		return new int[] { newX, newH };
 	}
 }

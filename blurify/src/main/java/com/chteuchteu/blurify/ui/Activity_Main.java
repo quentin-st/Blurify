@@ -39,6 +39,7 @@ import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnSeekbarValueChange;
 import com.chteuchteu.blurify.ast.WallpaperSetter;
+import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.edmodo.cropper.CropImageView;
 
@@ -128,8 +129,10 @@ public class Activity_Main extends ActionBarActivity {
 			public void onStartTrackingTouch(SeekBar seekBar) { }
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				if (little_bitmap_original != null)
+				if (little_bitmap_original != null) {
+					computing = true;
 					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSwitch.isChecked()).execute();
+				}
 			}
 		});
 
@@ -137,8 +140,10 @@ public class Activity_Main extends ActionBarActivity {
 		selectiveFocusSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (little_bitmap_original != null)
+				if (little_bitmap_original != null) {
+					computing = true;
 					new OnSeekbarValueChange(activity, seekBar, isChecked).execute();
+				}
 			}
 		});
 		selFocus_x = -1;
@@ -148,14 +153,18 @@ public class Activity_Main extends ActionBarActivity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				Log.i("", "onTouch");
-				if (!selectiveFocusSwitch.isChecked() || computing)
-					return true;
+				if (!selectiveFocusSwitch.isChecked() || computing) return true;
 
-				selFocus_x = (int) event.getX();
-				selFocus_y = (int) event.getY();
+				if (little_bitmap_original != null) {
+					int[] mappedCoord = BitmapUtil.mapBitmapCoordinatesFromImageView((int) event.getX(), (int) event.getY(),
+							(ImageView) findViewById(R.id.container));
 
-				if (little_bitmap_original != null)
-					new OnSeekbarValueChange(activity, seekBar, true);
+					selFocus_x = mappedCoord[0];
+					selFocus_y = mappedCoord[1];
+
+					computing = true;
+					new OnSeekbarValueChange(activity, seekBar, true).execute();
+				}
 
 				return true;
 			}

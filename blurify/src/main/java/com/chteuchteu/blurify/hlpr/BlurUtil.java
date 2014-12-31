@@ -247,12 +247,12 @@ public class BlurUtil {
 	/**
 	 * Blurs a bitmap using RenderScript (source : http://trickyandroid.com/advanced-blurring-techniques/,
 	 *  https://plus.google.com/+MarioViviani/posts/fhuzYkji9zz)
+	 * @param context Context
 	 * @param originalBitmap Original bitmap to be blurred (not altered)
-	 * @param context Activity or Context
 	 * @param radius Blur amount
 	 * @return Blurred bitmap
 	 */
-	public static Bitmap renderScriptBlur(Bitmap originalBitmap, Context context, float radius) {
+	public static Bitmap renderScriptBlur(Context context, Bitmap originalBitmap, float radius) {
 		Bitmap outBitmap = Bitmap.createBitmap(originalBitmap.getWidth(), originalBitmap.getHeight(),
 				Bitmap.Config.ARGB_8888);
 
@@ -271,25 +271,23 @@ public class BlurUtil {
 	}
 
 	public static Bitmap maskBlur(Activity_Main activity, Bitmap source, float blurAmount) {
-		Context context = activity;
-
 		int maskPosX = activity.selFocus_x;
 		int maskPosY = activity.selFocus_y;
 
 		// Get the simple mask drawable as a bitmap
-		Bitmap mask = BitmapUtil.getDrawableAsBitmap(context, R.drawable.mask);
+		Bitmap mask = BitmapUtil.getDrawableAsBitmap(activity, R.drawable.mask);
 
 		if (maskPosX == -1 || maskPosY == -1) {
 			maskPosX = source.getWidth() / 2;
 			maskPosY = source.getHeight() / 2;
 		}
-		maskPosX -= mask.getWidth() / 2;
-		maskPosY -= mask.getHeight() / 2;
+		/*maskPosX -= mask.getWidth() / 2;
+		maskPosY -= mask.getHeight() / 2;*/
 
 		// Get the sharp part of the picture
 		Bitmap sharp = BitmapUtil.applyMask(source, mask, maskPosX, maskPosY);
 
-		Bitmap blurryBackground = renderScriptBlur(source, context, blurAmount);
+		Bitmap blurryBackground = renderScriptBlur(activity, source, blurAmount);
 
 		// Put all those together
 		Canvas canvas = new Canvas(blurryBackground);

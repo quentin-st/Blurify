@@ -32,8 +32,6 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(false);
 		activity.findViewById(R.id.setWallpaper).setAlpha(0.8f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(false);
-		activity.findViewById(R.id.container).setAlpha(0.7f);
-		activity.computing = true;
 	}
 
 	@Override
@@ -59,7 +57,6 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(true);
 		activity.findViewById(R.id.setWallpaper).setAlpha(1f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(true);
-		activity.findViewById(R.id.container).setAlpha(1f);
 		activity.computing = false;
 
 		if (success)
@@ -80,7 +77,7 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			if (selectiveFocus)
 				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress);
 			else
-				activity.little_bitmap = BlurUtil.renderScriptBlur(activity.little_bitmap_original, activity, renderScriptProgress);
+				activity.little_bitmap = BlurUtil.renderScriptBlur(activity, activity.little_bitmap_original, renderScriptProgress);
 		}
 	}
 }
