@@ -15,7 +15,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +25,6 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -41,6 +39,7 @@ import com.chteuchteu.blurify.ast.OnSeekbarValueChange;
 import com.chteuchteu.blurify.ast.WallpaperSetter;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.Util;
+import com.chteuchteu.blurify.hlpr.mImageView;
 import com.edmodo.cropper.CropImageView;
 
 public class Activity_Main extends ActionBarActivity {
@@ -149,15 +148,14 @@ public class Activity_Main extends ActionBarActivity {
 		selFocus_x = -1;
 		selFocus_y = -1;
 
-		findViewById(R.id.container).setOnTouchListener(new View.OnTouchListener() {
+		((mImageView) findViewById(R.id.container)).setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				Log.i("", "onTouch");
 				if (!selectiveFocusSwitch.isChecked() || computing) return true;
 
 				if (little_bitmap_original != null) {
 					int[] mappedCoord = BitmapUtil.mapBitmapCoordinatesFromImageView((int) event.getX(), (int) event.getY(),
-							(ImageView) findViewById(R.id.container));
+							(mImageView) findViewById(R.id.container));
 
 					selFocus_x = mappedCoord[0];
 					selFocus_y = mappedCoord[1];
@@ -244,8 +242,8 @@ public class Activity_Main extends ActionBarActivity {
 			
 			Bitmap b = null;
 			
-			BitmapFactory.Options options=new BitmapFactory.Options();
-			options.inJustDecodeBounds=true;
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inJustDecodeBounds = true;
 			
 			BitmapFactory.decodeFile(filePath, options);
 			
@@ -280,12 +278,12 @@ public class Activity_Main extends ActionBarActivity {
 			if (b != null && b.getConfig() != null) {
 				try {
 					tmp_original_bitmap = b.copy(b.getConfig(), true);
-					b.recycle();
+					BitmapUtil.recycle(b);
 					
 					findViewById(R.id.getimg).setVisibility(View.GONE);
 					findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 					launchCrop(true);
-					((ImageView)findViewById(R.id.container)).setImageBitmap(null);
+					((mImageView)findViewById(R.id.container)).setImageBitmap(null);
 				} catch (Exception ignored) {
 					Toast.makeText(context, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
 				}
@@ -315,7 +313,7 @@ public class Activity_Main extends ActionBarActivity {
 				a2.setDuration(500);
 				little_bitmap = little_bitmap_original.copy(little_bitmap_original.getConfig(), true);
 
-				ImageView container = (ImageView) findViewById(R.id.container);
+				mImageView container = (mImageView) findViewById(R.id.container);
 				container.setVisibility(View.VISIBLE);
 				container.setImageBitmap(little_bitmap_original);
 
@@ -338,11 +336,15 @@ public class Activity_Main extends ActionBarActivity {
 			}
 		});
 	}
-	
-	public void updateContainer() {
+
+	public void updateContainer() { updateContainer(null); }
+	public void updateContainer(mImageView.OnImageChangeListener onImageChange) {
 		try {
+			mImageView container = (mImageView)findViewById(R.id.container);
+			container.setImageChangeListener(onImageChange);
+
 			if (little_bitmap != null && !little_bitmap.isRecycled())
-				((ImageView)findViewById(R.id.container)).setImageBitmap(little_bitmap);
+				container.setImageBitmap(little_bitmap);
 		} catch (Exception ex) { ex.printStackTrace(); }
 	}
 }

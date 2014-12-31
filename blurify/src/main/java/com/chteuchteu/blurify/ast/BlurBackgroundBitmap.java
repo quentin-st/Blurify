@@ -41,7 +41,7 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 			// Find dominant color
 			this.dominantColor = BitmapUtil.getDominantColor(b2);
 
-			b.recycle();
+			BitmapUtil.recycle(b);
 		}
 
 		return null;

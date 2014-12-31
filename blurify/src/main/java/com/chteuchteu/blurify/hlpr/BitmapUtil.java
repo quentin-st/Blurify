@@ -34,7 +34,8 @@ public class BitmapUtil {
 			bitmap = source;
 		else {
 			bitmap = source.copy(Bitmap.Config.ARGB_8888, true);
-			source.recycle();
+			if (!source.isRecycled())
+				source.recycle();
 		}
 		bitmap.setHasAlpha(true);
 
@@ -59,20 +60,17 @@ public class BitmapUtil {
 			// Create a blank bitmap which will contain the piece of mask
 			Bitmap blankBitmap = Bitmap.createBitmap(maskWidth, maskHeight, Bitmap.Config.ARGB_8888);
 
-			int x = maskPosX < 0 ? 0 : maskPosX;
-			int y = maskPosY < 0 ? 0 : maskPosY;
-
+			// Compute dimensions of the piece of bitmap inside the mask
+			// Width
 			int w;
 			if (maskPosX >= 0 && maskPosX + maskWidth <= bitmap.getWidth())
 				w = maskWidth;
 			else if (maskPosX < 0)
 				w = maskWidth + maskPosX;
 			else // maskPosX + maskWidth > bitmap.getWidth()
-			{
-				Log.i("", "w = " + bitmap.getWidth() + " - " + maskPosX);
 				w = bitmap.getWidth() - maskPosX;
-			}
 
+			// Height
 			int h;
 			if (maskPosY >= 0 && maskPosY + maskHeight <= bitmap.getHeight())
 				h = maskHeight;
@@ -81,11 +79,18 @@ public class BitmapUtil {
 			else // maskPosY + maskHeight > bitmap.getHeight()
 				h = bitmap.getHeight() - maskPosY;
 
-			Bitmap pieceOfMask = Bitmap.createBitmap(bitmap, 0, 0, w, h);
+
+			int pieceDelX = maskPosX < 0 ? 0 : maskPosX;
+			int pieceDelY = maskPosY < 0 ? 0 : maskPosY;
+			Bitmap pieceOfMask = Bitmap.createBitmap(bitmap, pieceDelX, pieceDelY, w, h);
 
 			// Put the piece on the blankBitmap
+			// Get position of the piece inside the canvas
+			int cx = maskPosX < 0 ? -maskPosX : 0;
+			int cy = maskPosY < 0 ? -maskPosY : 0;
+
 			Canvas canvas = new Canvas(blankBitmap);
-			canvas.drawBitmap(pieceOfMask, x, y, new Paint());
+			canvas.drawBitmap(pieceOfMask, cx, cy, new Paint());
 
 			bitmap = blankBitmap;
 		} else
@@ -98,7 +103,8 @@ public class BitmapUtil {
 		paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
 		canvas.drawBitmap(mask, 0, 0, paint);
 
-		mask.recycle();
+		if (!mask.isRecycled())
+			mask.recycle();
 		return bitmap;
 	}
 
@@ -149,5 +155,10 @@ public class BitmapUtil {
 		int newH = posY * bH / ivH;
 
 		return new int[] { newX, newH };
+	}
+
+	public static void recycle(Bitmap bitmap) {
+		if (bitmap != null && !bitmap.isRecycled())
+			bitmap.recycle();
 	}
 }

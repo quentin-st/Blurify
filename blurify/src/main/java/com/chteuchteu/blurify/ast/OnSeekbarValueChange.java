@@ -4,7 +4,9 @@ import android.os.AsyncTask;
 import android.widget.SeekBar;
 
 import com.chteuchteu.blurify.R;
+import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
+import com.chteuchteu.blurify.hlpr.mImageView;
 import com.chteuchteu.blurify.ui.Activity_Main;
 
 public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
@@ -57,15 +59,18 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(true);
 		activity.findViewById(R.id.setWallpaper).setAlpha(1f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(true);
-		activity.computing = false;
 
 		if (success)
-			activity.updateContainer();
+			activity.updateContainer(new mImageView.OnImageChangeListener() {
+				@Override
+				public void imageChangedinView() {
+					activity.computing = false;
+				}
+			});
 	}
 
 	private void blur() {
-		if (activity.little_bitmap != null)
-			activity.little_bitmap.recycle();
+		BitmapUtil.recycle(activity.little_bitmap);
 		activity.little_bitmap = null;
 
 		if (progress == 0)

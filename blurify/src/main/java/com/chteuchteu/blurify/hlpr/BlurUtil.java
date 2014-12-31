@@ -281,8 +281,8 @@ public class BlurUtil {
 			maskPosX = source.getWidth() / 2;
 			maskPosY = source.getHeight() / 2;
 		}
-		/*maskPosX -= mask.getWidth() / 2;
-		maskPosY -= mask.getHeight() / 2;*/
+		maskPosX -= mask.getWidth() / 2;
+		maskPosY -= mask.getHeight() / 2;
 
 		// Get the sharp part of the picture
 		Bitmap sharp = BitmapUtil.applyMask(source, mask, maskPosX, maskPosY);
