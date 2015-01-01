@@ -5,6 +5,7 @@
 	<!-- Application theme. -->
 	<style name="BlurifyAppTheme" parent="BlurifyAppBaseTheme">
 		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorAccent">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimary</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="windowActionBar">false</item>
@@ -25,6 +26,31 @@
 		<item name="android:paddingBottom">9dp</item>
 		<item name="android:minHeight">0dp</item>
 		<item name="android:textSize">18sp</item>
+	</style>
+
+	<style name="BottomSheetSeparator">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1dp</item>
+		<item name="android:background">#d2d2d2</item>
+		<item name="android:layout_marginTop">2dp</item>
+		<item name="android:layout_marginBottom">3dp</item>
+	</style>
+
+	<style name="BottomSheetText">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">#aa000000</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<style name="BottomSheetLine">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:paddingTop">3dp</item>
+		<item name="android:paddingBottom">3dp</item>
+		<item name="android:orientation">horizontal</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:paddingLeft">16dp</item>
+		<item name="android:paddingRight">16dp</item>
 	</style>
 
 </resources>

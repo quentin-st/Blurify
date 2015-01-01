@@ -18,5 +18,7 @@
     <string name="no">Non</string>
     <string name="notnow">Pas maintenant</string>
 	<string name="selective_focus">Focus sélectif</string>
+	<string name="blur_amount">Flou</string>
+	<string name="selective_focus_size">Taille du focus</string>
 
 </resources>

@@ -51,6 +51,7 @@ public class Activity_Main extends ActionBarActivity {
 
 	private SeekBar seekBar;
 	private Switch selectiveFocusSwitch;
+	private SeekBar selectiveFocusSize;
 
 	public int selFocus_x;
 	public int selFocus_y;
@@ -130,18 +131,37 @@ public class Activity_Main extends ActionBarActivity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				if (little_bitmap_original != null) {
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSwitch.isChecked()).execute();
+					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
 				}
 			}
 		});
+
+		selectiveFocusSize = (SeekBar) findViewById(R.id.selectiveFocusSize);
+		selectiveFocusSize.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { }
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) { }
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				if (little_bitmap_original != null) {
+					computing = true;
+					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
+				}
+			}
+		});
+
 
 		selectiveFocusSwitch = (Switch) findViewById(R.id.selectiveFocusSwitch);
 		selectiveFocusSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				findViewById(R.id.selectiveFocusSizeContainer).setVisibility(isChecked ? View.VISIBLE : View.GONE);
+
 				if (little_bitmap_original != null) {
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, isChecked).execute();
+					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, isChecked).execute();
 				}
 			}
 		});
@@ -162,17 +182,12 @@ public class Activity_Main extends ActionBarActivity {
 					selFocus_y = mappedCoord[1];
 
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, true).execute();
+					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, true).execute();
 				}
 
 				return true;
 			}
 		});
-
-		// Set padding for selective focus option
-		View switchContainer = findViewById(R.id.switchContainer);
-		switchContainer.setPadding(switchContainer.getPaddingLeft(), switchContainer.getPaddingTop() + Util.getStatusBarHeight(this),
-				switchContainer.getPaddingRight(), switchContainer.getPaddingBottom());
 
 		AppLovinSdk.initializeSdk(context);
 	}
@@ -215,7 +230,6 @@ public class Activity_Main extends ActionBarActivity {
 			findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 			findViewById(R.id.actions2).setVisibility(View.GONE);
-			findViewById(R.id.switchContainer).setVisibility(View.GONE);
 			state = ST_CROP;
 			launchCrop(false);
 		}
@@ -325,7 +339,6 @@ public class Activity_Main extends ActionBarActivity {
 
 				findViewById(R.id.actions1).setVisibility(View.GONE);
 				findViewById(R.id.actions2).setVisibility(View.VISIBLE);
-				findViewById(R.id.switchContainer).setVisibility(View.VISIBLE);
 				updateContainer();
 				state = ST_BLUR;
 			}

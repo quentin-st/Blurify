@@ -12,16 +12,19 @@ import com.chteuchteu.blurify.ui.Activity_Main;
 public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	private Activity_Main activity;
 	private SeekBar seekBar;
+	private SeekBar selectiveFocusSize;
 	private int progress;
 	private boolean selectiveFocus;
 
 	private boolean success;
 
 
-	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar, boolean selectiveFocus) {
+	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar, SeekBar selectiveFocusSize,
+	                            boolean selectiveFocus) {
 		this.activity = activity;
 		this.seekBar = seekBar;
 		this.selectiveFocus = selectiveFocus;
+		this.selectiveFocusSize = selectiveFocusSize;
 	}
 
 	@Override
@@ -79,8 +82,10 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			// RenderScript blur goes from 0 to 25
 			float renderScriptProgress = progress / 4;
 
-			if (selectiveFocus)
-				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress);
+			if (selectiveFocus) {
+				float maskSize = ((float) selectiveFocusSize.getProgress()) / 50;
+				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress, maskSize);
+			}
 			else
 				activity.little_bitmap = BlurUtil.renderScriptBlur(activity, activity.little_bitmap_original, renderScriptProgress);
 		}

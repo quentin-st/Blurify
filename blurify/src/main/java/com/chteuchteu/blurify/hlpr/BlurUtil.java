@@ -8,6 +8,7 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ui.Activity_Main;
@@ -270,12 +271,20 @@ public class BlurUtil {
 		return outBitmap;
 	}
 
-	public static Bitmap maskBlur(Activity_Main activity, Bitmap source, float blurAmount) {
+	public static Bitmap maskBlur(Activity_Main activity, Bitmap source, float blurAmount, float maskSize) {
 		int maskPosX = activity.selFocus_x;
 		int maskPosY = activity.selFocus_y;
 
 		// Get the simple mask drawable as a bitmap
 		Bitmap mask = BitmapUtil.getDrawableAsBitmap(activity, R.drawable.mask);
+
+		// Resize mask
+		if (maskSize != 1) {
+			Log.i("", "Resizing mask (" + maskSize + ") => " + ((int) (mask.getWidth() * maskSize)) + "x" + (int) (mask.getWidth() * maskSize));
+			mask = Bitmap.createScaledBitmap(mask,
+					(int) (mask.getWidth() * maskSize),
+					(int) (mask.getHeight() * maskSize), false);
+		}
 
 		if (maskPosX == -1 || maskPosY == -1) {
 			maskPosX = source.getWidth() / 2;
