@@ -6,7 +6,7 @@ import android.widget.SeekBar;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
-import com.chteuchteu.blurify.hlpr.mImageView;
+import com.chteuchteu.blurify.hlpr.CustomImageView;
 import com.chteuchteu.blurify.ui.Activity_Main;
 
 public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
@@ -61,9 +61,9 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(true);
 
 		if (success)
-			activity.updateContainer(new mImageView.OnImageChangeListener() {
+			activity.updateContainer(new CustomImageView.AfterNextDrawListener() {
 				@Override
-				public void imageChangedinView() {
+				public void onDrawCalled() {
 					activity.computing = false;
 				}
 			});

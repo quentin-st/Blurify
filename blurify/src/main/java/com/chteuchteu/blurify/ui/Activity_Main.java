@@ -38,8 +38,8 @@ import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnSeekbarValueChange;
 import com.chteuchteu.blurify.ast.WallpaperSetter;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
+import com.chteuchteu.blurify.hlpr.CustomImageView;
 import com.chteuchteu.blurify.hlpr.Util;
-import com.chteuchteu.blurify.hlpr.mImageView;
 import com.edmodo.cropper.CropImageView;
 
 public class Activity_Main extends ActionBarActivity {
@@ -148,14 +148,15 @@ public class Activity_Main extends ActionBarActivity {
 		selFocus_x = -1;
 		selFocus_y = -1;
 
-		((mImageView) findViewById(R.id.container)).setOnTouchListener(new View.OnTouchListener() {
+		CustomImageView container = (CustomImageView) findViewById(R.id.container);
+		container.setOnTouchListener(new CustomImageView.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (!selectiveFocusSwitch.isChecked() || computing) return true;
 
 				if (little_bitmap_original != null) {
 					int[] mappedCoord = BitmapUtil.mapBitmapCoordinatesFromImageView((int) event.getX(), (int) event.getY(),
-							(mImageView) findViewById(R.id.container));
+							(CustomImageView) findViewById(R.id.container));
 
 					selFocus_x = mappedCoord[0];
 					selFocus_y = mappedCoord[1];
@@ -283,7 +284,7 @@ public class Activity_Main extends ActionBarActivity {
 					findViewById(R.id.getimg).setVisibility(View.GONE);
 					findViewById(R.id.actions1).setVisibility(View.VISIBLE);
 					launchCrop(true);
-					((mImageView)findViewById(R.id.container)).setImageBitmap(null);
+					((CustomImageView)findViewById(R.id.container)).setImageBitmap(null);
 				} catch (Exception ignored) {
 					Toast.makeText(context, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
 				}
@@ -313,7 +314,7 @@ public class Activity_Main extends ActionBarActivity {
 				a2.setDuration(500);
 				little_bitmap = little_bitmap_original.copy(little_bitmap_original.getConfig(), true);
 
-				mImageView container = (mImageView) findViewById(R.id.container);
+				CustomImageView container = (CustomImageView) findViewById(R.id.container);
 				container.setVisibility(View.VISIBLE);
 				container.setImageBitmap(little_bitmap_original);
 
@@ -338,10 +339,10 @@ public class Activity_Main extends ActionBarActivity {
 	}
 
 	public void updateContainer() { updateContainer(null); }
-	public void updateContainer(mImageView.OnImageChangeListener onImageChange) {
+	public void updateContainer(CustomImageView.AfterNextDrawListener afterNextDrawListener) {
 		try {
-			mImageView container = (mImageView)findViewById(R.id.container);
-			container.setImageChangeListener(onImageChange);
+			CustomImageView container = (CustomImageView)findViewById(R.id.container);
+			container.setAfterNextDrawListener(afterNextDrawListener);
 
 			if (little_bitmap != null && !little_bitmap.isRecycled())
 				container.setImageBitmap(little_bitmap);
