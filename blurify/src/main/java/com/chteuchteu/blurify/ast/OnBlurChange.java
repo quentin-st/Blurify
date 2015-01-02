@@ -4,12 +4,11 @@ import android.os.AsyncTask;
 import android.widget.SeekBar;
 
 import com.chteuchteu.blurify.R;
-import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
 import com.chteuchteu.blurify.hlpr.CustomImageView;
 import com.chteuchteu.blurify.ui.Activity_Main;
 
-public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
+public class OnBlurChange extends AsyncTask<Void, Integer, Void> {
 	private Activity_Main activity;
 	private SeekBar seekBar;
 	private SeekBar selectiveFocusSize;
@@ -19,8 +18,8 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	private boolean success;
 
 
-	public OnSeekbarValueChange(Activity_Main activity, SeekBar seekBar, SeekBar selectiveFocusSize,
-	                            boolean selectiveFocus) {
+	public OnBlurChange(Activity_Main activity, SeekBar seekBar, SeekBar selectiveFocusSize,
+	                    boolean selectiveFocus) {
 		this.activity = activity;
 		this.seekBar = seekBar;
 		this.selectiveFocus = selectiveFocus;
@@ -31,8 +30,8 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	protected void onPreExecute() {
 		progress = seekBar.getProgress();
 		seekBar.setEnabled(false);
+		activity.findViewById(R.id.seekBar).setEnabled(false);
 		activity.findViewById(R.id.saveimg).setEnabled(false);
-		activity.findViewById(R.id.setWallpaper).setEnabled(false);
 		activity.findViewById(R.id.saveimg).setAlpha(0.8f);
 		activity.findViewById(R.id.setWallpaper).setEnabled(false);
 		activity.findViewById(R.id.setWallpaper).setAlpha(0.8f);
@@ -62,6 +61,7 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.setWallpaper).setEnabled(true);
 		activity.findViewById(R.id.setWallpaper).setAlpha(1f);
 		activity.findViewById(R.id.selectiveFocusSwitch).setEnabled(true);
+		activity.findViewById(R.id.selectiveFocusSize).setEnabled(true);
 
 		if (success)
 			activity.updateContainer(new CustomImageView.AfterNextDrawListener() {
@@ -73,9 +73,6 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 	}
 
 	private void blur() {
-		BitmapUtil.recycle(activity.little_bitmap);
-		activity.little_bitmap = null;
-
 		if (progress == 0)
 			activity.little_bitmap = activity.little_bitmap_original.copy(activity.little_bitmap_original.getConfig(), true);
 		else {
@@ -83,7 +80,7 @@ public class OnSeekbarValueChange extends AsyncTask<Void, Integer, Void> {
 			float renderScriptProgress = progress / 4;
 
 			if (selectiveFocus) {
-				float maskSize = ((float) selectiveFocusSize.getProgress()) / 50;
+				float maskSize = ((float) selectiveFocusSize.getProgress()) / 100;
 				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress, maskSize);
 			}
 			else

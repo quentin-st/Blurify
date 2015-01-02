@@ -15,11 +15,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -35,7 +37,7 @@ import android.widget.Toast;
 import com.applovin.sdk.AppLovinSdk;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
-import com.chteuchteu.blurify.ast.OnSeekbarValueChange;
+import com.chteuchteu.blurify.ast.OnBlurChange;
 import com.chteuchteu.blurify.ast.WallpaperSetter;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.CustomImageView;
@@ -128,10 +130,10 @@ public class Activity_Main extends ActionBarActivity {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) { }
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
+			public void onStopTrackingTouch(SeekBar thisSeekBar) {
 				if (little_bitmap_original != null) {
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
+					new OnBlurChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
 				}
 			}
 		});
@@ -144,13 +146,14 @@ public class Activity_Main extends ActionBarActivity {
 			public void onStartTrackingTouch(SeekBar seekBar) { }
 
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
+			public void onStopTrackingTouch(SeekBar thisSeekBar) {
 				if (little_bitmap_original != null) {
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
+					new OnBlurChange(activity, seekBar, selectiveFocusSize, selectiveFocusSwitch.isChecked()).execute();
 				}
 			}
 		});
+		selectiveFocusSize.setProgress(50);
 
 
 		selectiveFocusSwitch = (Switch) findViewById(R.id.selectiveFocusSwitch);
@@ -158,10 +161,11 @@ public class Activity_Main extends ActionBarActivity {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				findViewById(R.id.selectiveFocusSizeContainer).setVisibility(isChecked ? View.VISIBLE : View.GONE);
+				updateContainerPaddingBottom();
 
 				if (little_bitmap_original != null) {
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, isChecked).execute();
+					new OnBlurChange(activity, seekBar, selectiveFocusSize, isChecked).execute();
 				}
 			}
 		});
@@ -182,7 +186,7 @@ public class Activity_Main extends ActionBarActivity {
 					selFocus_y = mappedCoord[1];
 
 					computing = true;
-					new OnSeekbarValueChange(activity, seekBar, selectiveFocusSize, true).execute();
+					new OnBlurChange(activity, seekBar, selectiveFocusSize, true).execute();
 				}
 
 				return true;
@@ -262,7 +266,7 @@ public class Activity_Main extends ActionBarActivity {
 			
 			BitmapFactory.decodeFile(filePath, options);
 			
-			long totalImagePixels = options.outHeight*options.outWidth;
+			long totalImagePixels = options.outHeight * options.outWidth;
 			
 			// Get screen pixels
 			int totalScreenPixels;
@@ -308,7 +312,7 @@ public class Activity_Main extends ActionBarActivity {
 		}
 	}
 	
-	// No need to execute blur background when pressing back
+	// executeBlurBackground : No need to execute blur background when pressing back
 	private void launchCrop(boolean executeBlurBackground) {
 		findViewById(R.id.mask).setVisibility(View.VISIBLE);
 		final CropImageView c = (CropImageView)findViewById(R.id.CropImageView);
@@ -339,6 +343,7 @@ public class Activity_Main extends ActionBarActivity {
 
 				findViewById(R.id.actions1).setVisibility(View.GONE);
 				findViewById(R.id.actions2).setVisibility(View.VISIBLE);
+				updateContainerPaddingBottom();
 				updateContainer();
 				state = ST_BLUR;
 			}
@@ -360,5 +365,22 @@ public class Activity_Main extends ActionBarActivity {
 			if (little_bitmap != null && !little_bitmap.isRecycled())
 				container.setImageBitmap(little_bitmap);
 		} catch (Exception ex) { ex.printStackTrace(); }
+	}
+
+	public void updateContainerPaddingBottom() {
+		final ViewTreeObserver observer = findViewById(R.id.actions2).getViewTreeObserver();
+		observer.addOnGlobalLayoutListener(
+				new ViewTreeObserver.OnGlobalLayoutListener() {
+					@Override
+					public void onGlobalLayout() {
+						int paddingBottom = findViewById(R.id.actions2).getHeight();
+						Log.i("", "Found height = " + paddingBottom);
+						View container = findViewById(R.id.containerContainer);
+						container.setPadding(container.getPaddingLeft(), container.getPaddingTop(),
+								container.getPaddingRight(), paddingBottom);
+
+						observer.removeGlobalOnLayoutListener(this);
+					}
+				});
 	}
 }
