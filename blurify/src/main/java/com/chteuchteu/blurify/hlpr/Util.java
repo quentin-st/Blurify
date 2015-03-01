@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -95,5 +96,13 @@ public class Util {
 			Toast.makeText(context, context.getString(R.string.error_save_photo), Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
+	}
+
+	@SuppressWarnings("deprecation")
+	public static void removeOnGlobalLayoutListener(View v, ViewTreeObserver.OnGlobalLayoutListener listener){
+		if (Build.VERSION.SDK_INT < 16)
+			v.getViewTreeObserver().removeGlobalOnLayoutListener(listener);
+		else
+			v.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
 	}
 }

@@ -15,7 +15,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -367,18 +366,17 @@ public class Activity_Main extends ActionBarActivity {
 	}
 
 	public void updateContainerPaddingBottom() {
-		final ViewTreeObserver observer = findViewById(R.id.actions2).getViewTreeObserver();
-		observer.addOnGlobalLayoutListener(
+		final View view = findViewById(R.id.actions2);
+		view.getViewTreeObserver().addOnGlobalLayoutListener(
 				new ViewTreeObserver.OnGlobalLayoutListener() {
 					@Override
 					public void onGlobalLayout() {
 						int paddingBottom = findViewById(R.id.actions2).getHeight();
-						Log.i("", "Found height = " + paddingBottom);
 						View container = findViewById(R.id.containerContainer);
 						container.setPadding(container.getPaddingLeft(), container.getPaddingTop(),
 								container.getPaddingRight(), paddingBottom);
 
-						observer.removeGlobalOnLayoutListener(this);
+						Util.removeOnGlobalLayoutListener(view, this);
 					}
 				});
 	}
