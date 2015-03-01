@@ -6,4 +6,7 @@
     -->
     <dimen name="activity_horizontal_margin">128dp</dimen>
 
+	<dimen name="aboutPaddingTop">100dp</dimen>
+	<dimen name="aboutPaddingLeft">180dp</dimen>
+
 </resources>

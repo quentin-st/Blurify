@@ -5,4 +5,7 @@
          screen margins) for sw600dp devices (e.g. 7" tablets) here.
     -->
 
+	<dimen name="aboutPaddingTop">100dp</dimen>
+	<dimen name="aboutPaddingLeft">180dp</dimen>
+
 </resources>

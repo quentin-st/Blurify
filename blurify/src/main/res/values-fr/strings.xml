@@ -22,5 +22,8 @@
 	<string name="selective_focus_size">Taille du focus</string>
 	<string name="contribute">Contribuer</string>
 	<string name="about">A propos</string>
+	<string name="contribute_text">Blurify est maintenant open-source ! Si vous voulez rendre l\'application meilleure, n\'hésitez pas à contribuer sur GitHub</string>
+	<string name="contribute_go">Open on GitHub</string>
+	<string name="version">Version</string>
 
 </resources>

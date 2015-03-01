@@ -198,6 +198,11 @@ public class Activity_Main extends BlurifyActivity {
 	
 	@Override
 	public void onBackPressed() {
+		if (isAboutShown) {
+			closeAbout();
+			return;
+		}
+
 		switch (state) {
 			case ST_UNKNOWN:
 				super.onBackPressed();

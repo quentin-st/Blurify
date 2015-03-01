@@ -216,6 +216,38 @@
 	</LinearLayout>
 
 	<LinearLayout
+		android:id="@+id/aboutContainer"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@color/colorPrimary"
+		android:paddingTop="@dimen/aboutPaddingTop"
+		android:paddingLeft="@dimen/aboutPaddingLeft"
+		android:visibility="gone">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="50dp"
+			android:text="@string/app_name"
+			android:textColor="#ddffffff"
+			android:textSize="60sp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/version"
+			android:textColor="#66ffffff"
+			android:textSize="15sp"/>
+		<TextView
+			android:id="@+id/about_version"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#eeffffff"
+			android:textSize="15sp"/>
+	</LinearLayout>
+
+	<LinearLayout
 		android:id="@+id/layoutHeaderContainer"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
