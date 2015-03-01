@@ -8,6 +8,7 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 
 import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
@@ -254,6 +255,9 @@ public class BlurUtil {
 	 * @return Blurred bitmap
 	 */
 	public static Bitmap renderScriptBlur(Context context, Bitmap originalBitmap, float radius) {
+		if (radius > 25)
+			Foofy.log("Warning - radius > 25 ? 25 : radius", Log.WARN);
+
 		Bitmap outBitmap = Bitmap.createBitmap(originalBitmap.getWidth(), originalBitmap.getHeight(),
 				Bitmap.Config.ARGB_8888);
 

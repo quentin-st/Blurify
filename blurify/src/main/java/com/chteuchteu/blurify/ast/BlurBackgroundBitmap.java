@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.BlurUtil;
-import com.enrique.stackblur.StackBlurManager;
 
 public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 	private Bitmap b2;
@@ -26,15 +25,13 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 	@Override
 	protected Void doInBackground(Void... params) {
 		Bitmap b = null;
+
 		try {
-			StackBlurManager stackBlurManager = new StackBlurManager(tmp_original_bitmap);
-			stackBlurManager.process(10);
-			b = stackBlurManager.returnBlurredImage();
+			b = BlurUtil.renderScriptBlur(activity, tmp_original_bitmap, 10);
 		} catch (Exception ex) {
-			try {
-				b = BlurUtil.fastBlur(tmp_original_bitmap, 10);
-			} catch (Exception ex2) { ex2.printStackTrace(); }
+			ex.printStackTrace();
 		}
+
 		if (b != null) {
 			b2 = Bitmap.createScaledBitmap(b, b.getWidth()/2, b.getHeight()/2, false);
 
