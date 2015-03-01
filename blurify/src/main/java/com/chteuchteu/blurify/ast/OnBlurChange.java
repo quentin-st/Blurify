@@ -76,15 +76,12 @@ public class OnBlurChange extends AsyncTask<Void, Integer, Void> {
 		if (progress == 0)
 			activity.little_bitmap = activity.little_bitmap_original.copy(activity.little_bitmap_original.getConfig(), true);
 		else {
-			// RenderScript blur goes from 0 to 25
-			float renderScriptProgress = progress / 4;
-
 			if (selectiveFocus) {
 				float maskSize = ((float) selectiveFocusSize.getProgress()) / 100;
-				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, renderScriptProgress, maskSize);
+				activity.little_bitmap = BlurUtil.maskBlur(activity, activity.little_bitmap_original, progress, maskSize);
 			}
 			else
-				activity.little_bitmap = BlurUtil.renderScriptBlur(activity, activity.little_bitmap_original, renderScriptProgress);
+				activity.little_bitmap = BlurUtil.renderScriptBlur(activity.little_bitmap_original, progress);
 		}
 	}
 }

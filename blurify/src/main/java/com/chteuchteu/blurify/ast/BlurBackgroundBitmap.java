@@ -27,7 +27,7 @@ public class BlurBackgroundBitmap extends AsyncTask<Void, Integer, Void> {
 		Bitmap b = null;
 
 		try {
-			b = BlurUtil.renderScriptBlur(activity, tmp_original_bitmap, 10);
+			b = BlurUtil.renderScriptBlur(tmp_original_bitmap, 10);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

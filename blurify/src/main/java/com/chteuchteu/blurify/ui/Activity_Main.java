@@ -67,8 +67,8 @@ public class Activity_Main extends BlurifyActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		super.onContentViewSet();
+
 		activity = this;
 		computing = false;
 
@@ -103,7 +103,7 @@ public class Activity_Main extends BlurifyActivity {
 		});
 
 		seekBar = (SeekBar)findViewById(R.id.seekBar);
-		seekBar.setMax(100);
+		seekBar.setMax(50);
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { }

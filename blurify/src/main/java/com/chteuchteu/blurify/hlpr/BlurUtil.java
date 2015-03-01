@@ -1,6 +1,5 @@
 package com.chteuchteu.blurify.hlpr;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,7 +7,6 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
-import android.util.Log;
 
 import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
@@ -18,19 +16,15 @@ public class BlurUtil {
 	/**
 	 * Blurs a bitmap using RenderScript (source : http://trickyandroid.com/advanced-blurring-techniques/,
 	 *  https://plus.google.com/+MarioViviani/posts/fhuzYkji9zz)
-	 * @param context Context
 	 * @param originalBitmap Original bitmap to be blurred (not altered)
 	 * @param radius Blur amount
 	 * @return Blurred bitmap
 	 */
-	public static Bitmap renderScriptBlur(Context context, Bitmap originalBitmap, float radius) {
-		if (radius > 25)
-			Foofy.log("Warning - radius > 25 ? 25 : radius", Log.WARN);
-
+	public static Bitmap renderScriptBlur(Bitmap originalBitmap, float radius) {
 		Bitmap outBitmap = Bitmap.createBitmap(originalBitmap.getWidth(), originalBitmap.getHeight(),
 				Bitmap.Config.ARGB_8888);
 
-		RenderScript rs = Foofy.getInstance().getRenderScriptContext(context);
+		RenderScript rs = Foofy.getInstance().getRenderScriptContext();
 		ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 		Allocation allIn = Allocation.createFromBitmap(rs, originalBitmap);
 		Allocation allOut = Allocation.createFromBitmap(rs, outBitmap);
@@ -41,7 +35,10 @@ public class BlurUtil {
 
 		//rs.destroy();
 
-		return outBitmap;
+		if (radius > 25)
+			return renderScriptBlur(outBitmap, radius-25);
+		else
+			return outBitmap;
 	}
 
 	public static Bitmap maskBlur(Activity_Main activity, Bitmap source, float blurAmount, float maskSize) {
@@ -71,7 +68,7 @@ public class BlurUtil {
 		// Get the sharp part of the picture
 		Bitmap sharp = BitmapUtil.applyMask(source, mask, maskPosX, maskPosY);
 
-		Bitmap blurryBackground = renderScriptBlur(activity, source, blurAmount);
+		Bitmap blurryBackground = renderScriptBlur(source, blurAmount);
 
 		// Put all those together
 		Canvas canvas = new Canvas(blurryBackground);

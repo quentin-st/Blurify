@@ -24,7 +24,7 @@ public class BlurifyActivity extends ActionBarActivity {
 
 	protected void onContentViewSet() {
 		// Load Foofy instance
-		Foofy.getInstance();
+		Foofy.getInstance(context);
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");

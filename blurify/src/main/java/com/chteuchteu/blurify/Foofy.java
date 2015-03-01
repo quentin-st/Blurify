@@ -5,22 +5,29 @@ import android.support.v8.renderscript.RenderScript;
 import android.util.Log;
 
 public class Foofy {
+	private Context context;
 	private RenderScript renderScriptContext;
 
 	private static Foofy instance;
 
 	public static synchronized Foofy getInstance() {
+		if (instance.context == null)
+			throw new RuntimeException("Calling getInstance() on a context-less Foofy instance");
+		return instance;
+	}
+	public static synchronized Foofy getInstance(Context context) {
 		if (instance == null)
-			instance = new Foofy();
+			instance = new Foofy(context);
 
 		return instance;
 	}
-	private Foofy() {
+	private Foofy(Context context) {
+		this.context = context;
 		this.renderScriptContext = null;
 	}
 
 
-	public synchronized RenderScript getRenderScriptContext(Context context) {
+	public synchronized RenderScript getRenderScriptContext() {
 		if (renderScriptContext == null) {
 			Foofy.log("Creating RenderScript context");
 			renderScriptContext = RenderScript.create(context);
