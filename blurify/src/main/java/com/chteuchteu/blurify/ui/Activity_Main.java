@@ -34,7 +34,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.applovin.sdk.AppLovinSdk;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnBlurChange;
@@ -87,7 +86,6 @@ public class Activity_Main extends ActionBarActivity {
 				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 				findViewById(R.id.buttonsContainer).setPadding(0, 0, 0, Util.getSoftbuttonsbarHeight(this));
-				findViewById(R.id.ad_container).setPadding(0, Util.getStatusBarHeight(this), 0, 0);
 			}
 		}
 		
@@ -195,8 +193,6 @@ public class Activity_Main extends ActionBarActivity {
 				return true;
 			}
 		});
-
-		AppLovinSdk.initializeSdk(context);
 	}
 	
 	@Override
