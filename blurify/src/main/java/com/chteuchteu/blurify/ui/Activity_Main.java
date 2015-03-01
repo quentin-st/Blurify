@@ -63,7 +63,7 @@ public class Activity_Main extends ActionBarActivity {
 	private Activity_Main activity;
 	private Context context;
 	
-	private static final int ST_UNKNWOWN = 0;
+	private static final int ST_UNKNOWN = 0;
 	private static final int ST_CROP = 1;
 	private static final int ST_BLUR = 2;
 
@@ -94,7 +94,7 @@ public class Activity_Main extends ActionBarActivity {
 		aspectRatioX = myWallpaperManager.getDesiredMinimumWidth();
 		aspectRatioY = myWallpaperManager.getDesiredMinimumHeight();
 		
-		state = ST_UNKNWOWN;
+		state = ST_UNKNOWN;
 		
 		set_wallpaper.setOnClickListener(new OnClickListener() {
 			@Override
@@ -215,25 +215,29 @@ public class Activity_Main extends ActionBarActivity {
 	
 	@Override
 	public void onBackPressed() {
-		if (state == ST_UNKNWOWN) {
-			super.onBackPressed();
-		} else if (state == ST_CROP) {
-			findViewById(R.id.getimg).setVisibility(View.VISIBLE);
-			findViewById(R.id.actions1).setVisibility(View.GONE);
-			findViewById(R.id.container).setVisibility(View.GONE);
-			findViewById(R.id.CropImageView).setVisibility(View.GONE);
-			state = ST_UNKNWOWN;
-		} else if (state == ST_BLUR) {
-			seekBar.setProgress(0);
-			findViewById(R.id.container).setVisibility(View.GONE);
-			findViewById(R.id.mask).setVisibility(View.VISIBLE);
-			findViewById(R.id.CropImageView).setVisibility(View.VISIBLE);
-			findViewById(R.id.blurryBackground).setVisibility(View.VISIBLE);
-			findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
-			findViewById(R.id.actions1).setVisibility(View.VISIBLE);
-			findViewById(R.id.actions2).setVisibility(View.GONE);
-			state = ST_CROP;
-			launchCrop(false);
+		switch (state) {
+			case ST_UNKNOWN:
+				super.onBackPressed();
+				break;
+			case ST_CROP:
+				findViewById(R.id.getimg).setVisibility(View.VISIBLE);
+				findViewById(R.id.actions1).setVisibility(View.GONE);
+				findViewById(R.id.container).setVisibility(View.GONE);
+				findViewById(R.id.CropImageView).setVisibility(View.GONE);
+				state = ST_UNKNOWN;
+				break;
+			case ST_BLUR:
+				seekBar.setProgress(0);
+				findViewById(R.id.container).setVisibility(View.GONE);
+				findViewById(R.id.mask).setVisibility(View.VISIBLE);
+				findViewById(R.id.CropImageView).setVisibility(View.VISIBLE);
+				findViewById(R.id.blurryBackground).setVisibility(View.VISIBLE);
+				findViewById(R.id.blurryBackground_darkMask).setVisibility(View.VISIBLE);
+				findViewById(R.id.actions1).setVisibility(View.VISIBLE);
+				findViewById(R.id.actions2).setVisibility(View.GONE);
+				state = ST_CROP;
+				launchCrop(false);
+				break;
 		}
 	}
 	
@@ -378,6 +382,7 @@ public class Activity_Main extends ActionBarActivity {
 
 						Util.removeOnGlobalLayoutListener(view, this);
 					}
-				});
+				}
+		);
 	}
 }
