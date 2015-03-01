@@ -23,7 +23,6 @@ import java.io.FileOutputStream;
 
 public class Util {
 	public enum CustomFont {
-		RobotoCondensedRegular("RobotoCondensed-Regular.ttf"),
 		RobotoMedium("Roboto-Medium.ttf");
 
 		private String fileName;
