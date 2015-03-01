@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.chteuchteu.blurify"
 	android:versionCode="10"
-	android:versionName="3" >
+	android:versionName="3.0" >
 
 	<uses-permission android:name="android.permission.SET_WALLPAPER" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -26,13 +26,6 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-
-		<meta-data
-			android:name="applovin.sdk.key"
-			android:value="7aXuBHP4DVuTPpEmpIH0M1UtUJo4LuASThKezkkAEcddPtND9fEWhiOB1AFM2QqV6994uuF6Uukvl66vmKPR2p" />
-
-		<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
-		<activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
 
 		<meta-data
 			android:name="com.google.android.gms.version"
