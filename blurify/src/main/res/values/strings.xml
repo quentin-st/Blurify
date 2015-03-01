@@ -20,5 +20,7 @@
 	<string name="selective_focus">Selective focus</string>
 	<string name="blur_amount">Blur amount</string>
 	<string name="selective_focus_size">Selective focus size</string>
+	<string name="contribute">Contribute</string>
+	<string name="about">About</string>
 
 </resources>

@@ -32,6 +32,14 @@ public class Util {
 				setFont((ViewGroup) v, font);
 		}
 	}
+
+	public static int getStatusBarHeight(Context c) {
+		int result = 0;
+		int resourceId = c.getResources().getIdentifier("status_bar_height", "dimen", "android");
+		if (resourceId > 0)
+			result = c.getResources().getDimensionPixelSize(resourceId);
+		return result;
+	}
 	
 	@SuppressLint("NewApi")
 	public static int getSoftbuttonsbarHeight(Activity activity) {
