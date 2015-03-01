@@ -1,8 +1,35 @@
 package com.chteuchteu.blurify;
 
+import android.content.Context;
+import android.support.v8.renderscript.RenderScript;
 import android.util.Log;
 
 public class Foofy {
+	private RenderScript renderScriptContext;
+
+	private static Foofy instance;
+
+	public static synchronized Foofy getInstance() {
+		if (instance == null)
+			instance = new Foofy();
+
+		return instance;
+	}
+	private Foofy() {
+		this.renderScriptContext = null;
+	}
+
+
+	public synchronized RenderScript getRenderScriptContext(Context context) {
+		if (renderScriptContext == null) {
+			Foofy.log("Creating RenderScript context");
+			renderScriptContext = RenderScript.create(context);
+		}
+
+		return renderScriptContext;
+	}
+
+
 	public static void log(String txt) {
 		log(txt, Log.DEBUG);
 	}

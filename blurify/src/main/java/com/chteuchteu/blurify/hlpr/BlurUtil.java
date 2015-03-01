@@ -30,7 +30,7 @@ public class BlurUtil {
 		Bitmap outBitmap = Bitmap.createBitmap(originalBitmap.getWidth(), originalBitmap.getHeight(),
 				Bitmap.Config.ARGB_8888);
 
-		RenderScript rs = RenderScript.create(context);
+		RenderScript rs = Foofy.getInstance().getRenderScriptContext(context);
 		ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 		Allocation allIn = Allocation.createFromBitmap(rs, originalBitmap);
 		Allocation allOut = Allocation.createFromBitmap(rs, outBitmap);
@@ -39,7 +39,7 @@ public class BlurUtil {
 		blurScript.forEach(allOut);
 		allOut.copyTo(outBitmap);
 
-		rs.destroy();
+		//rs.destroy();
 
 		return outBitmap;
 	}

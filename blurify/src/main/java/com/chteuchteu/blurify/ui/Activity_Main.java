@@ -33,6 +33,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnBlurChange;
@@ -77,6 +78,9 @@ public class Activity_Main extends ActionBarActivity {
 		context = this;
 		activity = this;
 		computing = false;
+
+		// Load Foofy instance
+		Foofy.getInstance();
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
