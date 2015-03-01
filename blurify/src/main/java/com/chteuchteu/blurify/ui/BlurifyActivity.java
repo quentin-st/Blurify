@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.Util;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class BlurifyActivity extends ActionBarActivity {
 
 	protected void onCreate(Bundle savedStateInstance) {
 		super.onCreate(savedStateInstance);
+		Crashlytics.start(this);
 		context = this;
 		isAboutShown = false;
 	}
