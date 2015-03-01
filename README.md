@@ -1,5 +1,10 @@
+Welcome to the public repository for [Blurify](https://play.google.com/store/apps/details?id=com.chteuchteu.blurify) Android application! Don't hesitate to contribute to make the app better!
+
 # Blurify
-Public repository for Blurify app
+With Blurify, you can easily transform photos and saved wallpapers into blurry ones to increase the depth of field effect on your homescreen!
 
 ## Links
 * [Blurify on Google Play](https://play.google.com/store/apps/details?id=com.chteuchteu.blurify)
+
+## License
+Blurify is distributed under the GNU GPL version 2. Blurify is copyrighted 2015 by its various authors as identified in the source files.
