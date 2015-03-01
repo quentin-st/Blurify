@@ -52,6 +52,8 @@ public class BlurUtil {
 		Bitmap mask = BitmapUtil.getDrawableAsBitmap(activity, R.drawable.mask);
 
 		// Resize mask
+		if (maskSize == 0)
+			maskSize = 0.01f;
 		if (maskSize != 1) {
 			Foofy.log("Resizing mask (" + maskSize + ") => " + ((int) (mask.getWidth() * maskSize)) + "x" + (int) (mask.getWidth() * maskSize));
 			mask = Bitmap.createScaledBitmap(mask,
