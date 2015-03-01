@@ -3,6 +3,7 @@ package com.chteuchteu.blurify.hlpr;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
@@ -21,15 +22,25 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class Util {
-	public static void setFont(ViewGroup group, Typeface font) {
+	public enum CustomFont {
+		RobotoCondensedRegular("RobotoCondensed-Regular.ttf"),
+		RobotoMedium("Roboto-Medium.ttf");
+
+		private String fileName;
+		CustomFont(String fileName) { this.fileName = fileName; }
+		public String getFileName() { return this.fileName; }
+	}
+
+	public static void setFont(Context context, ViewGroup group, CustomFont customFont) {
+		Typeface typeFace = Typeface.createFromAsset(context.getAssets(), customFont.getFileName());
 		int count = group.getChildCount();
 		View v;
 		for (int i = 0; i < count; i++) {
 			v = group.getChildAt(i);
 			if (v instanceof TextView) {
-				((TextView) v).setTypeface(font);
+				((TextView) v).setTypeface(typeFace);
 			} else if (v instanceof ViewGroup)
-				setFont((ViewGroup) v, font);
+				setFont(context, (ViewGroup) v, customFont);
 		}
 	}
 
@@ -106,5 +117,15 @@ public class Util {
 			v.getViewTreeObserver().removeGlobalOnLayoutListener(listener);
 		else
 			v.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
+	}
+
+	public static String getAppVersion(Context context) {
+		String versionName;
+		try {
+			versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+		} catch (PackageManager.NameNotFoundException e) {
+			versionName = "";
+		}
+		return versionName;
 	}
 }
