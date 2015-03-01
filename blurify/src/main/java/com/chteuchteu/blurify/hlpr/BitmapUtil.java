@@ -13,8 +13,9 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.Log;
 import android.widget.ImageView;
+
+import com.chteuchteu.blurify.Foofy;
 
 public class BitmapUtil {
 	/**
@@ -57,7 +58,7 @@ public class BitmapUtil {
 		// Crop bitmap to fit mask
 		if (maskPosX < 0 || maskPosX + maskWidth > bitmap.getWidth()
 				|| maskPosY < 0 || maskPosY + maskHeight > bitmap.getHeight()) {
-			Log.i("", "(bitmap is overlapping)");
+			Foofy.log("(bitmap is overlapping)");
 
 			// Create a blank bitmap which will contain the piece of mask
 			Bitmap blankBitmap = Bitmap.createBitmap(maskWidth, maskHeight, Bitmap.Config.ARGB_8888);

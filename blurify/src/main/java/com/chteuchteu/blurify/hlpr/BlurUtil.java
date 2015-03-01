@@ -8,8 +8,8 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
-import android.util.Log;
 
+import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ui.Activity_Main;
 
@@ -280,7 +280,7 @@ public class BlurUtil {
 
 		// Resize mask
 		if (maskSize != 1) {
-			Log.i("", "Resizing mask (" + maskSize + ") => " + ((int) (mask.getWidth() * maskSize)) + "x" + (int) (mask.getWidth() * maskSize));
+			Foofy.log("Resizing mask (" + maskSize + ") => " + ((int) (mask.getWidth() * maskSize)) + "x" + (int) (mask.getWidth() * maskSize));
 			mask = Bitmap.createScaledBitmap(mask,
 					(int) (mask.getWidth() * maskSize),
 					(int) (mask.getHeight() * maskSize), false);
