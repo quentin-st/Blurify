@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.widget.ImageView;
@@ -160,5 +162,107 @@ public class BitmapUtil {
 	public static void recycle(Bitmap bitmap) {
 		if (bitmap != null && !bitmap.isRecycled())
 			bitmap.recycle();
+	}
+
+	public static class Click {
+		/**
+		 * Returns the coordinates of the click on a bitmap inside an ImageView
+		 * @param posX X pos of the click
+		 * @param posY Y pos of the click
+		 * @param imageView ImageView
+		 * @return [0] = X, [1] = y
+		 */
+		public static int[] mapCoordinates(int posX, int posY, ImageView imageView) {
+			Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+			int[] values = new int[2];
+
+			int ivW = imageView.getWidth();
+			int ivH = imageView.getHeight();
+			int bW = bitmap.getWidth();
+			int bH = bitmap.getHeight();
+
+			float imageViewRatio = ((float) imageView.getWidth()) / imageView.getHeight();
+			float bitmapRatio = ((float) bitmap.getWidth()) / bitmap.getHeight();
+
+			int[] bitmapPosition = getBitmapPositionInsideImageView(imageView);
+			int left = bitmapPosition[0];
+			int top = bitmapPosition[1];
+			int width = bitmapPosition[2];
+			int height = bitmapPosition[3];
+
+			// Check if click has been made outside the bitmap
+			if (posX < left)
+				return null;
+			else if (posX > left + width)
+				return null;
+			else if (posY < top)
+				return null;
+			else if (posY > top + height)
+				return null;
+
+			// Different possible cases for bitmap inside ImageView
+			if (bitmapRatio < imageViewRatio) {
+				// There's space on left and right
+				values[0] = posX * width / ivW;
+				values[1] = posY * bH / ivH;
+			} else if (bitmapRatio > imageViewRatio) {
+				// There's space on top and bottom
+				values[0] = posX * bW / ivW;
+				values[1] = (posY * height - top) / ivH;
+			} else if (bitmapRatio == imageViewRatio) {
+				// There's no space left
+				// Simple coordinates proportion
+				values[0] = posX * bW / ivW;
+				values[1] = posY * bH / ivH;
+			}
+
+			return values;
+		}
+
+		/**
+		 * Returns the bitmap position inside an imageView.
+		 * @param imageView source ImageView
+		 * @return 0: left, 1: top, 2: width, 3: height
+		 */
+		public static int[] getBitmapPositionInsideImageView(ImageView imageView) {
+			int[] ret = new int[4];
+
+			if (imageView == null || imageView.getDrawable() == null)
+				return ret;
+
+			// Get image dimensions
+			// Get image matrix values and place them in an array
+			float[] f = new float[9];
+			imageView.getImageMatrix().getValues(f);
+
+			// Extract the scale values using the constants (if aspect ratio maintained, scaleX == scaleY)
+			final float scaleX = f[Matrix.MSCALE_X];
+			final float scaleY = f[Matrix.MSCALE_Y];
+
+			// Get the drawable (could also get the bitmap behind the drawable and getWidth/getHeight)
+			final Drawable d = imageView.getDrawable();
+			final int origW = d.getIntrinsicWidth();
+			final int origH = d.getIntrinsicHeight();
+
+			// Calculate the actual dimensions
+			final int actW = Math.round(origW * scaleX);
+			final int actH = Math.round(origH * scaleY);
+
+			ret[2] = actW;
+			ret[3] = actH;
+
+			// Get image position
+			// We assume that the image is centered into ImageView
+			int imgViewW = imageView.getWidth();
+			int imgViewH = imageView.getHeight();
+
+			int top = (int) (imgViewH - actH)/2;
+			int left = (int) (imgViewW - actW)/2;
+
+			ret[0] = left;
+			ret[1] = top;
+
+			return ret;
+		}
 	}
 }

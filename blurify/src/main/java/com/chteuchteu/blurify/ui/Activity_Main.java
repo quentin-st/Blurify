@@ -179,8 +179,11 @@ public class Activity_Main extends ActionBarActivity {
 				if (!selectiveFocusSwitch.isChecked() || computing) return true;
 
 				if (little_bitmap_original != null) {
-					int[] mappedCoord = BitmapUtil.mapBitmapCoordinatesFromImageView((int) event.getX(), (int) event.getY(),
+					int[] mappedCoord = BitmapUtil.Click.mapCoordinates((int) event.getX(), (int) event.getY(),
 							(CustomImageView) findViewById(R.id.container));
+
+					if (mappedCoord == null) // Clicked outside the bitmap
+						return true;
 
 					selFocus_x = mappedCoord[0];
 					selFocus_y = mappedCoord[1];
