@@ -12,8 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,7 @@ public class Util {
 		View v;
 		for (int i = 0; i < count; i++) {
 			v = group.getChildAt(i);
-			if (v instanceof TextView || v instanceof EditText || v instanceof Button) {
+			if (v instanceof TextView) {
 				((TextView) v).setTypeface(font);
 			} else if (v instanceof ViewGroup)
 				setFont((ViewGroup) v, font);
@@ -51,20 +49,14 @@ public class Util {
 		}
 		return 0;
 	}
-	
-	public static int getStatusBarHeight(Activity activity) {
-		int result = 0;
-		int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
-		if (resourceId > 0)
-			result = activity.getResources().getDimensionPixelSize(resourceId);
-		return result;
-	}
 
 	public static void saveBitmap(Context context, Bitmap bitmap) {
 		String root = Environment.getExternalStorageDirectory().toString();
 		File dir = new File(root + "/blurify/");
-		if(!dir.exists() || !dir.isDirectory())
-			dir.mkdir();
+		if(!dir.exists() || !dir.isDirectory()) {
+			if (!dir.mkdir())
+				return;
+		}
 
 		String fileName1 = "Photo";
 		String fileName2 = "01.png";
@@ -81,8 +73,10 @@ public class Util {
 			else
 				break;
 		}
-		if (file.exists())
-			file.delete();
+		if (file.exists()) {
+			if (!file.delete())
+				return;
+		}
 
 		try {
 			FileOutputStream out = new FileOutputStream(file);
