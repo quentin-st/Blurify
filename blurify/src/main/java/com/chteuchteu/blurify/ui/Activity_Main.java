@@ -2,27 +2,21 @@ package com.chteuchteu.blurify.ui;
 
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -33,7 +27,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnBlurChange;
@@ -43,7 +36,7 @@ import com.chteuchteu.blurify.hlpr.CustomImageView;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.edmodo.cropper.CropImageView;
 
-public class Activity_Main extends ActionBarActivity {
+public class Activity_Main extends BlurifyActivity {
 	private Bitmap tmp_original_bitmap;
 	public Bitmap little_bitmap_original;
 	public Bitmap little_bitmap;
@@ -62,7 +55,6 @@ public class Activity_Main extends ActionBarActivity {
 	private int state = 0;
 
 	private Activity_Main activity;
-	private Context context;
 	
 	private static final int ST_UNKNOWN = 0;
 	private static final int ST_CROP = 1;
@@ -75,24 +67,11 @@ public class Activity_Main extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		context = this;
+
+		super.onContentViewSet();
 		activity = this;
 		computing = false;
 
-		// Load Foofy instance
-		Foofy.getInstance();
-
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
-			if (id != 0 && getResources().getBoolean(id)) { // Translucent available
-				Window w = getWindow();
-				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-				findViewById(R.id.buttonsContainer).setPadding(0, 0, 0, Util.getSoftbuttonsbarHeight(this));
-			}
-		}
-		
-		Util.setFont((ViewGroup) findViewById(R.id.main_container), Typeface.createFromAsset(getAssets(), "Roboto-Medium.ttf"));
 		Button set_wallpaper = (Button) findViewById(R.id.setWallpaper);
 		myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
 		aspectRatioX = myWallpaperManager.getDesiredMinimumWidth();

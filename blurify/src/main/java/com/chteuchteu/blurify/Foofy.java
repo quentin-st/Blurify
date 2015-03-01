@@ -28,6 +28,10 @@ public class Foofy {
 
 		return renderScriptContext;
 	}
+	public void destroyRenderScriptContext() {
+		if (renderScriptContext != null)
+			renderScriptContext.destroy();
+	}
 
 
 	public static void log(String txt) {
