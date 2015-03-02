@@ -136,5 +136,6 @@ public class BlurifyActivity extends ActionBarActivity {
 	@Override
 	protected void onDestroy() {
 		Foofy.getInstance().destroyRenderScriptContext();
+        super.onDestroy();
 	}
 }
