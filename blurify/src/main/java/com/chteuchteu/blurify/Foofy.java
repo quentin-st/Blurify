@@ -40,7 +40,7 @@ public class Foofy {
 		if (renderScriptContext != null) {
             try {
                 renderScriptContext.destroy();
-            } catch (RSInvalidStateException ignoredException) {
+            } catch (RSInvalidStateException | NullPointerException ignoredException) {
                 // Ignored exception
             }
         }
