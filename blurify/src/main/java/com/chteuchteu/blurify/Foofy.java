@@ -1,6 +1,7 @@
 package com.chteuchteu.blurify;
 
 import android.content.Context;
+import android.support.v8.renderscript.RSInvalidStateException;
 import android.support.v8.renderscript.RenderScript;
 import android.util.Log;
 
@@ -36,8 +37,13 @@ public class Foofy {
 		return renderScriptContext;
 	}
 	public void destroyRenderScriptContext() {
-		if (renderScriptContext != null)
-			renderScriptContext.destroy();
+		if (renderScriptContext != null) {
+            try {
+                renderScriptContext.destroy();
+            } catch (RSInvalidStateException ignoredException) {
+                // Ignored exception
+            }
+        }
 	}
 
 
