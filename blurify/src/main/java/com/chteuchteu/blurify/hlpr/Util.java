@@ -13,6 +13,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -127,4 +128,18 @@ public class Util {
 		}
 		return versionName;
 	}
+
+    public static final class Animations {
+        public static void fadeIn(View view) {
+            AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+            fadeIn.setDuration(200);
+            view.startAnimation(fadeIn);
+        }
+
+        public static void fadeOut(View view) {
+            AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+            fadeOut.setDuration(200);
+            view.startAnimation(fadeOut);
+        }
+    }
 }

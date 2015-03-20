@@ -106,6 +106,7 @@ public class BlurifyActivity extends ActionBarActivity {
 		isAboutShown = true;
 		View container = findViewById(R.id.aboutContainer);
 		container.setVisibility(View.VISIBLE);
+        Util.Animations.fadeIn(container);
 		Util.setFont(this, (ViewGroup) container, Util.CustomFont.RobotoMedium);
 
 		TextView version = (TextView) findViewById(R.id.about_version);
@@ -126,6 +127,7 @@ public class BlurifyActivity extends ActionBarActivity {
 	public void closeAbout() {
 		View container = findViewById(R.id.aboutContainer);
 		container.setVisibility(View.GONE);
+        Util.Animations.fadeOut(container);
 		isAboutShown = false;
 
 		toolbar.setNavigationIcon(null);
