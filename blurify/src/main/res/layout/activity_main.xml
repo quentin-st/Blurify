@@ -178,17 +178,17 @@
 				</LinearLayout>
 
 
-
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="horizontal" >
+					android:orientation="horizontal"
+                    android:baselineAligned="false">
 
 					<LinearLayout
 						android:layout_width="0px"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
-						android:gravity="center_horizontal" >
+						android:gravity="center_horizontal">
 
 						<Button
 							android:id="@+id/setWallpaper"
@@ -202,7 +202,7 @@
 						android:layout_width="0px"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
-						android:gravity="center_horizontal" >
+						android:gravity="center_horizontal">
 
 						<Button
 							android:id="@+id/saveimg"
@@ -224,6 +224,7 @@
 		android:background="@color/colorPrimary"
 		android:paddingTop="@dimen/aboutPaddingTop"
 		android:paddingLeft="@dimen/aboutPaddingLeft"
+        android:paddingStart="@dimen/aboutPaddingLeft"
 		android:visibility="gone">
 
 		<TextView
