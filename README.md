@@ -3,6 +3,9 @@ Welcome to the public repository for [Blurify](https://play.google.com/store/app
 # Blurify
 With Blurify, you can easily transform photos and saved wallpapers into blurry ones to increase the depth of field effect on your homescreen!
 
+## Contribute
+We really need support for languages other than english or french. Most used languages are japanese, thaï, arabic and spanish.
+
 ## Links
 * [Blurify on Google Play](https://play.google.com/store/apps/details?id=com.chteuchteu.blurify)
 
