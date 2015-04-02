@@ -21,5 +21,4 @@
 }
 
 # Optimize build time
--libraryjars app/libs
 -keep class com.crashlytics.** { *; }
