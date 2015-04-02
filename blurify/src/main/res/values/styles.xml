@@ -11,23 +11,6 @@
 		<item name="windowActionBar">false</item>
 	</style>
 
-	<style name="ButtonText">
-		<item name="android:textColor">#555555</item>
-		<item name="android:gravity">center</item>
-		<item name="android:layout_marginBottom">5dp</item>
-		<item name="android:shadowColor">#d4d4d4</item>
-		<item name="android:shadowDx">0</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">1</item>
-		<item name="android:background">@drawable/material_button_xml</item>
-		<item name="android:paddingLeft">20dp</item>
-		<item name="android:paddingRight">20dp</item>
-		<item name="android:paddingTop">7dp</item>
-		<item name="android:paddingBottom">9dp</item>
-		<item name="android:minHeight">0dp</item>
-		<item name="android:textSize">18sp</item>
-	</style>
-
 	<style name="BottomSheetSeparator">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">1dp</item>

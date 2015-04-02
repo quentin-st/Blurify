@@ -66,7 +66,6 @@
 
 		<Button
 			android:id="@+id/getimg"
-			style="@style/ButtonText"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
@@ -89,7 +88,6 @@
 
 				<Button
 					android:id="@+id/crop"
-					style="@style/ButtonText"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/crop" />
@@ -103,7 +101,6 @@
 
 				<Button
 					android:id="@+id/rotate"
-					style="@style/ButtonText"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/rotate" />
@@ -192,7 +189,6 @@
 
 						<Button
 							android:id="@+id/setWallpaper"
-							style="@style/ButtonText"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="@string/set_wallpaper" />
@@ -206,7 +202,6 @@
 
 						<Button
 							android:id="@+id/saveimg"
-							style="@style/ButtonText"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:text="@string/save" />
