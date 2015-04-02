@@ -1,0 +1,25 @@
+# Proguard configuration file
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+
+# Optimizing
+-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+-optimizationpasses 5
+-allowaccessmodification
+-dontpreverify
+
+# Don't obfuscate
+-dontobfuscate
+
+# Remove logs
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** w(...);
+}
+
+# Optimize build time
+-libraryjars app/libs
+-keep class com.crashlytics.** { *; }
