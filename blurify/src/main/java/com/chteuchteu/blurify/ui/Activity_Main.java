@@ -243,7 +243,12 @@ public class Activity_Main extends BlurifyActivity {
 			String[] filePathColumn = {MediaStore.Images.Media.DATA};
 			
 			Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-			cursor.moveToFirst();
+            try {
+                cursor.moveToFirst();
+            } catch (Exception ex) {
+                Toast.makeText(context, getString(R.string.err_import), Toast.LENGTH_SHORT).show();
+                return;
+            }
 			
 			int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 			String filePath = cursor.getString(columnIndex);
