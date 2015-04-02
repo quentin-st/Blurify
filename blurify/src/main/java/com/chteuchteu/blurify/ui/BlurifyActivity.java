@@ -1,6 +1,5 @@
 package com.chteuchteu.blurify.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.Util;
@@ -86,7 +86,7 @@ public class BlurifyActivity extends ActionBarActivity {
 				about();
 				return true;
 			case R.id.menu_contribute:
-				new AlertDialog.Builder(this)
+				new AlertDialogWrapper.Builder(this)
 						.setTitle(R.string.contribute)
 						.setMessage(R.string.contribute_text)
 						.setPositiveButton(R.string.contribute_go, new DialogInterface.OnClickListener() {
