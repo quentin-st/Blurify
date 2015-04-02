@@ -16,6 +16,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
@@ -311,6 +312,19 @@ public class Activity_Main extends BlurifyActivity {
 	private void launchCrop(boolean executeBlurBackground) {
 		findViewById(R.id.mask).setVisibility(View.VISIBLE);
 		final CropImageView c = (CropImageView)findViewById(R.id.CropImageView);
+
+        // Set c margin (avoid it being hidden by Notifs bar, Toolbar, and actions bar
+        int marginTop = Util.getStatusBarHeight(this) + toolbar.getHeight();
+        int marginBottom = findViewById(R.id.actions1).getHeight() + Util.getSoftbuttonsbarHeight(this);
+        RelativeLayout.LayoutParams layoutParams = c.getLayoutParams() != null ? (RelativeLayout.LayoutParams) c.getLayoutParams()
+                : new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.setMargins(
+                layoutParams.leftMargin,
+                marginTop,
+                layoutParams.rightMargin,
+                marginBottom
+        );
+
 		//c.setFixedAspectRatio(true);
 		c.setAspectRatio(aspectRatioX, aspectRatioY);
 		c.setVisibility(View.VISIBLE);
