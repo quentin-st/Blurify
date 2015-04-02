@@ -313,17 +313,24 @@ public class Activity_Main extends BlurifyActivity {
 		findViewById(R.id.mask).setVisibility(View.VISIBLE);
 		final CropImageView c = (CropImageView)findViewById(R.id.CropImageView);
 
-        // Set c margin (avoid it being hidden by Notifs bar, Toolbar, and actions bar
-        int marginTop = Util.getStatusBarHeight(this) + toolbar.getHeight();
-        int marginBottom = findViewById(R.id.actions1).getHeight() + Util.getSoftbuttonsbarHeight(this);
-        RelativeLayout.LayoutParams layoutParams = c.getLayoutParams() != null ? (RelativeLayout.LayoutParams) c.getLayoutParams()
-                : new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        layoutParams.setMargins(
-                layoutParams.leftMargin,
-                marginTop,
-                layoutParams.rightMargin,
-                marginBottom
-        );
+		c.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+			@Override
+			public void onGlobalLayout() {
+				// Set c margin (avoid it being hidden by Notifs bar, Toolbar, and actions bar
+				int marginTop = Util.getStatusBarHeight(context) + toolbar.getHeight();
+				int marginBottom = findViewById(R.id.actions1).getHeight() + Util.getSoftbuttonsbarHeight(activity);
+				RelativeLayout.LayoutParams layoutParams = c.getLayoutParams() != null ? (RelativeLayout.LayoutParams) c.getLayoutParams()
+						: new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+				layoutParams.setMargins(
+						layoutParams.leftMargin,
+						marginTop,
+						layoutParams.rightMargin,
+						marginBottom
+				);
+
+				Util.removeOnGlobalLayoutListener(c, this);
+			}
+		});
 
 		//c.setFixedAspectRatio(true);
 		c.setAspectRatio(aspectRatioX, aspectRatioY);
