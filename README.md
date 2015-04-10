@@ -6,6 +6,10 @@ With Blurify, you can easily transform photos and saved wallpapers into blurry o
 ## Contribute
 We really need support for languages other than english or french. Most used languages are japanese, thaï, arabic and spanish.
 
+### How to help translate Blurify
+Translating Blurify is very easy.
+Please [create an account on weblate.org](https://hosted.weblate.org/accounts/register/), and then *start a new translation*[on this page](https://hosted.weblate.org/projects/blurify/master/) to begin! Submitted translations will be included in future updates of the app.
+
 ## Links
 * [Blurify on Google Play](https://play.google.com/store/apps/details?id=com.chteuchteu.blurify)
 
