@@ -413,6 +413,9 @@ public class Activity_Main extends BlurifyActivity {
 
         if (!I18nHelper.isLanguageSupported(deviceLanguage)
                 && !Util.Pref.getBool(this, Util.Pref.PrefKeys.I18NDialogShown, false)) {
+            if (this.isFinishing())
+                return;
+
             new AlertDialogWrapper.Builder(this)
                     .setMessage(R.string.i18n_message)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {

@@ -1,7 +1,5 @@
 package com.chteuchteu.blurify.hlpr;
 
-import java.util.Arrays;
-
 public class I18nHelper {
     public enum AppLanguage {
         EN("en"), FR("fr");

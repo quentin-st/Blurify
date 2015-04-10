@@ -61,6 +61,9 @@ public class WallpaperSetter extends AsyncTask<Void, Integer, Void> {
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
 			public void run() {
+                if (activity.isFinishing())
+                    return;
+                
 				AlertDialog.Builder builder = new AlertDialog.Builder(activity)
 						.setTitle(activity.getText(R.string.note))
 						.setIcon(R.drawable.launcher_icon)
