@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
 
     <string name="app_name">Blurify</string>
@@ -23,7 +23,7 @@
 	<string name="contribute">Contribuer</string>
 	<string name="about">A propos</string>
 	<string name="contribute_text">Blurify est maintenant open-source ! Si vous voulez rendre l\'application meilleure, n\'hésitez pas à contribuer sur GitHub</string>
-	<string name="contribute_go">Open on GitHub</string>
+	<string name="contribute_go">Ouvrir sur GitHub</string>
 	<string name="version">Version</string>
 
 </resources>
