@@ -1,6 +1,7 @@
 ## How to help translate Blurify
 Translating Blurify is very easy.
-Please [create an account on weblate.org](https://hosted.weblate.org/accounts/register/), and then *start a new translation*[on this page](https://hosted.weblate.org/projects/blurify/master/) to begin! Submitted translations will be included in future updates of the app.
+Please [create an account on weblate.org](https://hosted.weblate.org/accounts/register/), and then *start a new translation* [on this page](https://hosted.weblate.org/projects/blurify/master/) to begin! Submitted translations will be included in future updates of the app.
+
 
 Welcome to the public repository for [Blurify](https://play.google.com/store/apps/details?id=com.chteuchteu.blurify) Android application! Don't hesitate to contribute to make the app better!
 

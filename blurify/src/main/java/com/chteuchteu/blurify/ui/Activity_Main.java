@@ -2,6 +2,7 @@ package com.chteuchteu.blurify.ui;
 
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -28,14 +29,18 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.ast.BlurBackgroundBitmap;
 import com.chteuchteu.blurify.ast.OnBlurChange;
 import com.chteuchteu.blurify.ast.WallpaperSetter;
 import com.chteuchteu.blurify.hlpr.BitmapUtil;
 import com.chteuchteu.blurify.hlpr.CustomImageView;
+import com.chteuchteu.blurify.hlpr.I18nHelper;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.edmodo.cropper.CropImageView;
+
+import java.util.Locale;
 
 public class Activity_Main extends BlurifyActivity {
 	private Bitmap tmp_original_bitmap;
@@ -176,6 +181,8 @@ public class Activity_Main extends BlurifyActivity {
 				return true;
 			}
 		});
+
+        displayI18nMessage();
 	}
 	
 	@Override
@@ -399,4 +406,25 @@ public class Activity_Main extends BlurifyActivity {
 				}
 		);
 	}
+
+    public void displayI18nMessage() {
+        // Only display the alertDialog if the device language is not handled
+        String deviceLanguage = Locale.getDefault().getLanguage();
+
+        if (!I18nHelper.isLanguageSupported(deviceLanguage)
+                && !Util.Pref.getBool(this, Util.Pref.PrefKeys.I18NDialogShown, false)) {
+            new AlertDialogWrapper.Builder(this)
+                    .setMessage(R.string.i18n_message)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/chteuchteu/Blurify#how-to-help-translate-blurify")));
+                        }
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+
+            Util.Pref.setBool(this, Util.Pref.PrefKeys.I18NDialogShown, true);
+        }
+    }
 }

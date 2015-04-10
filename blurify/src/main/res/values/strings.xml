@@ -25,5 +25,6 @@
 	<string name="contribute_text">Blurify is now open-source! If you want to make the app better, you can contribute on GitHub</string>
 	<string name="contribute_go">Open on GitHub</string>
 	<string name="version">Version</string>
+    <string name="i18n_message" translatable="false">It seems that the app isn\'t available in your language. Could you help us translate it?</string>
 
 </resources>

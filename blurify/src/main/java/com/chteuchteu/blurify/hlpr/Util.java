@@ -3,6 +3,7 @@ package com.chteuchteu.blurify.hlpr;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -140,6 +141,28 @@ public class Util {
             AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
             fadeOut.setDuration(200);
             view.startAnimation(fadeOut);
+        }
+    }
+
+    public static class Pref {
+        public enum PrefKeys {
+            I18NDialogShown("i18n_dialog_shown");
+
+            private String key;
+            PrefKeys(String k) { this.key = k; }
+
+            public String getKey() { return this.key; }
+        }
+
+        public static boolean getBool(Context context, PrefKeys key, boolean defaultVal) {
+            return context.getSharedPreferences("user_pref", Context.MODE_PRIVATE).getBoolean(key.getKey(), defaultVal);
+        }
+
+        public static void setBool(Context context, PrefKeys key, boolean value) {
+            SharedPreferences prefs = context.getSharedPreferences("user_pref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(key.getKey(), value);
+            editor.apply();
         }
     }
 }
