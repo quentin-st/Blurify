@@ -1,2 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='utf-8'?>
+<resources><string name="photo_saved_as">"として画像を保存する "</string>
+    <string name="error_save_photo">保存中にエラーが発生しました…</string>
+    <string name="wallpaper_set">壁紙に設定しました！</string>
+    <string name="wallpaper_error">壁紙に設定する際にエラーが発生しました…</string>
+    <string name="pick_photo">画像を選ぶ</string>
+    <string name="rotate">回転</string>
+    <string name="set_wallpaper">壁紙として設定する</string>
+    <string name="save">保存</string>
+    <string name="err_import">画像のインポート中にエラーが発生しました…</string>
+    <string name="note_txt">このアプリを気に入ってくれたのなら、Playストアで評価をお願いします！</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="notnow">いまはいいです</string>
+	<string name="selective_focus">フォーカスを選ぶ</string>
+	<string name="selective_focus_size">フォーカスのサイズを選んでください</string>
+	<string name="contribute">寄付する</string>
+	<string name="contribute_text">Blurifyはオープンソースです！あなたの寄付でこのアプリをもっと良くすることができます</string>
+	<string name="contribute_go">GitHubを開く</string>
+	<string name="version">バージョン</string>
+    <string name="app_name">Blurify</string>
+    <string name="crop">トリミング</string>
+    <string name="blur_amount">ぼかしの強弱</string>
+	</resources>
