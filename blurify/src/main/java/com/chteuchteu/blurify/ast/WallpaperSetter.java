@@ -1,15 +1,12 @@
 package com.chteuchteu.blurify.ast;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.WallpaperManager;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.widget.Toast;
 
 import com.chteuchteu.blurify.R;
-import com.tjeannin.apprate.AppRate;
 
 public class WallpaperSetter extends AsyncTask<Void, Integer, Void> {
 	private Activity activity;
@@ -56,27 +53,5 @@ public class WallpaperSetter extends AsyncTask<Void, Integer, Void> {
 		activity.findViewById(R.id.seekBar).setEnabled(true);
 		activity.findViewById(R.id.saveimg).setEnabled(true);
 		activity.findViewById(R.id.setWallpaper).setEnabled(true);
-
-		// Ask to note the app
-		Handler handler = new Handler();
-		handler.postDelayed(new Runnable() {
-			public void run() {
-                if (activity.isFinishing())
-                    return;
-                
-				AlertDialog.Builder builder = new AlertDialog.Builder(activity)
-						.setTitle(activity.getText(R.string.note))
-						.setIcon(R.drawable.launcher_icon)
-						.setMessage(activity.getText(R.string.note_txt))
-						.setPositiveButton(activity.getText(R.string.yes), null)
-						.setNegativeButton(activity.getText(R.string.no), null)
-						.setNeutralButton(activity.getText(R.string.notnow), null);
-				new AppRate(activity)
-						.setCustomDialog(builder)
-						.setMinDaysUntilPrompt(3)
-						.setMinLaunchesUntilPrompt(4)
-						.init();
-			}
-		}, 2500);
 	}
 }

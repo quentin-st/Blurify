@@ -40,7 +40,6 @@ dependencies {
     compile 'com.android.support:support-v4:22.1.1'
     compile "com.android.support:appcompat-v7:22.1.1"
     compile 'com.google.android.gms:play-services:7.0.0'
-    compile files('libs/AppRate_1.1.jar')
     compile 'com.edmodo:cropper:1.0.1'
     compile 'com.afollestad:material-dialogs:0.7.4.1'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
