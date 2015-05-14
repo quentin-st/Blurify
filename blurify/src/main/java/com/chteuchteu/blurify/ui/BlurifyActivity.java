@@ -23,6 +23,7 @@ import com.chteuchteu.blurify.Foofy;
 import com.chteuchteu.blurify.R;
 import com.chteuchteu.blurify.hlpr.Util;
 import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class BlurifyActivity extends AppCompatActivity {
 
 	protected void onCreate(Bundle savedStateInstance) {
 		super.onCreate(savedStateInstance);
-		Crashlytics.start(this);
+		Fabric.with(this, new Crashlytics());
 		context = this;
 		isAboutShown = false;
 	}

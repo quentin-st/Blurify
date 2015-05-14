@@ -1,14 +1,14 @@
 buildscript {
     repositories {
-        maven { url 'http://download.crashlytics.com/maven' }
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'crashlytics'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 21
@@ -33,7 +33,7 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url 'http://download.crashlytics.com/maven' }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -42,6 +42,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.0.0'
     compile files('libs/AppRate_1.1.jar')
     compile 'com.edmodo:cropper:1.0.1'
-    compile 'com.crashlytics.android:crashlytics:1.+'
     compile 'com.afollestad:material-dialogs:0.7.4.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.2.4@aar') {
+        transitive = true;
+    }
 }
