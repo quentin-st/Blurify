@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +27,7 @@ import com.crashlytics.android.Crashlytics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlurifyActivity extends ActionBarActivity {
+public class BlurifyActivity extends AppCompatActivity {
 	protected boolean isAboutShown;
 	protected Context context;
 	protected Toolbar toolbar;

@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<style name="BlurifyAppBaseTheme" parent="Theme.AppCompat.Light" />
+	<style name="BlurifyAppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
 	<!-- Application theme. -->
 	<style name="BlurifyAppTheme" parent="BlurifyAppBaseTheme">
