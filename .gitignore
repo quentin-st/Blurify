@@ -19,6 +19,7 @@ Thumbs.db
 # Crashlytics export string
 com_crashlytics_export_strings.xml
 crashlytics.properties
+fabric.properties
 crashlytics-build.properties
 
 # Additionnal files
