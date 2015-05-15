@@ -22,3 +22,9 @@
 
 # Optimize build time
 -keep class com.crashlytics.** { *; }
+
+# Fix issue with RenderScript
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keep class android.support.v8.renderscript.** { *; }
