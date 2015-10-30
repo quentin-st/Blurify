@@ -19,7 +19,7 @@
 	<string name="blur_amount">Grad der Unschärfe</string>
 	<string name="contribute">Mitwirken</string>
 	<string name="about">Über</string>
-	<string name="contribute_text">Blurify ist Open Source! Falls die App besser werden soll, kannst du bei GitHub mithelfen.</string>
+	<string name="contribute_text">Blurify ist quelloffen! Falls die App besser werden soll, sie können bei GitHub mithelfen.</string>
 	<string name="contribute_go">GitHub öffnen</string>
 	<string name="version">Version</string>
     <string name="selective_focus_size">Größe des gezielten Fokus</string>
