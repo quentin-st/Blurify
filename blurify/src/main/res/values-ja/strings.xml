@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources><string name="photo_saved_as">"として画像を保存する "</string>
     <string name="error_save_photo">保存中にエラーが発生しました…</string>
     <string name="wallpaper_set">壁紙に設定しました！</string>
@@ -21,4 +21,6 @@
     <string name="app_name">Blurify</string>
     <string name="crop">トリミング</string>
     <string name="blur_amount">ぼかしの強弱</string>
+	<string name="note">アプリを評価する</string>
+    <string name="about">アプリについて</string>
 	</resources>
