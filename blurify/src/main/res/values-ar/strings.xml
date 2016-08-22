@@ -1,2 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">الغائم</string>
+    <string name="photo_saved_as">"تم حفظ الصورة بأسم "</string>
+    <string name="error_save_photo">حدث خطأ في أثناء حفظ الصورة…</string>
+    <string name="wallpaper_set">تم وضعها كخلفية!</string>
+    <string name="wallpaper_error">حدث خطأ أثناء وضع الصورة كخلفية…</string>
+    <string name="pick_photo">أختر صورة</string>
+    <string name="crop">قص</string>
+    <string name="rotate">تغيير الإتجاه</string>
+    <string name="set_wallpaper">تعيين كخلفية</string>
+    <string name="save">حفظ</string>
+    <string name="err_import">خطأ في أثناء جلب الصورة…</string>
+    <string name="note">ملاحظة عن التطبيق</string>
+    <string name="note_txt">إذا أعجبك التطبيق, هل يمككنا أخذ من دقيقة من وقتك الثمين لإضافة ملاحظاتك في المتجر ؟ شكراً !</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="notnow">ليس الآن</string>
+	<string name="selective_focus">إنتقاء التحديد</string>
+	<string name="blur_amount">كمية الغشاوة</string>
+	<string name="selective_focus_size">حجم الإنتقاء</string>
+	<string name="contribute">المساهمة</string>
+	<string name="about">حول</string>
+	<string name="contribute_text">الغائم الآن مفتوح المصدر! إذا كنت تريد تحسين عمل التطبيق, يمكنك المساهمة على GitHub</string>
+	<string name="contribute_go">فتح في GitHub</string>
+	<string name="version">الإصدار</string>
+    </resources>
