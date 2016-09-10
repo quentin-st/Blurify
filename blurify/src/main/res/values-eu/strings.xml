@@ -1,2 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">Lausotu</string>
+    <string name="photo_saved_as">"Argazkia honela gorde da "</string>
+    <string name="error_save_photo">Errorea argazkia gordetzean…</string>
+    <string name="wallpaper_set">Horma-irudia ezarri da!</string>
+    <string name="wallpaper_error">Errorea horma-irudia ezartzean…</string>
+    <string name="pick_photo">Hautatu argazkia</string>
+    <string name="crop">Moztu</string>
+    <string name="rotate">Biratu</string>
+    <string name="set_wallpaper">Ezarri horma-irudi gisa</string>
+    <string name="save">Gorde</string>
+    <string name="err_import">Errorea argazkia inportatzean…</string>
+    <string name="note">Nabarmendu aplikazioa</string>
+    <string name="note_txt">Aplikazioa gustuko baduzu, Google Play dendan nabarmenduko al zenuke? Eskerrik asko!</string>
+    <string name="yes">Bai</string>
+    <string name="no">Ez</string>
+    <string name="notnow">Orain ez</string>
+	<string name="selective_focus">Foku selektiboa</string>
+	<string name="blur_amount">Lausotze kopurua</string>
+	<string name="selective_focus_size">Foku selektiboaren tamaina</string>
+	<string name="contribute">Parte hartu</string>
+	<string name="about">Honi buruz</string>
+	<string name="contribute_text">Lausotu orain librea da! Aplikazioa hobetzen lagundu nahi baduzu, GitHub bidez egin dezakezu</string>
+	<string name="contribute_go">Ireki GitHuben</string>
+	<string name="version">Bertsioa</string>
+    </resources>
