@@ -1,15 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources><string name="app_name">Blurify</string>
     <string name="photo_saved_as">"Bild als … gespeichert "</string>
-    <string name="error_save_photo">Fehler beim Speichern des Bildes</string>
+    <string name="error_save_photo">Fehler beim Speichern des Fotos …</string>
     <string name="wallpaper_set">Wallpaper geändert!</string>
-    <string name="wallpaper_error">Fehler beim Ändern des Wallpapers</string>
+    <string name="wallpaper_error">Fehler beim Ändern des Hintergrundbilds …</string>
     <string name="pick_photo">Bild wählen</string>
     <string name="crop">Zuschneiden</string>
     <string name="rotate">Drehen</string>
     <string name="set_wallpaper">Als Wallpaper einstellen</string>
     <string name="save">Speichern</string>
-    <string name="err_import">Fehler beim Importieren des Bildes</string>
+    <string name="err_import">Fehler beim Importieren des Bildes …</string>
     <string name="note">App bewerten</string>
     <string name="note_txt">Wenn dir die App gefällt, würde ich mich sehr über eine Bewertung bei Google Play freuen. Vielen Dank!</string>
     <string name="yes">Ja</string>
@@ -19,7 +19,7 @@
 	<string name="blur_amount">Grad der Unschärfe</string>
 	<string name="contribute">Mitwirken</string>
 	<string name="about">Über</string>
-	<string name="contribute_text">Blurify ist quelloffen! Falls die App besser werden soll, sie können bei GitHub mithelfen.</string>
+	<string name="contribute_text">Blurify ist jetzt Open-Source! Wenn Sie die App besser machen möchten, können Sie auf GitHub mithelfen.</string>
 	<string name="contribute_go">GitHub öffnen</string>
 	<string name="version">Version</string>
     <string name="selective_focus_size">Größe des gezielten Fokus</string>
