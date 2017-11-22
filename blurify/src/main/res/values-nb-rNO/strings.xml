@@ -1,2 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Bilde lagret som</string>
+    <string name="error_save_photo">Feil ved lagring av bilde…</string>
+    <string name="wallpaper_set">Bakgrunnsbilde satt.</string>
+    <string name="wallpaper_error">Feil under tillegg av bakgrunnsbilde…</string>
+    <string name="pick_photo">Velg bilde</string>
+    <string name="crop">Beskjær</string>
+    <string name="rotate">Roter</string>
+    <string name="set_wallpaper">Bruk som bakgrunnsbilde</string>
+    <string name="save">Lagre</string>
+    <string name="err_import">Feil ved import av bilde…</string>
+    <string name="note">Vurder programmet</string>
+    <string name="note_txt">Hvis du liker programmet, ta deg tid til å vurdere det på Google Play.</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nei</string>
+    <string name="notnow">Ikke nå</string>
+	<string name="selective_focus">Selektiv fokus</string>
+	<string name="blur_amount">Tilsløringsmengde</string>
+	<string name="selective_focus_size">Selektiv fokusstørrelse</string>
+	<string name="contribute">Bidra</string>
+	<string name="about">Om</string>
+	<string name="contribute_text">Blurify er nå fri programvare! Du kan forbedre det på GitHub.</string>
+	<string name="contribute_go">Åpne på GitHub</string>
+	<string name="version">Versjon</string>
+    </resources>
