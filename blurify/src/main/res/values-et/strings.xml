@@ -2,16 +2,16 @@
 <resources><string name="app_name">Blurify</string>
     <string name="photo_saved_as">Foto salvestati nimega</string>
     <string name="error_save_photo">Viga foto salvestamisel…</string>
-    <string name="wallpaper_set">Taustapilt seatud!</string>
-    <string name="wallpaper_error">Viga taustapildi seadmisel…</string>
+    <string name="wallpaper_set">Uus taustapilt kasutusel.</string>
+    <string name="wallpaper_error">Viga taustapildi rakendamisel…</string>
     <string name="pick_photo">Vali foto</string>
     <string name="crop">Kärbi</string>
     <string name="rotate">Pööra</string>
     <string name="set_wallpaper">Määra taustpildiks</string>
     <string name="save">Salvesta</string>
     <string name="err_import">Viga foto importimisel…</string>
-    <string name="note">Märgi rakendus</string>
-    <string name="note_txt">Kui sulle rakendus meelib, siis palun leia minut ta märkimiseks Google Plays. Aitähh!</string>
+    <string name="note">Hinda rakendust</string>
+    <string name="note_txt">Kui sulle meelib see rakendus, siis palun leia minut ta hindamiseks Google Plays. Aitähh.</string>
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="notnow">Mitte praegu</string>
@@ -20,7 +20,7 @@
 	<string name="selective_focus_size">Valikulise fookuse suurus</string>
 	<string name="contribute">Aita kaasa</string>
 	<string name="about">Info</string>
-	<string name="contribute_text">Blurify on nüüd avatud lähtekoodiga! Kui soovid teha rakendust paremaks, siis aita GitHubis kaasa</string>
+	<string name="contribute_text">Blurify on nüüd copyleft litsentsiga tasuta tarkvara! Löö GitHubis kaasa rakenduse paremaks tegemisel.</string>
 	<string name="contribute_go">Ava GitHubis</string>
 	<string name="version">Versioon</string>
     </resources>
