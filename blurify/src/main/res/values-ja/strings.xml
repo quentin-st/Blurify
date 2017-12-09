@@ -3,7 +3,7 @@
     <string name="error_save_photo">保存中にエラーが発生しました…</string>
     <string name="wallpaper_set">新しい壁紙を使用中。</string>
     <string name="wallpaper_error">壁紙の適用中にエラーが発生しました…</string>
-    <string name="pick_photo">画像を選ぶ</string>
+    <string name="pick_photo">写真を選ぶ</string>
     <string name="rotate">回転</string>
     <string name="set_wallpaper">壁紙として設定する</string>
     <string name="save">保存</string>
@@ -11,16 +11,16 @@
     <string name="note_txt">このアプリを気に入ってくれた場合、Playストアで評価していただけますか? ありがとうございます。</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
-    <string name="notnow">いまはいいです</string>
+    <string name="notnow">後で</string>
 	<string name="selective_focus">フォーカスを選ぶ</string>
-	<string name="selective_focus_size">フォーカスのサイズを選んでください</string>
-	<string name="contribute">寄付する</string>
+	<string name="selective_focus_size">フォーカスのサイズを選ぶ</string>
+	<string name="contribute">貢献する</string>
 	<string name="contribute_text">Blurify はコピーレフトの自由ソフトウェアになりました。GitHub 上で貢献して改善できます。</string>
 	<string name="contribute_go">GitHubを開く</string>
 	<string name="version">バージョン</string>
     <string name="app_name">Blurify</string>
     <string name="crop">トリミング</string>
-    <string name="blur_amount">ぼかしの強弱</string>
+    <string name="blur_amount">ぼかしの量</string>
 	<string name="note">アプリを評価する</string>
     <string name="about">アプリについて</string>
 	</resources>
