@@ -11,7 +11,7 @@
     <string name="save">储存</string>
     <string name="err_import">导入图片时出现问题…</string>
     <string name="note">为应用评分</string>
-    <string name="note_txt">你如果喜欢本应用，可否在Google Play上打个分？谢谢。</string>
+    <string name="note_txt">如果你喜欢本应用，你可以在Google Play上为它打个分吗？谢谢。</string>
     <string name="yes">可以</string>
     <string name="no">不了</string>
     <string name="notnow">迟点再说</string>
