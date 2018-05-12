@@ -2,7 +2,7 @@
 <resources><string name="app_name">Blurify</string>
     <string name="photo_saved_as">Foto opgeslagen als</string>
     <string name="error_save_photo">Er is een fout opgetreden tijdens het opslaan…</string>
-    <string name="wallpaper_set">Bureaubladachtergrond ingesteld!</string>
+    <string name="wallpaper_set">Nieuwe bureaubladachtergrond ingesteld.</string>
     <string name="wallpaper_error">Er is een fout opgetreden tijdens het instellen…</string>
     <string name="pick_photo">Foto selecteren</string>
     <string name="crop">Bijsnijden</string>
@@ -20,7 +20,7 @@
 	<string name="selective_focus_size">Grootte van selectieve focus</string>
 	<string name="contribute">Bijdragen</string>
 	<string name="about">Over</string>
-	<string name="contribute_text">Blurify is nu open bron-software! Als u de app wilt verbeteren, dan kunt u bijdragen op GitHub.</string>
+	<string name="contribute_text">Blurify is nu vrije software! Als u de app wilt verbeteren, dan kunt u bijdragen op GitHub.</string>
 	<string name="contribute_go">GitHub-projectpagina openen</string>
 	<string name="version">Versie</string>
     </resources>
