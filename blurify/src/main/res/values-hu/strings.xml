@@ -1,2 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Kép elmentve, mint</string>
+    <string name="error_save_photo">Hiba a kép mentése közben…</string>
+    <string name="wallpaper_set">Az új háttérkép használatban van.</string>
+    <string name="wallpaper_error">Hiba a háttérkép beállításakor…</string>
+    <string name="pick_photo">Kép választása</string>
+    <string name="crop">Vágás</string>
+    <string name="rotate">Forgatás</string>
+    <string name="set_wallpaper">Beállítás háttérképnek</string>
+    <string name="save">Mentés</string>
+    <string name="err_import">Hiba a kép importálása közben…</string>
+    <string name="note">Értékeld az alkalmazást</string>
+    <string name="note_txt">Ha tetszik az alkalmazás, tudnál egy percet szánni rá, hogy értékeld a Google Play-en? Köszönjük.</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="notnow">Nem most</string>
+	<string name="selective_focus">Szelektív fókusz</string>
+	<string name="blur_amount">Elmosás értéke</string>
+	<string name="selective_focus_size">Szelektív fókusz mérete</string>
+	<string name="contribute">Közreműködés</string>
+	<string name="about">Névjegy</string>
+	<string name="contribute_text">A Bulrify most már szabad szoftver! Vegyél részt a fejlesztésében a GitHub-on.</string>
+	<string name="contribute_go">Megnyitás a GitHub-on</string>
+	<string name="version">Verzió</string>
+    </resources>
