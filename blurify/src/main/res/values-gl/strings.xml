@@ -1,2 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Imaxe gardada como</string>
+    <string name="error_save_photo">Produciuse un erro mentres estábase a garda-la imaxe…</string>
+    <string name="wallpaper_set">Novo fondo da pantalla en uso.</string>
+    <string name="wallpaper_error">Produciuse un erro ó aplica-lo fondo da pantalla…</string>
+    <string name="pick_photo">Escolle imaxe</string>
+    <string name="crop">Retrincar</string>
+    <string name="rotate">Xirar</string>
+    <string name="set_wallpaper">Estabelecer coma fondo da pantalla</string>
+    <string name="save">Gardar</string>
+    <string name="err_import">Produciuse un erro ó importa-la imaxe…</string>
+    <string name="note">Cualifica a aplicación</string>
+    <string name="note_txt">Se che gosta a aplicación, poderías investir un intre para cualificala na Google Play\? Grazas.</string>
+    <string name="yes">Si</string>
+    <string name="no">Non</string>
+    <string name="notnow">Agora non</string>
+	<string name="selective_focus">Enfoque selectivo</string>
+	<string name="blur_amount">Cantidade do desenfoque</string>
+	<string name="selective_focus_size">Tamaño do enfoque selectivo</string>
+	<string name="contribute">Contribuír</string>
+	<string name="about">Acerca de</string>
+	<string name="contribute_text">Blurify xa é de software ceibe ou libre copyleft! Contribúe no GitHub para melloralo.</string>
+	<string name="contribute_go">Abrir no GitHub</string>
+	<string name="version">Versión</string>
+    </resources>
