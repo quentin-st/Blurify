@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">Blurifyfdsa</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blurify</string>
     <string name="photo_saved_as">Foto gespeichert als</string>
     <string name="error_save_photo">Fehler beim Speichern des Fotos …</string>
     <string name="wallpaper_set">Neues Hintergrundbild wird verwendet.</string>
@@ -15,12 +16,12 @@
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="notnow">Nicht jetzt</string>
-	<string name="selective_focus">Gezielter Fokus</string>
-	<string name="blur_amount">Grad der Unschärfe</string>
-	<string name="contribute">Mitwirken</string>
-	<string name="about">Über</string>
-	<string name="contribute_text">Blurify ist jetzt Copyleft Libre Software! Tragen Sie auf GitHub zur Verbesserung bei.</string>
-	<string name="contribute_go">GitHub öffnen</string>
-	<string name="version">Version</string>
+    <string name="selective_focus">Gezielter Fokus</string>
+    <string name="blur_amount">Grad der Unschärfe</string>
+    <string name="contribute">Mitwirken</string>
+    <string name="about">Über</string>
+    <string name="contribute_text">Blurify ist jetzt Copyleft Libre Software! Tragen Sie auf GitHub zur Verbesserung bei.</string>
+    <string name="contribute_go">GitHub öffnen</string>
+    <string name="version">Version</string>
     <string name="selective_focus_size">Größe des gezielten Fokus</string>
-	</resources>
+</resources>
