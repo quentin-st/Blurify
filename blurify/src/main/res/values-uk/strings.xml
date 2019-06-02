@@ -1,2 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Фото збережене як</string>
+    <string name="error_save_photo">Помилка під час збереження фото…</string>
+    <string name="wallpaper_set">Використовується нова шпалера.</string>
+    <string name="wallpaper_error">Помилка при застосуванні шпалери…</string>
+    <string name="pick_photo">Обери фото</string>
+    <string name="crop">Обрізати</string>
+    <string name="rotate">Повернути</string>
+    <string name="set_wallpaper">Поставити на шпалери</string>
+    <string name="save">Зберегти</string>
+    <string name="err_import">Помилка під час імпортування фото…</string>
+    <string name="note">Оціни застосунок</string>
+    <string name="note_txt">Якщо застосунок тобі до вподоби, будь ласка оціни його у Google Play. Дякую.</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="notnow">Не зараз</string>
+    <string name="selective_focus">Вибірковий фокус</string>
+    <string name="blur_amount">Кількість розмиття</string>
+    <string name="selective_focus_size">Вибірковий розмір фокусу</string>
+    <string name="contribute">Допомогти проєктові</string>
+    <string name="about">Про застосунок</string>
+</resources>
