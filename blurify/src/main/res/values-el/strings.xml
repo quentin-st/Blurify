@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Η φωτογραφία αποθηκεύτηκε ως</string>
+    <string name="error_save_photo">Σφάλμα κατά την αποθήκευση φωτογραφίας…</string>
+    <string name="wallpaper_set">Νέα ταπετσαρία σε χρήση.</string>
+    <string name="wallpaper_error">Σφάλμα κατά την εφαρμογή ταπετσαρίας…</string>
+    <string name="pick_photo">Διαλέξτε φωτογραφία</string>
+    <string name="rotate">Περιστροφή</string>
+    <string name="set_wallpaper">Ορισμός ως ταπετσαρία</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="err_import">Παρουσιάστηκε σφάλμα κατά την εισαγωγή φωτογραφίας…</string>
+    <string name="note">Αξιολογήστε την εφαρμογή</string>
+</resources>
