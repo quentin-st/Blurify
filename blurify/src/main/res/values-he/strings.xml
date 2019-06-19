@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">טשטושון</string>
+    <string name="photo_saved_as">התמונה נשמרה בשם</string>
+    <string name="error_save_photo">שגיאה בשמירת התמונה…</string>
+    <string name="wallpaper_set">תמונת רקע חדשה בשימוש.</string>
+    <string name="wallpaper_error">שגיאה בהחלת תמונת הרקע…</string>
+    <string name="pick_photo">בחירת תמונה</string>
+    <string name="crop">חיתוך</string>
+    <string name="rotate">הטיה</string>
+    <string name="set_wallpaper">הגדרה כתמונת רקע</string>
+    <string name="save">שמירה</string>
+    <string name="err_import">שגיאה בייבוא התמונה…</string>
+    <string name="note">דירוג היישומון</string>
+    <string name="note_txt">אם היישומון נושא חן בעיניך, נוכל לבקש ממך להקדיש רגע ולדרג אותו ב־Google Play\? תודה רבה לך.</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="notnow">לא כעת</string>
+    <string name="selective_focus">מיקוד בררני</string>
+    <string name="blur_amount">כמות טשטוש</string>
+    <string name="selective_focus_size">גודל מיקוד בררני</string>
+    <string name="contribute">תרומה</string>
+    <string name="about">על אודות</string>
+    <string name="contribute_text">טשטושון (Blurify) מוגש במסגרת תכנה חופשית עם זכויות יוצרים מתירניות! ניתן לתרום ל־GitHub ולשפר אותו.</string>
+    <string name="contribute_go">פתיחה ב־GitHub</string>
+    <string name="version">גרסה</string>
+</resources>
