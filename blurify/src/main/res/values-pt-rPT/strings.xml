@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="save">Guardar</string>
+    <string name="photo_saved_as">Foto guardada como</string>
+    <string name="wallpaper_set">Novo fundo em utilização.</string>
+    <string name="no">Não</string>
+    <string name="pick_photo">Escolher foto</string>
+    <string name="set_wallpaper">Definir como fundo</string>
+    <string name="selective_focus_size">Tamanho do foco seletivo</string>
+    <string name="yes">Sim</string>
+    <string name="version">Versão</string>
+    <string name="contribute_go">Abrir no GitHub</string>
+    <string name="error_save_photo">Erro ao guardar a foto…</string>
+    <string name="notnow">Agora não</string>
+    <string name="about">Sobre</string>
+    <string name="contribute_text">Blurify é agora um software livre \"copyleft\"! Contribua no GitHub para a melhorar.</string>
+    <string name="wallpaper_error">Erro ao aplicar o fundo…</string>
+    <string name="rotate">Rodar</string>
+    <string name="app_name">Blurify</string>
+    <string name="note_txt">Se gosta da aplicação, seria possível classificá-la no Google Play\? Obrigado.</string>
+    <string name="crop">Recortar</string>
+    <string name="note">Classifique a aplicação</string>
+    <string name="selective_focus">Focos seletivo</string>
+    <string name="blur_amount">Qt. de ofuscar</string>
+    <string name="contribute">Contribuir</string>
+    <string name="err_import">Erro ao importar a foto…</string>
+</resources>
