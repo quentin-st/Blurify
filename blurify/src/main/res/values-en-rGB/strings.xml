@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="save">Save</string>
+    <string name="photo_saved_as">Photo saved as</string>
+    <string name="wallpaper_set">New wallpaper in use.</string>
+    <string name="no">No</string>
+    <string name="pick_photo">Pick photo</string>
+    <string name="set_wallpaper">Set as wallpaper</string>
+    <string name="selective_focus_size">Selective focus size</string>
+    <string name="yes">Yes</string>
+    <string name="version">Version</string>
+    <string name="contribute_go">Open on GitHub</string>
+    <string name="error_save_photo">Error while saving photo…</string>
+    <string name="notnow">Not now</string>
+    <string name="about">About</string>
+    <string name="contribute_text">Blurify is now copyleft libre software! Contribute on GitHub to improve it.</string>
+    <string name="wallpaper_error">Error applying wallpaper…</string>
+    <string name="rotate">Rotate</string>
+    <string name="app_name">Blurify</string>
+    <string name="note_txt">If you like the app, could you take a minute to rate it on Google Play\? Thank you.</string>
+    <string name="crop">Crop</string>
+    <string name="note">Rate the app</string>
+    <string name="selective_focus">Selective focus</string>
+    <string name="blur_amount">Blur amount</string>
+    <string name="contribute">Contribute</string>
+    <string name="err_import">Error while importing photo…</string>
+</resources>
