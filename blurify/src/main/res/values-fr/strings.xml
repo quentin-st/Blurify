@@ -3,7 +3,7 @@
     <string name="app_name">Blurify</string>
     <string name="photo_saved_as">Photo enregistrée sous </string>
     <string name="error_save_photo">Erreur lors de l\'enregistrement de la photo…</string>
-    <string name="wallpaper_set">Fond d\'écran appliqué avec succès !</string>
+    <string name="wallpaper_set">Nouveau fond d\'écran utilisé.</string>
     <string name="wallpaper_error">Impossible d\'appliquer le fond d\'écran…</string>
     <string name="pick_photo">Sélectionner une photo</string>
     <string name="crop">Rogner</string>
@@ -21,7 +21,7 @@
     <string name="selective_focus_size">Taille du focus</string>
     <string name="contribute">Contribuer</string>
     <string name="about">A propos</string>
-    <string name="contribute_text">Blurify est maintenant open-source ! Si vous voulez rendre l\'application meilleure, n\'hésitez pas à contribuer sur GitHub</string>
+    <string name="contribute_text">Blurify est maintenant un logiciel libre copyleft ! Contribuez sur GitHub pour l\'améliorer.</string>
     <string name="contribute_go">Ouvrir sur GitHub</string>
     <string name="version">Version</string>
 </resources>
