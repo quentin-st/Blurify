@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Blurify</string>
+    <string name="photo_saved_as">Slika spremljena kao</string>
+    <string name="error_save_photo">Greška tijekom spremanja slike …</string>
+    <string name="wallpaper_set">Koristi se nova slika pozadine.</string>
+    <string name="wallpaper_error">Greška tijekom primjene slike pozadine …</string>
+    <string name="pick_photo">Odaberi sliku</string>
+    <string name="crop">Izreži</string>
+    <string name="rotate">Okreni</string>
+    <string name="set_wallpaper">Postavi kao sliku pozadine</string>
+    <string name="save">Spremi</string>
+    <string name="err_import">Greška tijekom uvoza slike …</string>
+    <string name="note">Ocijeni program</string>
+    <string name="note_txt">Ako ti se program sviđa, uzmi minutu vremena i ocijeni je na Google Playu. Hvala.</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="notnow">Ne sada</string>
+    <string name="selective_focus">Odabrano područje</string>
+    <string name="blur_amount">Količina zamućivanja</string>
+    <string name="selective_focus_size">Veličina odabranog područja</string>
+    <string name="contribute">Doprinesi</string>
+    <string name="about">Informacije</string>
+    <string name="contribute_text">Blurify je sada slobodan softver sa copyleft licencom! Doprinesi poboljšanju programa na GitHub-u.</string>
+    <string name="contribute_go">Otvori na GitHub-u</string>
+    <string name="version">Verzija</string>
+</resources>
