@@ -20,7 +20,7 @@
     <string name="blur_amount">Degré de floutage</string>
     <string name="selective_focus_size">Taille du focus</string>
     <string name="contribute">Contribuer</string>
-    <string name="about">A propos</string>
+    <string name="about">À propos</string>
     <string name="contribute_text">Blurify est maintenant un logiciel libre copyleft ! Contribuez sur GitHub pour l\'améliorer.</string>
     <string name="contribute_go">Ouvrir sur GitHub</string>
     <string name="version">Version</string>
