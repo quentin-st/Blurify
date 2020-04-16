@@ -11,4 +11,17 @@
     <string name="save">Αποθήκευση</string>
     <string name="err_import">Παρουσιάστηκε σφάλμα κατά την εισαγωγή φωτογραφίας…</string>
     <string name="note">Αξιολογήστε την εφαρμογή</string>
+    <string name="version">Έκδοση</string>
+    <string name="contribute_go">Άνοιγμα στο GitHub</string>
+    <string name="contribute_text">Το Blurify είναι πλέον ανοιχτό λογισμικό! Συνεισφέρετε στο GitHub για να το βελτιώσετε.</string>
+    <string name="about">Σχετικά</string>
+    <string name="contribute">Συνεισφορά</string>
+    <string name="selective_focus_size">Επιλογή μεγέθους εστίασης</string>
+    <string name="blur_amount">Ποσοστό θαμπώματος</string>
+    <string name="selective_focus">Εστίαση σε</string>
+    <string name="notnow">Όχι τώρα</string>
+    <string name="no">Όχι</string>
+    <string name="yes">Ναι</string>
+    <string name="note_txt">Εάν σας αρέσει η εφαρμογή, αφιερώστε ένα λεπτό για αξιολόγηση στο Google Play; Σας ευχαριστώ.</string>
+    <string name="crop">Περικοπή</string>
 </resources>
