@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="version">Versione</string>
+    <string name="contribute_go">Apri su GitHub</string>
+    <string name="contribute_text">Blurify è ora un software libero e copyleft! Contribuisci su GitHub per migliorarlo.</string>
+    <string name="about">Informazioni</string>
+    <string name="contribute">Contribuisci</string>
+    <string name="selective_focus_size">Dimensione della messa a fuoco selettiva</string>
+    <string name="blur_amount">Livello di sfocatura</string>
+    <string name="selective_focus">Messa a fuoco selettiva</string>
+    <string name="notnow">Non adesso</string>
+    <string name="no">No</string>
+    <string name="yes">Sì</string>
+    <string name="note_txt">Se ti piace l\'applicazione, puoi prenderti un minuto per valutarla su Google Play\? Grazie.</string>
+    <string name="note">Valuta l\'applicazione</string>
+    <string name="err_import">Errore durante l\'importazione della foto…</string>
+    <string name="save">Salva</string>
+    <string name="set_wallpaper">Imposta come sfondo</string>
+    <string name="rotate">Ruota</string>
+    <string name="crop">Ritaglia</string>
+    <string name="pick_photo">Scegli una foto</string>
+    <string name="wallpaper_error">Errore durante l\'applicazione dello sfondo…</string>
+    <string name="wallpaper_set">Nuovo sfondo in uso.</string>
+    <string name="error_save_photo">Errore durante il salvataggio della foto…</string>
+    <string name="photo_saved_as">Foto salvata come</string>
+    <string name="app_name">Blurify</string>
+</resources>
