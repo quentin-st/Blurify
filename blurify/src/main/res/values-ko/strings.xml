@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="note_txt">앱이 마음에 들면 구글플레이에서 잠시 평가해 주시겠습니까\? 감사합니다.</string>
+    <string name="contribute_text">Blurify는 이제 copyleft libre 소프트웨어입니다! GitHub에 기여하여 개선하십시오.</string>
+    <string name="version">버전</string>
+    <string name="contribute_go">GitHub에서 열기</string>
+    <string name="about">정보</string>
+    <string name="contribute">기여</string>
+    <string name="selective_focus_size">선택적 초점 크기</string>
+    <string name="blur_amount">흐림 정도</string>
+    <string name="selective_focus">선택적 초점</string>
+    <string name="no">아니요</string>
+    <string name="yes">예</string>
+    <string name="note">앱 평가</string>
+    <string name="err_import">사진 가져오는 중 오류…</string>
+    <string name="save">저장</string>
+    <string name="set_wallpaper">배경화면으로 설정</string>
+    <string name="rotate">회전</string>
+    <string name="crop">자르기</string>
+    <string name="pick_photo">사진 선택</string>
+    <string name="wallpaper_error">배경화면 적용하는 중 오류…</string>
+    <string name="wallpaper_set">사용중인 새 배경화면.</string>
+    <string name="error_save_photo">사진 저장하는 중 오류 …</string>
+    <string name="photo_saved_as">사진 다른 이름으로 저장</string>
+    <string name="app_name">Blurify</string>
+</resources>
