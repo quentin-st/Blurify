@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Blurify</string>
+    <string name="version">Версия</string>
+    <string name="contribute_go">Открыть на GitHub</string>
+    <string name="about">О программе</string>
+    <string name="notnow">Не сейчас</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="note">Оценить приложение</string>
+    <string name="save">Сохранить</string>
+    <string name="set_wallpaper">Установить как обои</string>
+    <string name="rotate">Повернуть</string>
+    <string name="crop">Обрезать</string>
+    <string name="pick_photo">Выбрать фото</string>
+</resources>
