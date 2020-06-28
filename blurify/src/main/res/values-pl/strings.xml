@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Blurify</string>
-    <string name="photo_saved_as">Zdjęcie zapisane jako</string>
+    <string name="photo_saved_as">Zapisano zdjęcie jako</string>
     <string name="error_save_photo">Błąd podczas zapisywania zdjęcia…</string>
-    <string name="wallpaper_set">Nowa tapeta w użyciu.</string>
+    <string name="wallpaper_set">Nowe tło w użyciu.</string>
     <string name="pick_photo">Wybierz zdjęcie</string>
-    <string name="rotate">Rotuj</string>
-    <string name="set_wallpaper">Ustaw jako tapeta</string>
+    <string name="rotate">Obróć</string>
+    <string name="set_wallpaper">Ustaw jako tło</string>
     <string name="save">Zapisz</string>
     <string name="err_import">Błąd podczas importowania zdjęcia…</string>
     <string name="note">Oceń aplikację</string>
@@ -14,4 +14,14 @@
     <string name="no">Nie</string>
     <string name="notnow">Nie teraz</string>
     <string name="version">Wersja</string>
+    <string name="contribute_go">Otwórz na GitHub</string>
+    <string name="contribute_text">Blurify to teraz darmowe oprogramowanie na licencji copyleft! Wnieś wkład w GitHub, aby je ulepszyć.</string>
+    <string name="about">O</string>
+    <string name="contribute">Wesprzyj</string>
+    <string name="selective_focus_size">Rozmiar selektywnego ustawiania ostrości</string>
+    <string name="blur_amount">Ilość rozmycia</string>
+    <string name="selective_focus">Selektywne ustawianie ostrości</string>
+    <string name="note_txt">Jeśli podoba Ci się ta aplikacja, czy możesz poświęcić minutę na jej ocenę w Google Play\? Dziękuję.</string>
+    <string name="crop">Przytnij</string>
+    <string name="wallpaper_error">Błąd podczas ustawiania tła…</string>
 </resources>
