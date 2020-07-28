@@ -2,15 +2,26 @@
 <resources>
     <string name="app_name">Blurify</string>
     <string name="version">Версия</string>
-    <string name="contribute_go">Открыть на GitHub</string>
+    <string name="contribute_go">Открыть в GitHub</string>
     <string name="about">О программе</string>
     <string name="notnow">Не сейчас</string>
     <string name="no">Нет</string>
     <string name="yes">Да</string>
-    <string name="note">Оценить приложение</string>
+    <string name="note">Оцените приложение</string>
     <string name="save">Сохранить</string>
     <string name="set_wallpaper">Установить как обои</string>
     <string name="rotate">Повернуть</string>
     <string name="crop">Обрезать</string>
-    <string name="pick_photo">Выбрать фото</string>
+    <string name="pick_photo">Выберите фото</string>
+    <string name="contribute_text">Blurify теперь является свободным ПО! Вносите вклад на GitHub\'е, чтобы улучшить его.</string>
+    <string name="contribute">Внести вклад</string>
+    <string name="selective_focus_size">Выборочный размер фокуса</string>
+    <string name="blur_amount">Количество размытия</string>
+    <string name="selective_focus">Выборочный фокус</string>
+    <string name="note_txt">Если приложение вам понравилось, не могли бы вы потратить минутку и оценить его в Google Play\? Спасибочки.</string>
+    <string name="err_import">Произошла ошибка при импотре фото…</string>
+    <string name="wallpaper_error">Произошла ошибка при применении обоев…</string>
+    <string name="wallpaper_set">Обои установлены.</string>
+    <string name="error_save_photo">Произошла ошибка во время сохранения фото…</string>
+    <string name="photo_saved_as">Фото сохранено как</string>
 </resources>
