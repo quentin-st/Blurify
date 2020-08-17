@@ -23,4 +23,5 @@
     <string name="error_save_photo">사진 저장하는 중 오류 …</string>
     <string name="photo_saved_as">사진 다른 이름으로 저장</string>
     <string name="app_name">Blurify</string>
+    <string name="notnow">나중에</string>
 </resources>
