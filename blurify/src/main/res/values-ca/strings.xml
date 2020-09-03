@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="version">Versió</string>
+    <string name="contribute_go">Obre a Github</string>
+    <string name="contribute_text">BLurify és programari lliure copyleft! Contribueix a Github per millorar-lo.</string>
+    <string name="about">Sobre</string>
+    <string name="contribute">Contribuir</string>
+    <string name="selective_focus_size">Tamany del focus selectiu</string>
+    <string name="blur_amount">Desenfocament</string>
+    <string name="selective_focus">Focus selectiu</string>
+    <string name="notnow">Ara no</string>
+    <string name="no">No</string>
+    <string name="yes">Sí</string>
+    <string name="note_txt">Si t\'agrada l\'aplicació, pots dedicar un minut a valorar-la a Google Play\? Gràcies.</string>
+    <string name="note">Puntua l\'aplicació</string>
+    <string name="err_import">Error important la fotografia…</string>
+    <string name="save">Desar</string>
+    <string name="set_wallpaper">Establir com a fons de pantalla</string>
+    <string name="rotate">Rotar</string>
+    <string name="crop">Retallar</string>
+    <string name="pick_photo">Escollir una foto</string>
+    <string name="wallpaper_error">Error instal·lant el fons de pantalla…</string>
+    <string name="wallpaper_set">Nou fons de pantalla en ús.</string>
+    <string name="error_save_photo">Error mentre es guardava la foto…</string>
+    <string name="photo_saved_as">Fotografia desada com</string>
+    <string name="app_name">Blurify</string>
+</resources>
