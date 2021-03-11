@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="version">Versio</string>
+    <string name="contribute_go">Malfermi ĉe GitHub</string>
+    <string name="contribute_text">Blurify nun estas kopilasa libera programaro! Kontribuu ĉe GitHub por plibonigi ĝin.</string>
+    <string name="about">Pri</string>
+    <string name="contribute">Kontribui</string>
+    <string name="selective_focus_size">Grando de selekta fokuso</string>
+    <string name="blur_amount">Kvanto de svageco</string>
+    <string name="selective_focus">Selekta fokuso</string>
+    <string name="notnow">Ne nun</string>
+    <string name="no">Ne</string>
+    <string name="yes">Jes</string>
+    <string name="note_txt">Se vi ŝatas la aplikaĵon, ĉu vi dum unu minuto taksi ĝin en Google Play\? Dankon.</string>
+    <string name="note">Taksi la aplikaĵon</string>
+    <string name="err_import">Eraro pri importado de foto…</string>
+    <string name="save">Konservi</string>
+    <string name="set_wallpaper">Ekranfonigi</string>
+    <string name="rotate">Turni</string>
+    <string name="crop">Stuci</string>
+    <string name="pick_photo">Elektu foton</string>
+    <string name="wallpaper_error">Eraro pri ekuzigo de ekranfono…</string>
+    <string name="wallpaper_set">Nova ekranfono uzata.</string>
+    <string name="error_save_photo">Eraro pri konservado de foto…</string>
+    <string name="photo_saved_as">Foto konservita kiel</string>
+    <string name="app_name">Blurify</string>
+</resources>
