@@ -3,7 +3,7 @@
     <string name="selective_focus_size">Tamaño del foco</string>
     <string name="pick_photo">Seleccionar foto</string>
     <string name="wallpaper_error">Error al aplicar fondo de pantalla…</string>
-    <string name="error_save_photo">Error al guardad la foto…</string>
+    <string name="error_save_photo">Error al guardar la foto…</string>
     <string name="version">Versión</string>
     <string name="contribute_go">Abierto en GitHub</string>
     <string name="contribute_text">Blurify es una app de software libre. Ayúdanos a mejorarla en GitHub.</string>
