@@ -13,11 +13,11 @@
     <string name="yes">Sí</string>
     <string name="note_txt">Si t\'agrada l\'aplicació, pots dedicar un minut a valorar-la a Google Play\? Gràcies.</string>
     <string name="note">Puntua l\'aplicació</string>
-    <string name="err_import">Error important la fotografia…</string>
-    <string name="save">Desar</string>
+    <string name="err_import">S’ha produït un error en importar la foto…</string>
+    <string name="save">Desa</string>
     <string name="set_wallpaper">Establir com a fons de pantalla</string>
-    <string name="rotate">Rotar</string>
-    <string name="crop">Retallar</string>
+    <string name="rotate">Gira</string>
+    <string name="crop">Escapça</string>
     <string name="pick_photo">Escollir una foto</string>
     <string name="wallpaper_error">Error instal·lant el fons de pantalla…</string>
     <string name="wallpaper_set">Nou fons de pantalla en ús.</string>
