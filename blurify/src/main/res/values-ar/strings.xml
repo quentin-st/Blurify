@@ -1,6 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">بلوريفاي</string>
-    <string name="photo_saved_as">"تم حفظ الصورة باسم "</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">بلوريفاي</string>
+    <string name="photo_saved_as">تم حفظ الصورة باسم</string>
     <string name="error_save_photo">حدث خطأ في أثناء حفظ الصورة…</string>
     <string name="wallpaper_set">صورة الخلفية المستعمَلة.</string>
     <string name="wallpaper_error">حدث خطأ أثناء وضع الصورة كخلفية…</string>
@@ -15,12 +16,12 @@
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="notnow">ليس الآن</string>
-	<string name="selective_focus">إنتقاء التحديد</string>
-	<string name="blur_amount">كمية الغشاوة</string>
-	<string name="selective_focus_size">حجم الإنتقاء</string>
-	<string name="contribute">المساهمة</string>
-	<string name="about">عن التطبيق</string>
-	<string name="contribute_text">أصبح تطبيق بلوريفاي الآن حرا ومفتوح المصدر! إذا كنت تريد تحسين عمل التطبيق، يمكنك المساهمة على غيت هب.</string>
-	<string name="contribute_go">فتح في GitHub</string>
-	<string name="version">الإصدار</string>
-    </resources>
+    <string name="selective_focus">إنتقاء التحديد</string>
+    <string name="blur_amount">كمية الغشاوة</string>
+    <string name="selective_focus_size">حجم الإنتقاء</string>
+    <string name="contribute">المساهمة</string>
+    <string name="about">عن التطبيق</string>
+    <string name="contribute_text">أصبح تطبيق بلوريفاي الآن حرا ومفتوح المصدر! إذا كنت تريد تحسين عمل التطبيق، يمكنك المساهمة على غيت هب.</string>
+    <string name="contribute_go">فتح في GitHub</string>
+    <string name="version">الإصدار</string>
+</resources>
