@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Photo saved as </string>
     <string name="error_save_photo">Error while saving photo…</string>
     <string name="wallpaper_set">New wallpaper in use.</string>
@@ -17,14 +16,13 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="notnow">Not now</string>
-	<string name="selective_focus">Selective focus</string>
-	<string name="blur_amount">Blur amount</string>
-	<string name="selective_focus_size">Selective focus size</string>
-	<string name="contribute">Contribute</string>
-	<string name="about">About</string>
-	<string name="contribute_text">Blurify is now copyleft libre software! Contribute on GitHub to improve it.</string>
-	<string name="contribute_go">Open on GitHub</string>
-	<string name="version">Version</string>
+    <string name="selective_focus">Selective focus</string>
+    <string name="blur_amount">Blur amount</string>
+    <string name="selective_focus_size">Selective focus size</string>
+    <string name="contribute">Contribute</string>
+    <string name="about">About</string>
+    <string name="contribute_text">Blurify is now copyleft libre software! Contribute on GitHub to improve it.</string>
+    <string name="contribute_go">Open on GitHub</string>
+    <string name="version">Version</string>
     <string name="i18n_message" translatable="false">It seems the app isn\'t available in your language. Could you help translate it?</string>
-
 </resources>
