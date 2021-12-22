@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">Blurify</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Foto opgeslagen als</string>
     <string name="error_save_photo">Er is een fout opgetreden tijdens het opslaan…</string>
     <string name="wallpaper_set">Nieuwe bureaubladachtergrond ingesteld.</string>
@@ -15,12 +16,12 @@
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="notnow">Niet nu</string>
-	<string name="selective_focus">Selectieve focus</string>
-	<string name="blur_amount">Vervangingswaarde</string>
-	<string name="selective_focus_size">Grootte van selectieve focus</string>
-	<string name="contribute">Bijdragen</string>
-	<string name="about">Over</string>
-	<string name="contribute_text">Blurify is nu vrije software! Als u de app wilt verbeteren, dan kunt u bijdragen op GitHub.</string>
-	<string name="contribute_go">GitHub-projectpagina openen</string>
-	<string name="version">Versie</string>
-    </resources>
+    <string name="selective_focus">Selectieve focus</string>
+    <string name="blur_amount">Vervangingswaarde</string>
+    <string name="selective_focus_size">Grootte van selectieve focus</string>
+    <string name="contribute">Bijdragen</string>
+    <string name="about">Over</string>
+    <string name="contribute_text">Blurify is nu vrije software! Als u de app wilt verbeteren, dan kunt u bijdragen op GitHub.</string>
+    <string name="contribute_go">GitHub-projectpagina openen</string>
+    <string name="version">Versie</string>
+</resources>
