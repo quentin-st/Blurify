@@ -23,5 +23,5 @@
     <string name="crop">Recortar</string>
     <string name="wallpaper_set">Nuevo fondo de pantalla en uso.</string>
     <string name="photo_saved_as">Foto guardada como</string>
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Blurify "</string>
 </resources>
