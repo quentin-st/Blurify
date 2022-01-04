@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">Blurify</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Simpan foto sebagai</string>
     <string name="error_save_photo">Eror saat menyimpan foto…</string>
     <string name="wallpaper_set">Wallpaper baru digunakan.</string>
@@ -15,12 +16,12 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="notnow">Tidak sekarang</string>
-	<string name="selective_focus">Fokus selektif</string>
-	<string name="blur_amount">Jumlah blur</string>
-	<string name="selective_focus_size">Ukuran fokus selektif</string>
-	<string name="contribute">Berkontribusi</string>
-	<string name="about">Tentang</string>
-	<string name="contribute_text">Blurify sekarang adalah perangkat lunak libre copyleft! Ikut berkontribusilah di GitHub untuk memperbaikinya.</string>
-	<string name="contribute_go">Buka Github</string>
-	<string name="version">Versi</string>
-    </resources>
+    <string name="selective_focus">Fokus selektif</string>
+    <string name="blur_amount">Jumlah blur</string>
+    <string name="selective_focus_size">Ukuran fokus selektif</string>
+    <string name="contribute">Berkontribusi</string>
+    <string name="about">Tentang</string>
+    <string name="contribute_text">Blurify sekarang adalah perangkat lunak libre copyleft! Ikut berkontribusilah di GitHub untuk memperbaikinya.</string>
+    <string name="contribute_go">Buka Github</string>
+    <string name="version">Versi</string>
+</resources>
