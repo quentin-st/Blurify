@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="app_name">Blurify</string>
+<resources>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Fotoğraf olarak kaydedildi</string>
     <string name="error_save_photo">Fotoğraf kaydedilirken hata oluştu…</string>
     <string name="wallpaper_set">Yeni duvar kağıdı kullanımda.</string>
