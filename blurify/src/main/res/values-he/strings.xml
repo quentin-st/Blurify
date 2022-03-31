@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">טשטושון</string>
+    <string name="app_name">"טשטושון "</string>
     <string name="photo_saved_as">התמונה נשמרה בשם</string>
     <string name="error_save_photo">שגיאה בשמירת התמונה…</string>
     <string name="wallpaper_set">תמונת רקע חדשה בשימוש.</string>
