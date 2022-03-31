@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Foto gespeichert als</string>
     <string name="error_save_photo">Fehler beim Speichern des Fotos …</string>
     <string name="wallpaper_set">Neues Hintergrundbild wird verwendet.</string>
