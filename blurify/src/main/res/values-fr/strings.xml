@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Flou "</string>
     <string name="photo_saved_as">Photo enregistrée sous </string>
     <string name="error_save_photo">Erreur lors de l\'enregistrement de la photo…</string>
     <string name="wallpaper_set">Nouveau fond d\'écran utilisé.</string>
