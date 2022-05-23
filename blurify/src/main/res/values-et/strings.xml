@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">Blurify</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Foto salvestati nimega</string>
     <string name="error_save_photo">Viga foto salvestamisel…</string>
     <string name="wallpaper_set">Uus taustapilt kasutusel.</string>
@@ -15,12 +16,12 @@
     <string name="yes">Jah</string>
     <string name="no">Ei</string>
     <string name="notnow">Mitte praegu</string>
-	<string name="selective_focus">Valikuline fookus</string>
-	<string name="blur_amount">Hägustamise maht</string>
-	<string name="selective_focus_size">Valikulise fookuse suurus</string>
-	<string name="contribute">Aita kaasa</string>
-	<string name="about">Info</string>
-	<string name="contribute_text">Blurify on nüüd copyleft litsentsiga tasuta tarkvara! Löö GitHubis kaasa rakenduse paremaks tegemisel.</string>
-	<string name="contribute_go">Ava GitHubis</string>
-	<string name="version">Versioon</string>
-    </resources>
+    <string name="selective_focus">Valikuline fookus</string>
+    <string name="blur_amount">Hägustamise maht</string>
+    <string name="selective_focus_size">Valikulise fookuse suurus</string>
+    <string name="contribute">Aita kaasa</string>
+    <string name="about">Info</string>
+    <string name="contribute_text">Blurify on nüüd copyleft litsentsiga tasuta tarkvara! Löö GitHubis kaasa rakenduse paremaks tegemisel.</string>
+    <string name="contribute_go">Ava GitHubis</string>
+    <string name="version">Versioon</string>
+</resources>
