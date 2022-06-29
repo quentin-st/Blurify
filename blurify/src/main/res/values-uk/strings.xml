@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Blurify</string>
-    <string name="photo_saved_as">Фото збережене як</string>
-    <string name="error_save_photo">Помилка під час збереження фото…</string>
+    <string name="app_name">"Blurify "</string>
+    <string name="photo_saved_as">Світлина збережена як</string>
+    <string name="error_save_photo">Помилка під час збереження світлини…</string>
     <string name="wallpaper_set">Використовується нова шпалера.</string>
     <string name="wallpaper_error">Помилка при застосуванні шпалери…</string>
-    <string name="pick_photo">Обери фото</string>
+    <string name="pick_photo">Обери світлину</string>
     <string name="crop">Обрізати</string>
     <string name="rotate">Повернути</string>
     <string name="set_wallpaper">Поставити на шпалери</string>
     <string name="save">Зберегти</string>
-    <string name="err_import">Помилка під час імпортування фото…</string>
+    <string name="err_import">Помилка під час імпортування світлини…</string>
     <string name="note">Оціни застосунок</string>
     <string name="note_txt">Якщо застосунок тобі до вподоби, будь ласка оціни його у Google Play. Дякую.</string>
     <string name="yes">Так</string>
@@ -21,4 +21,7 @@
     <string name="selective_focus_size">Вибірковий розмір фокусу</string>
     <string name="contribute">Допомогти проєктові</string>
     <string name="about">Про застосунок</string>
+    <string name="version">Версія</string>
+    <string name="contribute_text">Тепер Blurify - вільне програмне забезпечення з авторським лівим! Посприяйте на Github для його вдосконалення.</string>
+    <string name="contribute_go">Відкрити на GitHub</string>
 </resources>
