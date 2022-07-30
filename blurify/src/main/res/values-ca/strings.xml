@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="version">Versió</string>
-    <string name="contribute_go">Obre a Github</string>
-    <string name="contribute_text">BLurify és programari lliure copyleft! Contribueix a Github per millorar-lo.</string>
-    <string name="about">Sobre</string>
-    <string name="contribute">Contribuir</string>
-    <string name="selective_focus_size">Tamany del focus selectiu</string>
+    <string name="contribute_go">Obre al GitHub</string>
+    <string name="contribute_text">El Blurify és programari lliure «copyleft»! Contribuïu al GitHub per a millorar-lo.</string>
+    <string name="about">Quant a</string>
+    <string name="contribute">Contribuïu</string>
+    <string name="selective_focus_size">Mida del focus selectiu</string>
     <string name="blur_amount">Desenfocament</string>
     <string name="selective_focus">Focus selectiu</string>
     <string name="notnow">Ara no</string>
     <string name="no">No</string>
     <string name="yes">Sí</string>
-    <string name="note_txt">Si t\'agrada l\'aplicació, pots dedicar un minut a valorar-la a Google Play\? Gràcies.</string>
-    <string name="note">Puntua l\'aplicació</string>
+    <string name="note_txt">Si us agrada l’aplicació, dediqueu un minut a valorar-la al Google Play. Gràcies.</string>
+    <string name="note">Puntua l’aplicació</string>
     <string name="err_import">S’ha produït un error en importar la foto…</string>
     <string name="save">Desa</string>
-    <string name="set_wallpaper">Establir com a fons de pantalla</string>
+    <string name="set_wallpaper">Estableix com a fons de pantalla</string>
     <string name="rotate">Gira</string>
     <string name="crop">Escapça</string>
-    <string name="pick_photo">Escollir una foto</string>
-    <string name="wallpaper_error">Error instal·lant el fons de pantalla…</string>
+    <string name="pick_photo">Escolliu una foto</string>
+    <string name="wallpaper_error">S’ha produït un error en aplicar el fons de pantalla…</string>
     <string name="wallpaper_set">Nou fons de pantalla en ús.</string>
-    <string name="error_save_photo">Error mentre es guardava la foto…</string>
+    <string name="error_save_photo">S’ha produït un error en desar la foto…</string>
     <string name="photo_saved_as">Fotografia desada com</string>
     <string name="app_name">"Blurify "</string>
 </resources>
