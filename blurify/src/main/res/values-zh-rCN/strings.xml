@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="app_name">Blurify</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"模糊 "</string>
     <string name="photo_saved_as">图片储存为</string>
     <string name="error_save_photo">储存图片时出现问题…</string>
     <string name="wallpaper_set">已使用新背景。</string>
@@ -15,12 +16,12 @@
     <string name="yes">可以</string>
     <string name="no">不了</string>
     <string name="notnow">迟点再说</string>
-	<string name="selective_focus">选择性对焦</string>
-	<string name="blur_amount">模糊程度</string>
-	<string name="selective_focus_size">选择性对焦大小</string>
-	<string name="contribute">贡献</string>
-	<string name="about">关于</string>
-	<string name="contribute_text">Blurify已成为一个copyleft的自由软件！只要在GitHub上作出贡献，便能改善应用的功能。</string>
-	<string name="contribute_go">在GitHub上开启</string>
-	<string name="version">版本</string>
-    </resources>
+    <string name="selective_focus">选择性对焦</string>
+    <string name="blur_amount">模糊程度</string>
+    <string name="selective_focus_size">选择性对焦大小</string>
+    <string name="contribute">贡献</string>
+    <string name="about">关于</string>
+    <string name="contribute_text">Blurify已成为一个copyleft的自由软件！只要在GitHub上作出贡献，便能改善应用的功能。</string>
+    <string name="contribute_go">在GitHub上开启</string>
+    <string name="version">版本</string>
+</resources>
