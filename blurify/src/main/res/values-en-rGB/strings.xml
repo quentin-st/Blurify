@@ -16,7 +16,7 @@
     <string name="contribute_text">Blurify is now copyleft libre software! Contribute on GitHub to improve it.</string>
     <string name="wallpaper_error">Error applying wallpaper…</string>
     <string name="rotate">Rotate</string>
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Blurify "</string>
     <string name="note_txt">If you like the app, could you take a minute to rate it on Google Play\? Thank you.</string>
     <string name="crop">Crop</string>
     <string name="note">Rate the app</string>
