@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">بلوريفاي</string>
+    <string name="app_name">"بلوريفاي "</string>
     <string name="photo_saved_as">تم حفظ الصورة باسم</string>
     <string name="error_save_photo">حدث خطأ في أثناء حفظ الصورة…</string>
     <string name="wallpaper_set">صورة الخلفية المستعمَلة.</string>
