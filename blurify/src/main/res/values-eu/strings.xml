@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lausotu</string>
+    <string name="app_name">"Lausotu. "</string>
     <string name="photo_saved_as">Argazkia honela gorde da</string>
     <string name="error_save_photo">Errorea argazkia gordetzean…</string>
     <string name="wallpaper_set">Horma paper berria erabiltzen.</string>
