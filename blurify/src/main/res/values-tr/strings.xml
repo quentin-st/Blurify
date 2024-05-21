@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">"Blurify "</string>
-    <string name="photo_saved_as">Fotoğraf olarak kaydedildi</string>
+    <string name="photo_saved_as">Fotoğraf şu şekilde kaydedildi:</string>
     <string name="error_save_photo">Fotoğraf kaydedilirken hata oluştu…</string>
     <string name="wallpaper_set">Yeni duvar kağıdı kullanımda.</string>
     <string name="wallpaper_error">Duvar kağıdı uygulanırken hata…</string>
@@ -12,16 +12,16 @@
     <string name="save">Kaydet</string>
     <string name="err_import">Fotoğraf içe aktarılırken hata oluştu…</string>
     <string name="note">Uygulamayı değerlendirin</string>
-    <string name="note_txt">Uygulamayı beğendiyseniz, Google Play\'de derecelendirmek için bir dakikanızı ayırabilir misiniz\? Teşekkür ederim.</string>
+    <string name="note_txt">Uygulamayı beğendiyseniz, Google Play\'de derecelendirmek için bir dakikanızı ayırabilir misiniz? Teşekkürler.</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="notnow">Şimdi değil</string>
     <string name="selective_focus">Seçici odak</string>
     <string name="blur_amount">Bulanıklık miktarı</string>
     <string name="selective_focus_size">Seçici odak boyutu</string>
-    <string name="contribute">Katkıda bulun</string>
+    <string name="contribute">Katkıda bulunun</string>
     <string name="about">Hakkında</string>
-    <string name="contribute_text">Blurify telif haklı özgür bir yazılımdır! Geliştirmek için GitHub\'da katkıda bulunun.</string>
+    <string name="contribute_text">Blurify artık telif müsaadeli özgür yazılımdır! Daha iyi hâle getirmek için GitHub\'da katkıda bulunun.</string>
     <string name="contribute_go">GitHub\'da aç</string>
     <string name="version">Sürüm</string>
 </resources>
