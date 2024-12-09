@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="selective_focus">தேர்ந்தெடுக்கப்பட்ட கவனம்</string>
+    <string name="blur_amount">மங்கலான தொகை</string>
+    <string name="contribute">பங்களிப்பு</string>
+    <string name="app_name">"மங்கலான "</string>
+    <string name="photo_saved_as">புகைப்படம் சேமிக்கப்பட்டது</string>
+    <string name="error_save_photo">புகைப்படத்தை சேமிக்கும் போது பிழை…</string>
+    <string name="wallpaper_set">பயன்பாட்டில் புதிய வால்பேப்பர்.</string>
+    <string name="wallpaper_error">வால்பேப்பரைப் பயன்படுத்துவதில் பிழை…</string>
+    <string name="pick_photo">புகைப்படத்தைத் தேர்ந்தெடுங்கள்</string>
+    <string name="crop">பயிர்</string>
+    <string name="rotate">சுழற்றுங்கள்</string>
+    <string name="set_wallpaper">வால்பேப்பராக அமைக்கவும்</string>
+    <string name="save">சேமி</string>
+    <string name="err_import">புகைப்படத்தை இறக்குமதி செய்யும் போது பிழை…</string>
+    <string name="note">பயன்பாட்டை மதிப்பிடுங்கள்</string>
+    <string name="note_txt">நீங்கள் பயன்பாட்டை விரும்பினால், அதை Google Play இல் மதிப்பிடுவதற்கு ஒரு மணித்துளி எடுக்க முடியுமா? நன்றி.</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+    <string name="notnow">இப்போது இல்லை</string>
+    <string name="selective_focus_size">தேர்ந்தெடுக்கப்பட்ட கவனம் அளவு</string>
+    <string name="about">பற்றி</string>
+    <string name="contribute_text">மங்கலானது இப்போது நகல் லிப்ரே மென்பொருளாகும்! அதை மேம்படுத்த கிதுபில் பங்களிக்கவும்.</string>
+    <string name="contribute_go">கிட்அப்பில் திறந்திருக்கும்</string>
+    <string name="version">பதிப்பு</string>
+</resources>
