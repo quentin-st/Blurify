@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Blurify</string>
+    <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Η φωτογραφία αποθηκεύτηκε ως</string>
     <string name="error_save_photo">Σφάλμα κατά την αποθήκευση φωτογραφίας…</string>
     <string name="wallpaper_set">Νέα ταπετσαρία σε χρήση.</string>
