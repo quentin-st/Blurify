@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">"Blurify "</string>
     <string name="photo_saved_as">Imaxe gardada como</string>
-    <string name="error_save_photo">Produciuse un erro mentres estábase a garda-la imaxe…</string>
+    <string name="error_save_photo">Erro ao gardar a foto…</string>
     <string name="wallpaper_set">Novo fondo da pantalla en uso.</string>
     <string name="wallpaper_error">Produciuse un erro ó aplica-lo fondo da pantalla…</string>
     <string name="pick_photo">Escolle imaxe</string>
